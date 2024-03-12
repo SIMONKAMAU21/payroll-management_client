@@ -34,7 +34,73 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td className='btn'><button className='edit'>Edit</button>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+   <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
+      <button>Remove</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>simon</td>
+      <td>Kamau</td>
+      <td>Software developer</td>
+      <td>simon</td>
+      <td>Graduate</td>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -71,14 +137,14 @@ const EmployeeTable = () => {
       <button>Remove</button></td>
     </tr>
   </tbody>
-  {/* <tbody>
+  <tbody>
     <tr>
       <td>simon</td>
       <td>Kamau</td>
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -89,7 +155,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -100,7 +166,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -111,7 +177,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -122,7 +188,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -133,7 +199,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -144,7 +210,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -155,7 +221,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -166,7 +232,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -177,7 +243,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -188,7 +254,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -199,7 +265,7 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
   </tbody>
@@ -210,76 +276,10 @@ const EmployeeTable = () => {
       <td>Software developer</td>
       <td>simon</td>
       <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
+      <td className='btn'><button>Edit</button>
       <button>Remove</button></td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td className='btns'><button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-  </tbody>  */}
+  </tbody>  
 </table>
 
     </div>
