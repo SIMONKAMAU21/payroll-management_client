@@ -8,6 +8,8 @@ import Sidebar from './layouts/Sidebar/sidebar'
 import Employee from './pages/EmployeeManagement/Employee'
 import AttendanceReportList from './pages/Attendance/Attendance'
 import OvertimeManagement from './pages/Overtime/OvertimeManagement'
+import ScheduleManagement from './pages/Shedule/Shedulemanagement'
+import PositionManagement from './pages/Position/Positionmanagement'
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
 <Route path='/Employee management' element ={<Employee/>}/>
 <Route path='/Attendance reports' element={<AttendanceReportList/>}/>
 <Route path='Overtime management' element ={<OvertimeManagement/>}/>
+<Route path= 'Shedule management' element = {<ScheduleManagement/>}/>
+<Route path='Position management' element ={<PositionManagement/>}/>
 </Routes>
 </BrowserRouter>
 
