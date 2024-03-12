@@ -1,0 +1,41 @@
+.top-holder{
+   display: flex;
+   margin-top: 5rem;
+   width: 90%;
+   height: 20;
+   gap: 10px;
+   justify-content: space-around;
+   .div{
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      background-color: #fff;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+      width: 350px;
+      height: 180px;
+      .head{
+         background-color: rgba(245,245,245,1);
+         
+      }
+      .total{
+         display: flex;
+         justify-content: space-between;
+         align-items: baseline;
+         gap: 10px;
+         .text{
+            height: 40px;
+            background-color:rgba(8,167,235,0.21);
+            align-items: center;
+            width: 40%;
+         }
+         .number{
+            height: 40px;
+            width: 40%;
+            background-color:rgba(217,217,217,1);
+            align-items: center;
+            text-align: center;
+         }
+      }
+   }
+}

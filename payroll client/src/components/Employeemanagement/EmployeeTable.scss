@@ -1,0 +1,22 @@
+.table{
+   margin-top: 2rem;
+   overflow: scroll;
+   table{
+      border: 2px solid;
+      border-collapse: collapse;
+      font-size: 20px;
+      height: 160px;
+      width: 90%;
+      overflow: scroll;
+      th{
+         border: 2px solid ;
+         background-color:rgba(255,153,0,1);
+         border-collapse: collapse;
+         font-weight: 800;
+      }
+      td{
+         border: 2px solid rgba(255,153,0,1);
+         border-collapse: collapse;
+      }
+   }
+}

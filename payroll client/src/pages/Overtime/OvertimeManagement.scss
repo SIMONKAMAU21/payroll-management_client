@@ -1,0 +1,33 @@
+
+.overtime-management-container {
+   // margin: 20px;
+   margin-left: 410px;
+   height: 100vh;
+   margin-top: 4rem;
+   gap: 10px;
+ 
+   .overtime-record {
+     background-color: #f9f9f9;
+     border-radius: 8px;
+     padding: 10px;
+     width: 450px;
+     margin-bottom: 10px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     span{
+      color:rgba(255,153,0,1); // Blue color for hours
+   }
+ 
+     p {
+       margin: 5px 0;
+ 
+       &.date {
+         font-weight: bold;
+       }
+ 
+       &.hours {
+         color:rgba(255,153,0,1); // Blue color for hours
+       }
+     }
+   }
+ }
+ 
