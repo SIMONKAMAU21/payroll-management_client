@@ -1,0 +1,40 @@
+
+.form-container {
+   max-width: 400px;
+   margin: 0 auto;
+ }
+ .form-group {
+   margin-bottom: 20px;
+   label {
+     font-weight: bold;
+     margin-bottom: 5px;
+   }
+ 
+   input {
+     width: 100%;
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     transition: border-color 0.3s ease;
+ 
+     &:focus {
+       border-color: #007bff;
+       outline: none;
+     }
+   }
+ }
+ 
+ button[type="submit"] {
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   padding: 10px 15px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ 
+   &:hover {
+     background-color: #0056b3;
+   }
+ }
+ 
