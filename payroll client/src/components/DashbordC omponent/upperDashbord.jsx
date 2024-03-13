@@ -6,7 +6,7 @@ const UpperDashbord = () => {
       <div className="top-holder">
          <div className="div">
             <div className="head">
-                     <h1>Number of employees</h1>
+                     <h2>Number of employees</h2>
             </div>      <div className="total">
             <div className='text'><h3>Total</h3></div>
             <div className='number'><h3>1002</h3></div>
@@ -14,7 +14,7 @@ const UpperDashbord = () => {
          </div>
          <div className="div">
             <div className="head"> 
-                 <h1>Number of Admins</h1>
+                 <h2>Number of Admins</h2>
             </div>      <div className="total">
             <div className='text'><h3>Total</h3></div>
                <div className='number'><h3>3</h3></div>
@@ -22,7 +22,7 @@ const UpperDashbord = () => {
          </div>
          <div className="div">
             <div className="head"> 
-                 <h1>Total salary</h1>
+                 <h2>Total salary</h2>
             </div>      <div className="total">
                <div className='text'><h3>Total</h3></div>
                <div className='number'><h3>$1002</h3></div>

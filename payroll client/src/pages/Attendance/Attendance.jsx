@@ -8,6 +8,8 @@ const dummyAttendanceReports = [
   { id: 1,Name:'simon kamau', startDate: '2024-03-01', endDate: '2024-03-31' },
   { id: 2,Name:'kelevin wakamba', startDate: '2024-02-01', endDate: '2024-02-29' },
   { id: 3,Name:'jeff Ndegwa', startDate: '2024-01-01', endDate: '2024-01-31' },
+  { id: 3,Name:'jeff Ndegwa', startDate: '2024-01-01', endDate: '2024-01-31' },
+  { id: 3,Name:'jeff Ndegwa', startDate: '2024-01-01', endDate: '2024-01-31' },
 ];
 
 const AttendanceReportList = () => {

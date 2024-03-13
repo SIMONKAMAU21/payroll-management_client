@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Sidebar/sidebar.scss'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaApple } from "react-icons/fa6";
 import { RxDashboard } from "react-icons/rx";
 import { FaPeopleRoof } from "react-icons/fa6";
@@ -11,6 +11,7 @@ import { FaCcAmazonPay } from "react-icons/fa";
 
 
 const Sidebar = () => {
+  const location =useLocation();
   const Menu = [
     {
       title: "Dashbord",
@@ -49,6 +50,7 @@ const Sidebar = () => {
       path: "/Position management",
       icon: <RiGitRepositoryFill color='aliceblue' size='34px' />,
       id: 6,
+
     },
     {
       title: "Payroll management",
@@ -70,6 +72,8 @@ const Sidebar = () => {
           <div className="menu">
             <NavLink style={{ textDecoration: 'none', color: 'black' }}
               to={item.path}
+              activeClassName='active'
+       
             >
               <div className="holder">
                 <div className="value">
