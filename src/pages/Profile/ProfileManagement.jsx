@@ -21,6 +21,7 @@ const ProfileManagement = () => {
   const handleChangePassword = (e) => {
     e.preventDefault();
     // TODO: Implement password change logic
+    console.log("consol.log changes with steve hotcodes")
     console.log('Password changed');
   };
 
