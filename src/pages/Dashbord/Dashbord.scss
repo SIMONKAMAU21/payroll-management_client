@@ -1,0 +1,21 @@
+.dashbord {
+  margin-left: 410px;
+  height: 100vh;
+  margin-top: 3rem;
+  .lower {
+    height: 600px;
+    width: 90%;
+    margin-left: 100px;
+    margin-top: 10px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+  }
+  .dashbord-text {
+    background-color: rgba(99, 83, 83, 0.534);
+    height: 30px;
+    width: 190px;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+  }
+}

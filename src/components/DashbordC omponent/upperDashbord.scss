@@ -1,0 +1,57 @@
+.top-holder{
+   display: flex;
+   margin-top: 5rem;
+   width: 90%;
+   height: 20;
+   gap: 10px;
+   justify-content: space-around;
+   @keyframes myAnimation {
+      from{
+         top: -100px;
+            }
+      to{
+         top: 20px;
+        
+      }
+      
+   }
+   .div{
+      justify-content: space-between;
+      animation-name: myAnimation;
+      animation-duration: 3s;
+      // animation-delay: 1s;
+      animation-direction: reverse;
+      animation-timing-function: ease-in-out;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 50%;
+      background: linear-gradient(to top right, rgb(10, 37, 24),rgb(8, 166, 223), rgb(0, 123, 255));
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+      width: 350px;
+      height: 180px;
+      .head{
+         background-color: rgb(168, 165, 164);
+         
+      }
+      .total{
+         display: flex;
+         justify-content: space-between;
+         align-items: baseline;
+         gap: 10px;
+         .text{
+            height: 40px;
+            background-color:rgba(255,153,0,1);
+            align-items: center;
+            width: 40%;
+         }
+         .number{
+            height: 40px;
+            width: 40%;
+            background-color:rgba(217,217,217,1);
+            align-items: center;
+            text-align: center;
+         }
+      }
+   }
+}

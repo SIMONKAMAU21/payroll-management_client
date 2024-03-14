@@ -1,0 +1,45 @@
+.container {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  position: fixed;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.21);
+  border-bottom: 1px solid rgba(238,131,6,1);
+  .logo {
+    width: 60px;
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+    border-radius: 10px;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+    .search {
+      input {
+        width: 350px;
+        outline: none;
+        border-radius: 9px;
+        height: 30px;
+        background-color: rgba(85, 82, 64, 0.21);
+        color: black;
+        font-weight: 600;
+        font-size: 16;
+      }
+    }
+    .images {
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      img {
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
