@@ -1,157 +1,212 @@
-.maincontent{
-  height: 85vh;
-  width: 97%;
-  margin: auto;
-.header{
-  height: 5vh;
-  width: 97%;
-  margin: 14px;
-  border: 2px solid black;
-  padding: 5px;
-}
-.main{
-  width: 97%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
-.attendance{
-  width: 20%;
-  height: 100%;
-  border: 2px solid violet;
- 
-  .working{
-      width: 100%;
-      height: 40%;
-      display: flex;
-      flex-direction: column;
-      .clock{
-          height: 100%;
-          width: 100%;
-          border: 2px solid tomato;
-      }
-      button{
-          height: 3rem;
-          width: 80%;
-          margin-top: 1rem;
-          margin-left: 1.8rem;
-          background-color: blue;
-          border-radius: 10px;
-          outline-style: none;
-      }
-  }
-}
-.finance{
-  width: 77%;
-  height: 100%;
-  padding: 15px;
-  .attendee{
-      height: 25%;
-      width: 100%;
-      border: 2px solid;
-      margin-bottom: 2rem;
-      .head{
-          margin: 1rem;
-      }
-      .days{
-          display: flex;
-          justify-content: space-between;
-          margin:  1rem;
-      }
-      .Days-absent{
-          display: flex;
-          justify-content: space-between;
-          margin: 1rem;
-      }
-      .leave{
-          display: flex;
-          justify-content: space-between;
-          margin: 1rem;
-      }
-  }
-  .stats{
-      height: 25%;
-      width: 100%;
-      border: 2px solid;
-      margin-bottom: 2rem;
-      table {
-          border-collapse: collapse;
-          width: 100%;
-        }
-       
-        th, td {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-       
-        th {
-          background-color: #f2f2f2;
-        }
-       
-        tr:nth-child(even) {
-          background-color: #f2f2f2;
+.maincontent {
+    height: 85vh;
+    width: 97%;
+    margin: auto;
+
+    .header {
+        height: 5vh;
+        width: 97%;
+        margin: 14px;
+        padding: 5px;
+    }
+
+    .main {
+        width: 97%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+
+        .attendance {
+            width: 20%;
+            height: 100%;
+
+            .working {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+
+                .clock {
+                    height: 50%;
+                    width: 100%;
+                    align-items: center;
+                    text-align: center;
+                }
+
+            }
+
+            .btn {
+                align-items: center;
+                text-align: center;
+                margin-top: 1rem;
+
+                button {
+                    height: 3rem;
+                    width: 80%;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 20px;
+                    margin-left: 1.8rem;
+                    background-color: rgb(255, 68, 0);
+                    margin: auto;
+                    border-radius: 10px;
+                    outline-style: none;
+                }
+            }
         }
 
-  }
-  .payroll{
-      height: 30%;
-      width: 100%;
-      border: 2px solid;
-      .body{
-          display: flex;
-          .gross{
-              flex: 1;
-              border: 1px solid;
-              height: 147px;
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              .overtime{
-                  display: flex;
-                  justify-content: space-between;
-                  margin: 1rem;
-              }
-              .rate{
-                  display: flex;
-                  justify-content: space-between;
-                  margin: 1rem;
-              }
-              .sum{
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 15px;
-                  border: 2px solid;
-                  background-color: violet;
-              }
-                     }
-          .advance{
-              flex: 1;
-              border: 1px solid;
-              height: 147px;
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              .overtime{
-                  display: flex;
-                  justify-content: space-between;
-                  margin: 1rem;
-              }
-              .rate{
-                  display: flex;
-                  justify-content: space-between;
-                  margin: 1rem;
-              }
-              .sum{
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 15px;
-                  border: 2px solid;
-                  background-color: violet;
-              }
-          }
-      }
-  }
-}
-}
+        .finance {
+            width: 77%;
+            height: 100%;
+            padding: 15px;
+            align-items: center;
+
+            .attendee {
+                width: 100%;
+                border-radius: 10px;
+                margin-bottom: 2rem;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+                background-color: #fff;
+
+                .head {
+                    margin: 1rem;
+                }
+
+                .days {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 1rem;
+                }
+
+                .Days-absent {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 1rem;
+                }
+
+                .leave {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 1rem;
+                }
+            }
+
+            .stats {
+                height: 25%;
+                width: 100%;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+                background-color: #fff;
+                margin-bottom: 2rem;
+                border-radius: 10px;
+
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th,
+                td {
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                }
+
+                th {
+                    background-color: rgb(231, 66, 1);
+                }
+
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+
+            }
+
+            .payroll {
+                height: 30%;
+                width: 100%;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+                background-color: #fff;
+                border-radius: 10px;
+                text-align: center;
+
+                .body {
+                    display: flex;
+
+                    .gross {
+                        flex: 1;
+                        height: 147px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        text-align: center;
+
+                        .overtime {
+                            display: flex;
+                            justify-content: space-around;
+                            margin: 1rem;
+                            background-color: rgb(177, 177, 177);
+                        }
+
+                        .rate {
+                            display: flex;
+                            justify-content: space-around;
+                            background-color: rgb(177, 177, 177);
+
+                        }
+
+                        .sum {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 15px;
+                            height: 20px;
+                            align-items: center;
+                            color: white;
+                            background-color: rgb(231, 66, 1);
+                        }
+                    }
+
+                    .advance {
+                        flex: 1;
+                        height: 147px;
+                        display: flex;
+                        text-align: center;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .overtime {
+                            display: flex;
+                            justify-content: space-around;
+                            background-color: rgb(177, 177, 177);
+                            margin: 1rem;
+                        }
+
+                        .rate {
+                            display: flex;
+                            justify-content: space-around;
+                            background-color: rgb(177, 177, 177);
+                            border-left: 1px solid;
+
+
+
+                        }
+
+                        .sum {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 15px;
+                            height: 20px;
+                            align-items: center;
+                            text-align: center;
+                            color: rgb(255, 255, 255);
+                            background-color: rgb(231, 66, 1);
+                            border-left: 1px solid;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

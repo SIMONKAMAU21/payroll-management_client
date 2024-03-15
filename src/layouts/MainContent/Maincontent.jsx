@@ -9,6 +9,7 @@ import OvertimeManagement from '../../pages/Overtime/OvertimeManagement'
 import ScheduleManagement from '../../pages/Shedule/Shedulemanagement'
 import PositionManagement from '../../pages/Position/Positionmanagement'
 import PayrollManagement from '../../pages/Payroll/Payroll'
+import ProfileManagement from '../../pages/Profile/ProfileManagement'
 
 
 const Maincontent = () => {
@@ -25,6 +26,7 @@ const Maincontent = () => {
 <Route path= '/Shedule management' element = {<ScheduleManagement/>}/>
 <Route path='/Position management' element ={<PositionManagement/>}/>
 <Route path ='/Payroll management' element={<PayrollManagement/>}/>
+<Route path='/profile management' element ={<ProfileManagement/>}/>
 </Routes>
 
   

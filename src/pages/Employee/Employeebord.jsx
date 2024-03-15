@@ -40,8 +40,7 @@ function EmployeeBord() {
               <Clock />
             </div>
             {isWorkTimerVisible && <WorkTimer />}
-          </div>
-          <div className="btn">
+            <div className="btn">
             {!isWorkTimerVisible && (
               <button onClick={handleStartWorking}>Start Working</button>
             )}
@@ -49,6 +48,8 @@ function EmployeeBord() {
               <button onClick={handleStopWorking}>Stop Working</button>
             )}
           </div>
+          </div>
+        
         </div>
         <div className="finance">
           <div className="stats">

@@ -72,11 +72,11 @@ const Login = () => {
             <div>
               <h4>Good to see you again</h4>
             </div>
-            <div className="double">
+            {/* <div className="double">
               <div>
                 <FaCheckDouble size="80px" color="rgba(9, 5, 132, 0.743)" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </form>

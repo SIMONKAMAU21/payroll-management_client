@@ -1,6 +1,8 @@
 .form-wrap {
   height: 100vh;
-  background: linear-gradient(to top left, rgb(243, 121, 0), rgb(50, 19, 174));
+  // background: linear-gradient(to top left, rgb(243, 121, 0), rgb(50, 19, 174));
+  background: url(../../assets/R.jpg);
+
   .status-loader {
     position: fixed;
     top: 0;
@@ -13,6 +15,7 @@
     align-items: center;
     z-index: 2;
   }
+
   .status-loader-content {
     background-color: white;
     width: 60%;
@@ -26,16 +29,19 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 2;
   }
+
   @keyframes myAnimation {
     from {
       top: 50%;
       left: 50%;
     }
+
     to {
       top: 150px;
       left: 50%;
     }
   }
+
   .form-lholder {
     top: 50%;
     left: 50%;
@@ -46,9 +52,10 @@
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     height: 550px;
-border: 2px solid;
-background: url(../../assets/download.jpeg);
-background-size: cover;
+    border: 2px solid;
+    // background: url(../../assets/download.jpeg);
+    
+    background-size: cover;
     color: white;
     border-radius: 5px;
 
@@ -64,27 +71,32 @@ background-size: cover;
       justify-content: center;
       box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.85);
     }
+
     .inputs-holder {
       height: 70%;
       display: flex;
       flex-direction: column;
       padding: 0 10px 0 10px;
       line-height: 1px;
+
       p {
         color: rgb(255, 123, 0);
       }
+
       .input-holder {
         box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.85);
         margin-top: 40px;
         background-color: rgb(255, 255, 255);
-        width: 100%;
+        width: 90%;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .react {
           margin-right: 10px;
         }
+
         input {
           color: rgba(9, 5, 132, 0.743);
           border-radius: 10px;
@@ -97,35 +109,25 @@ background-size: cover;
         }
       }
     }
+
     .btn {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 90%;
+      width: 98%;
       padding: 1%;
       height: 40px;
-      background-color: rgba(9, 5, 132, 0.743);
+      background-color: rgb(255, 255, 255);
       border-radius: 10px;
-      box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.85);
-     :hover {
-        background-color: rgb(255, 255, 255);
-        color: rgba(9, 5, 132, 0.743);
-        font-weight: 800;
-        font-size: 18px;
-        height: 60px;
 
-      }
       button {
         padding: 0 10px 0 10px;
-        color: white;
+        color: rgb(246, 246, 246);
         font-size: 16px;
         font-weight: 700;
-        background-color: rgba(9, 5, 132, 0.743);
-        width: 100%;
+        width: 50%;
         height: 100%;
-        transition-property: height;
-        transition-duration: 2s;
-        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.85);
+        font-weight: 600;
+        font-size: 20px;
+        background-color: #006fde;
         margin: auto;
       }
     }

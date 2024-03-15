@@ -35,7 +35,6 @@ const Header = () => {
         </div>
         <div className='logout'> 
           <RiLogoutBoxRFill size='40px' color='rgba(255, 153, 0, 1)' onClick={handleLogout} />
-          <h4>Logout</h4>
         </div>
       </div>
     </div>

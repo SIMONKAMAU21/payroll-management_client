@@ -3,7 +3,7 @@ import Login from "./pages/Login/login";
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Maincontent from "./layouts/MainContent/Maincontent";
-// import EmployeeDashbord from "./layouts/Employeedashbord/EmployeeDashbord";
+import EmployeeDashbord from "./layouts/Employeedashbord/EmployeeDashbord";
 
 const App = () => {
   return (

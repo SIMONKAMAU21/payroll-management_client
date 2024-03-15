@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
- 
+ import '../Worktime/Worktime.scss'
+
 const WorkTimer = () => {
   const [isWorking, setIsWorking] = useState(false);
   const [startTime, setStartTime] = useState(null);
@@ -33,14 +34,16 @@ const WorkTimer = () => {
   };
  
   return (
-    <div>
+    <div className='worktimer'>
       <h2>Work Timer</h2>
       <p>Total time worked: {calculateTotalTime()}</p>
-      {isWorking ? (
+<div className="time">
+{isWorking ? (
         <button onClick={stopWorking}>Stop Working</button>
       ) : (
         <button onClick={startWorking}>Start Working</button>
       )}
+</div>
     </div>
   );
 };
