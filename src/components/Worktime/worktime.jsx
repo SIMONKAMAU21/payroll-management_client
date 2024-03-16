@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
  import '../Worktime/Worktime.scss'
+import ProfileManagement from '../../pages/Profile/ProfileManagement';
 
 const WorkTimer = () => {
   const [isWorking, setIsWorking] = useState(false);
@@ -24,7 +25,7 @@ const WorkTimer = () => {
  
   const calculateTotalTime = () => {
     if (startTime && stopTime) {
-      const totalTime = Math.round((stopTime - startTime) / 1000); // Convert milliseconds to seconds
+      const totalTime = Math.round((stopTime - startTime) / 1000); 
       const hours = Math.floor(totalTime / 3600);
       const minutes = Math.floor((totalTime % 3600) / 60);
       const seconds = totalTime % 60;
