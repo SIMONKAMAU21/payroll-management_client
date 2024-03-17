@@ -2,8 +2,8 @@ import React from 'react'
 import '../EmployeeManagement/Employee.scss'
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
-import AddEmployee from '../../components/Employeemanagement/AddEmployee';
-import EmployeeTable from '../../components/Employeemanagement/EmployeeTable';
+import AddEmployee from '../../features/Employeemanagement/AddEmployee';
+import EmployeeTable from '../../features/Employeemanagement/EmployeeTable';
 
 
 const Employee = () => {

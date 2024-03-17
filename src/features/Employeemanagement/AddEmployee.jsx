@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Employeemanagement/AddEmployee.scss'
+import './AddEmployee.scss'
 
 const AddEmployee = ({closeEmployee}) => {
   return (
@@ -23,22 +23,47 @@ const AddEmployee = ({closeEmployee}) => {
                      name='eventDescription'
                   />
                   <input
+                     type="Date"
+                     autoComplete='on'
+                     placeholder="Address"
+                     id='eventDescription'
+                     name='eventDescription'
+                  />
+                  <input
                      type="text"
-                     placeholder="Position"
+                     placeholder="Birth"
                      id='eventLocation'
                      name='eventLocation'
                   />
                   <input
                      type="file"
                      placeholder="image..."
-                     id='eventurl'
-                     name='eventurl'
+                     id='photoURL'
+                     name='photoURL'
                   />
                   <input
-                     type="date"
-                     placeholder=" date of birth"
-                     id='eventDate'
-                     name='eventDate'
+                     type="text"
+                     placeholder=" contact..."
+                     id='contactInfo'
+                     name='contactInfo'
+                  />
+                  <input
+                     type="text"
+                     placeholder=" Admin"
+                     id='contactInfo'
+                     name='contactInfo'
+                  />
+                  <input
+                     type="text"
+                     placeholder=" Email..."
+                     id='Email'
+                     name='Email'
+                  />
+                  <input
+                     type="text"
+                     placeholder=" Password..."
+                     id='password'
+                     name='password'
                   />
                   <div className="footer">
                      <div className="btn">
