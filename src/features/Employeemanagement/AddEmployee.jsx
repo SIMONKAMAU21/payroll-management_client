@@ -21,10 +21,9 @@ const AddEmployee = ({ closeEmployee }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        LoadingToast();
         try {
-            await addEmployee(formData); 
-            SuccessToast("Employee added successfully!"); 
+          const response=  await addEmployee(formData).unwrap(); 
+            SuccessToast(response.message); 
             closeEmployee();
             setFormData({
                Firstname: '',
@@ -38,7 +37,7 @@ const AddEmployee = ({ closeEmployee }) => {
                Password: ''
             });
         } catch (err) {
-            ErrorToast("Failed to add employee."); 
+            ErrorToast(response.message); 
         }
     };
 

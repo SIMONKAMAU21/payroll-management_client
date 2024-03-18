@@ -6,10 +6,10 @@ import Dashbord from '../../pages/Dashbord/Dashbord'
 import Employee from '../../pages/EmployeeManagement/Employee'
 import AttendanceReportList from '../../pages/Attendance/Attendance'
 import OvertimeManagement from '../../pages/Overtime/OvertimeManagement'
-import ScheduleManagement from '../../pages/Shedule/Shedulemanagement'
-import PositionManagement from '../../pages/Position/Positionmanagement'
+import PositionManagement from '../../features/Position/Positionmanagement'
 import PayrollManagement from '../../pages/Payroll/Payroll'
 import ProfileManagement from '../../pages/Profile/ProfileManagement'
+import ScheduleManagement from '../../features/Shedule/Shedulemanagement'
 
 
 const Maincontent = () => {
