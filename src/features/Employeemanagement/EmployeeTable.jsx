@@ -1,85 +1,80 @@
-import React from 'react'
-import './EmployeeTable.scss'
+import React, { useState } from 'react';
+import './EmployeeTable.scss';
+import { useGetEmployeesQuery, useDeleteEmployeeMutation } from './employeeApi'; 
+import { ErrorToast, LoadingToast, SuccessToast, ToasterContainer } from '../../components/toaster/Toaster';
+import UpdateUserForm from './updateEmployee';
 
 const EmployeeTable = () => {
+  const { data: employees, isLoading, isError } = useGetEmployeesQuery(); 
+  const [deleteEmployee, { isLoading: deleteLoading }] = useDeleteEmployeeMutation();
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+
+  const handleRemoveEmployee = async (ID) => {
+    try {
+      await deleteEmployee(ID);
+      SuccessToast('Employee removed successfully');
+    } catch (error) {
+      ErrorToast('Failed to remove employee');
+    }
+  };
+
+
+  const handleEditEmployee = (ID) => {
+    setSelectedEmployee(ID);
+  };
+
+  if (isLoading) {
+    return <LoadingToast />;
+  }
+
+  if (isError) {
+    return <ErrorToast message="Error fetching data" />;
+  }
+
   return (
     <div className='table'>
-<table>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Position</th>
-      <th>Image</th>
-      <th>Date of birth</th>
-      <th>contact</th>
-      <th>Email</th>
-      <th>Option</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td>0759717794</td>
-      <td>simo@exaple.com</td>
-      <td className='btn'>
-        <button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-    </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td>0759717794</td>
-      <td>simo@exaple.com</td>
-      <td className='btn'>
-        <button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-    </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td>0759717794</td>
-      <td>simo@exaple.com</td>
-      <td className='btn'>
-        <button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-    </tbody>
-  <tbody>
-    <tr>
-      <td>simon</td>
-      <td>Kamau</td>
-      <td>Software developer</td>
-      <td>simon</td>
-      <td>Graduate</td>
-      <td>0759717794</td>
-      <td>simo@exaple.com</td>
-      <td className='btn'>
-        <button>Edit</button>
-      <button>Remove</button></td>
-    </tr>
-    </tbody>
-
-
-</table>
-
+      <table>
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Position</th>
+            <th>Address</th>
+            <th>Image</th>
+            <th>Date of birth</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map(employee => (
+            <tr key={employee.ID}>
+              <td>{employee.FirstName}</td>
+              <td>{employee.LastName}</td>
+              <td>{employee.Position}</td>
+              <td>{employee.Address}</td>
+              <td>{employee.PhotoURL}</td>
+              <td>{employee.BirthDate}</td>
+              <td>{employee.ContactInfo}</td>
+              <td>{employee.Email}</td>
+              <td className='btn'>
+              <button onClick={() => handleEditEmployee(employee.ID)}>
+                  Edit
+                </button>
+                <button onClick={() => handleRemoveEmployee(employee.ID)} disabled={deleteLoading}>
+                  Remove
+                </button>
+              
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {selectedEmployee && <UpdateUserForm employee={selectedEmployee} onClose={() => setSelectedEmployee(null)} />}
     </div>
-  )
-}
+  );
+};
 
-export default EmployeeTable
+export default EmployeeTable;
