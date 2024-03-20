@@ -7,13 +7,18 @@ import { MdLockPerson, MdOutlineMarkunread } from "react-icons/md";
 import { FaCheckDouble } from "react-icons/fa6";
 import { PuffLoader } from 'react-spinners';
 import './login.scss';
+import { useLoginUserMutation } from './loginApi';
+import { RxDashboard } from 'react-icons/rx';
 
 const Login = () => {
+  console.log("nigeria");
+  const [loginUser] = useLoginUserMutation();
+
   const navigate = useNavigate();
 
   const schema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().required('Password is required'),
+    Email: yup.string().email('Invalid email').required('Email is required'),
+    Password: yup.string().required('Password is required'),
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -22,15 +27,21 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Call authentication function here
-      // Example:
-      // const response = await authenticateUser(data.email, data.password);
-      // if (response.success) {
-      //   navigate('/dashboard');
-      // } else {
-      //   // Handle authentication error
-      // }
-      navigate('*')
+      console.log("I am submitting");
+      const response = await loginUser(data).unwrap();
+      console.log("my res is ", response);
+
+      const { token, user } = response
+      if (user.Admin) {
+        navigate('admin/');
+      }
+      else {
+        navigate('/employee');
+      }
+      localStorage.setItem('token', token)
+
+      localStorage.setItem('userDetails', JSON.stringify(user))
+
     } catch (error) {
       console.log(error);
     }
@@ -40,29 +51,34 @@ const Login = () => {
     <div className="login-container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-wrap">
+          <div className="animation">
+
+            <RxDashboard size='34px' color='rgb(0, 211, 248)' />
+          </div>
+          
           <div className="form-lholder">
             <div className="inputs-holder">
               <div className='input-holder'>
                 <input
                   placeholder="Email..."
-                  {...register('email')}
+                  {...register('Email')}
                 />
                 <div className="react">
                   <MdOutlineMarkunread size="34px" color="rgba(9, 5, 132, 0.743)" />
                 </div>
               </div>
-              <p>{errors.email?.message}</p>
+              <p>{errors.Email?.message}</p>
               <div className='input-holder'>
                 <input
                   type="password"
                   placeholder="Password.."
-                  {...register('password')}
+                  {...register('Password')}
                 />
                 <div className="react">
                   <MdLockPerson size="34px" color="rgba(9, 5, 132, 0.743)" />
                 </div>
               </div>
-              <p>{errors.password?.message}</p>
+              <p>{errors.Password?.message}</p>
             </div>
             <div className='btn'>
               <button type="submit">
@@ -72,14 +88,16 @@ const Login = () => {
             <div>
               <h4>Good to see you again</h4>
             </div>
-            {/* <div className="double">
-              <div>
-                <FaCheckDouble size="80px" color="rgba(9, 5, 132, 0.743)" />
-              </div>
-            </div> */}
+
+          </div>
+          <div className="animation1">
+            <RxDashboard size='34px' color='white' />
+            welcome Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatibus atque dolorum aliquid assumenda laborum velit nulla culpa corrupti sunt veniam quae suscipit? Explicabo reiciendis, quos amet porro nesciunt autem!
           </div>
         </div>
+       
       </form>
+
     </div>
   );
 };

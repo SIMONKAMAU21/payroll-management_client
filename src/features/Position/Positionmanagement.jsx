@@ -17,10 +17,12 @@ const PositionManagement = () => {
         SuccessToast(response.message)
         setNewPosition('');
         setNewBasicSalary('');
+      }else{
+        ErrorToast(response.message)
       }
     } catch (error) {
       console.error('Error adding position:', error);
-      ErrorToast(data.message)
+      ErrorToast(response.message)
     }
   };
 
@@ -66,9 +68,9 @@ const PositionManagement = () => {
                   </tr>
                   <tr>
                     <td>{position.Title}</td>
-                    <td>{position.Basic_Salary}</td>
+                    <td>ksh {position.Basic_Salary}</td>
                     <td>
-                      <button onClick={() => handleRemovePosition(position.ID)}>Remove</button>
+                      <button onClick={() => handleRemovePosition(position.PositionID)}>Remove</button>
                     </td>
                   </tr>
                 </tbody>

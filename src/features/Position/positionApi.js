@@ -24,8 +24,8 @@ export const positionApi = createApi({
             invalidatesTags: ['Positions'],
         }),
         deletePositions: builder.mutation({
-            query: (ID) => ({
-                url: `Positions/delete/${ID}`,
+            query: (PositionID) => ({
+                url: `Positions/delete/${PositionID}`,
                 method: `DELETE`
             }),
             invalidatesTags: ['Positions'],

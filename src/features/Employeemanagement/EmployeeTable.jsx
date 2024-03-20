@@ -12,8 +12,8 @@ const EmployeeTable = () => {
 
   const handleRemoveEmployee = async (ID) => {
     try {
-      await deleteEmployee(ID);
-      SuccessToast('Employee removed successfully');
+     const response= await deleteEmployee(ID) .unwrap();
+      SuccessToast(response.message);
     } catch (error) {
       ErrorToast('Failed to remove employee');
     }
@@ -25,7 +25,7 @@ const EmployeeTable = () => {
   };
 
   if (isLoading) {
-    return <LoadingToast />;
+    return ;
   }
 
   if (isError) {
@@ -40,6 +40,8 @@ const EmployeeTable = () => {
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Position</th>
+            <th>ID</th>
+            <th>Schedule</th>
             <th>Address</th>
             <th>Image</th>
             <th>Date of birth</th>
@@ -51,21 +53,24 @@ const EmployeeTable = () => {
         <tbody>
           {employees.map(employee => (
             <tr key={employee.ID}>
-              <td>{employee.FirstName}</td>
-              <td>{employee.LastName}</td>
+              <td>{employee.Firstname}</td>
+              <td>{employee.Lastname}</td>
               <td>{employee.Position}</td>
+              <td>{employee.ID}</td>
+              <td>{employee.Schedule}</td>
               <td>{employee.Address}</td>
-              <td>{employee.PhotoURL}</td>
+              <td><img src={employee.PhotoURL} alt="nopic " srcset="" className='img' /></td>
               <td>{employee.BirthDate}</td>
               <td>{employee.ContactInfo}</td>
               <td>{employee.Email}</td>
               <td className='btn'>
+              <button onClick={() => handleRemoveEmployee(employee.ID)} disabled={deleteLoading}>
+                  Remove
+                </button>
               <button onClick={() => handleEditEmployee(employee.ID)}>
                   Edit
                 </button>
-                <button onClick={() => handleRemoveEmployee(employee.ID)} disabled={deleteLoading}>
-                  Remove
-                </button>
+                
               
               </td>
             </tr>

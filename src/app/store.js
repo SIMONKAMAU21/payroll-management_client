@@ -3,6 +3,8 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { employeeApi } from "../features/Employeemanagement/employeeApi";
 import { positionApi } from "../features/Position/positionApi";
 import { ScheduleApi } from "../features/Shedule/scheduleApi";
+import { attendanceApi } from "../features/Attendance/AttendanceApi";
+import { loginApi } from "../pages/Login/loginApi";
 
 
 
@@ -11,8 +13,10 @@ export const store =configureStore({
      [employeeApi.reducerPath]:employeeApi.reducer,
      [positionApi.reducerPath]:positionApi.reducer,
      [ScheduleApi.reducerPath]:ScheduleApi.reducer,
+     [attendanceApi.reducerPath]:attendanceApi.reducer,
+     [loginApi.reducerPath]:loginApi.reducer,
     },
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(employeeApi.middleware,positionApi.middleware,ScheduleApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(employeeApi.middleware,positionApi.middleware,ScheduleApi.middleware,attendanceApi.middleware,loginApi.middleware)
 })
 setupListeners(store.dispatch)
 

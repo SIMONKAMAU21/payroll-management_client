@@ -51,7 +51,7 @@ const ScheduleManagement = () => {
             Schedules_name: formData.get('scheduleName'),
             StartTime: formData.get('startTime'),
             EndTime: formData.get('endTime'),
-            Employee: formData.get('employee'),
+            EmployeeID: formData.get('employee'),
          };
          const response = await addSchedule(newShift).unwrap();
          SuccessToast(response.message)
@@ -95,7 +95,7 @@ const ScheduleManagement = () => {
                      <td>{shift.Schedules_name}</td>
                      <td>{shift.StartTime}</td>
                      <td>{shift.EndTime}</td>
-                     <td>{shift.Employee}</td>
+                     <td>{shift.Firstname} {shift.Lastname}</td>
                      <td className='btn'>
                         {editedIndex === index ? (
                            <>
