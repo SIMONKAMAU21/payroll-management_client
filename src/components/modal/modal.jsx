@@ -1,18 +1,15 @@
 import React from 'react';
+import'../modal/Modal.scss'
+const Modal = ({ isOpen, children }) => {
+   if (!isOpen) return null;
 
-const Modal = ({ isOpen, handleModalClose, children }) => {
-  return (
-    <>
-      {isOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={handleModalClose}>&times;</span>
+   return (
+      <div className="modal-overlay">
+         <div className="modal">
             {children}
-          </div>
-        </div>
-      )}
-    </>
-  );
+         </div>
+      </div>
+   );
 };
 
 export default Modal;

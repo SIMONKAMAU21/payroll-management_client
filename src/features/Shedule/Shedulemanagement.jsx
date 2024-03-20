@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Shedulemanagement.scss';
 import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMutation, useAddSchedulesMutation } from './scheduleApi';
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
-import Modal from '../../components/modal/modal';
+import Modal from '../../components/modal/Modal';
 
 const ScheduleManagement = () => {
    const { data: schedulesData, isLoading, isError } = useGetSchedulesQuery();

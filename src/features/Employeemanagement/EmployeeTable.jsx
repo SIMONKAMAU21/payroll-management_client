@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import './EmployeeTable.scss';
-import { useGetEmployeesQuery, useDeleteEmployeeMutation, useGetOneUserMutation } from './employeeApi'; 
+import { useGetEmployeesQuery, useDeleteEmployeeMutation } from './employeeApi'; 
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
 import UpdateUserForm from './updateEmployee';
-import UserDetailsModal from '../../components/userdetails/userDetailes';
+import UserDetailsModal from '../../components/DETAILS/userDetailes';
 
 const EmployeeTable = () => {
   const { data: employees, isLoading, isError } = useGetEmployeesQuery(); 
   const [deleteEmployee, { isLoading: deleteLoading }] = useDeleteEmployeeMutation();
-  const [getOneUser, { data: userDetails, isLoading: userLoading, isError: userError }] = useGetOneUserMutation();
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [showDetailsModal, setShowDetailsModal] = useState(true);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const handleRemoveEmployee = async (ID) => {
     try {
@@ -25,24 +24,17 @@ const EmployeeTable = () => {
     setSelectedEmployee(ID);
   };
   const handleSeeMore = async (ID) => {
-    try {
-      const response = await getOneUser(ID).unwrap();
-      // setShowDetailsModal(true);
-      setSelectedEmployee(response);
-      // console.log(response)
-    } catch (error) {
-      ErrorToast('Failed to fetch user details');
-    }
+    setSelectedEmployee(ID);
+    setShowDetailsModal(true); 
   };
-  if (isLoading || userLoading) {
+
+  if (isLoading) {
     return <LoadingToast />;
   }
 
-  if (isError || userError) {
+  if (isError) {
     return <ErrorToast message="Error fetching data" />;
   }
-
-  // console.log('selected employee',selectedEmployee)
 
   return (
     <div className='table'>
@@ -53,13 +45,8 @@ const EmployeeTable = () => {
             <th>Lastname</th>
             <th>Position</th>
             <th>ID</th>
-            <th>Schedule</th>
-            <th>Address</th>
             <th>Image</th>
-            <th>Date of birth</th>
-            <th>Contact</th>
-            <th>Email</th>
-            <th>Options</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -69,32 +56,20 @@ const EmployeeTable = () => {
               <td>{employee.Lastname}</td>
               <td>{employee.Position}</td>
               <td>{employee.ID}</td>
-              <td>{employee.Schedule}</td>
-              <td>{employee.Address}</td>
-              <td><img src={employee.PhotoURL} alt="nopic " srcset="" className='img' /></td>
-              <td>{employee.BirthDate}</td>
-              <td>{employee.ContactInfo}</td>
-              <td>{employee.Email}</td>
+              <td><img src={employee.PhotoURL} alt="" srcset="" className='img'/></td>
               <td>
-                <button onClick={() => handleRemoveEmployee(employee.ID)} disabled={deleteLoading}>
-                  Remove
-                </button>
-                <button onClick={() => handleEditEmployee(employee.ID)}>
-                  Edit
-                </button>
-                <button onClick={() => handleSeeMore(employee.ID)}>
-                  See more
-              </button>
+                <button onClick={() => handleRemoveEmployee(employee.ID)}>Remove</button>
+                <button onClick={() => handleEditEmployee(employee.ID)}>Edit</button>
+                <button onClick={() => handleSeeMore(employee.ID)}>See more</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <UserDetailsModal/>
-      {/* {showDetailsModal && ( */}
-        {/* <UserDetailsModal employee={selectedEmployee} onClose={() => setShowDetailsModal(false)} /> */}
-      {/* )} */}
-      {selectedEmployee && <UpdateUserForm employee={selectedEmployee} onClose={() => setSelectedEmployee(null)} />}
+     {showDetailsModal && (
+        <UserDetailsModal  employeeId={selectedEmployee} onClose={() => setShowDetailsModal(false)} />
+     )}
+      
     </div>
   );
 };

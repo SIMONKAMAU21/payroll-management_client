@@ -4,7 +4,6 @@ import { useState } from 'react'
 import '../Dashbord/Dashbord.scss'
 import UpperDashbord from '../../components/DashbordC omponent/upperDashbord'
 import LowerDashbord from '../../components/DashbordC omponent/lowerDashbord'
-import UserDetailsModal from '../../components/userdetails/userDetailes'
 
 
 const Dashbord = () => {
@@ -18,7 +17,6 @@ const Dashbord = () => {
   return (
     <div className='dashbord'>
 <UpperDashbord/>
-<UserDetailsModal/>
 <div className="dashbord-text">
   <div><h3>Attendance graph</h3></div>
 </div>
