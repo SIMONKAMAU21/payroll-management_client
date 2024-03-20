@@ -10,6 +10,7 @@ import PayrollManagement from '../../pages/Payroll/Payroll'
 import ProfileManagement from '../../pages/Profile/ProfileManagement'
 import ScheduleManagement from '../../features/Shedule/Shedulemanagement'
 import AttendanceReportList from '../../features/Attendance/Attendance'
+import { Navigate } from 'react-router-dom'
 
 
 const Maincontent = () => {
@@ -19,7 +20,8 @@ const Maincontent = () => {
 <Header/>
 <Sidebar/>
 <Routes>
-<Route path='/Dashbord' element={<Dashbord/>}/>
+  <Route path='/admin'element= {<Navigate to='/Dashbord' replace/> } />
+<Route path='/Dashbord' element={<Dashbord/>} exact/>
 <Route path='/Employee management' element ={<Employee/>}/>
 <Route path='/Attendance reports' element={<AttendanceReportList/>}/>
 <Route path='/Overtime management' element ={<OvertimeManagement/>}/>

@@ -17,7 +17,8 @@ const AddEmployee = ({ closeEmployee }) => {
         Admin: '',
         Email: '',
         Password: '',
-        schedule: '' // Added schedule field
+        schedule: '',
+        gender: '' // Added gender field
     });
     const [file, setFile] = useState(null)
 
@@ -67,13 +68,13 @@ const AddEmployee = ({ closeEmployee }) => {
                 Admin: '',
                 Email: '',
                 Password: '',
-                schedule: '' // Reset schedule field
+                schedule: '',
+                gender: '' // Reset gender field
             });
         } catch (err) {
             ErrorToast(response.message);
         }
     };
-
     const handleChange = (e) => {
         if (e.target.type === 'file') {
             const file = e.target.files[0]; // Get the selected file
@@ -114,6 +115,14 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Lastname}
                             onChange={handleChange}
                         />
+                             <input
+                            type="text"
+                            placeholder="Gender"
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleChange}
+                        />
+                       
                         <input
                             type="text"
                             placeholder="Position"

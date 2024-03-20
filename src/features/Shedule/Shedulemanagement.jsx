@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Shedulemanagement.scss';
 import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMutation, useAddSchedulesMutation } from './scheduleApi';
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
+import Modal from '../../components/modal/modal';
 
 const ScheduleManagement = () => {
    const { data: schedulesData, isLoading, isError } = useGetSchedulesQuery();
@@ -12,12 +13,14 @@ const ScheduleManagement = () => {
    const [deleteSchedule] = useDeleteSchedulesMutation();
    const [addSchedule] = useAddSchedulesMutation();
    const [showAddForm, setShowAddForm] = useState(false);
+   const [modalOpen, setModalOpen]= useState(false)
 
    const editShift = (index) => {
       setEditedIndex(index);
       setEditedShift(shifts[index]);
+      toggleModal();
    };
-
+ 
    const updateShift = async (index) => {
       try {
          await updateSchedule({ ID: shifts[index].ID, ...editedShift });
@@ -39,8 +42,8 @@ const ScheduleManagement = () => {
       }
    };
 
-   const toggleAddForm = () => {
-      setShowAddForm(!showAddForm);
+   const toggleModal = () => {
+      setModalOpen(!showAddForm);
    };
 
    const handleAddShift = async (event) => {
@@ -56,6 +59,7 @@ const ScheduleManagement = () => {
          const response = await addSchedule(newShift).unwrap();
          SuccessToast(response.message)
          setShowAddForm(false);
+         setModalOpen(false)
       } catch (error) {
          ErrorToast(response.message)
          console.error('Error adding shift:', error);
@@ -65,8 +69,8 @@ const ScheduleManagement = () => {
    return (
       <div className="schedule-management">
          <h2>Schedule Management</h2>
-         <button onClick={toggleAddForm}>Add Shift</button>
-         {showAddForm && (
+         <button onClick={toggleModal}>Add Shift</button>
+         <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
                <div className="hold">   <div><input type="text" name="scheduleName" autoComplete='on' placeholder="Schedule Name" /></div>
                   <div>     <input type="datetime-local" name="startTime" placeholder="Start Time" /></div>
@@ -77,7 +81,7 @@ const ScheduleManagement = () => {
 
                </div>
             </form>
-         )}
+         </Modal>
          <table>
             <thead>
                <tr>

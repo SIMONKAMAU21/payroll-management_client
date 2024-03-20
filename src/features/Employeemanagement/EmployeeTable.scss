@@ -1,44 +1,43 @@
-.table{
+.table {
    margin-top: 2rem;
-   // overflow-x: scroll;
    overflow-x: scroll;
    height: 90vh;
-   table{
-      // border: 2px solid;
-      // border-collapse: collapse;
-      font-size: 20px;
-      height: 160px;
-      width: 90%;
-      overflow: scroll;
-      .btn button{
-         margin-right: 8px;
-         height: 30px;
-      }
-      th{
-         border: 2px solid ;
-         background-color:rgba(255,153,0,1);
-         border-collapse: collapse;
-         font-weight: 800;
-      }
-      td{
-         border: 2px solid rgba(255,153,0,1);
-         border-collapse: collapse;
-         margin: auto;
-         .img{
-            border-radius: 50%;
-            height: 44px;
-            margin: auto;
-            width: 44px;
-            display: flex;
-            &:hover{
-               height: 50vh;
-               width: 50vw;
-               position: relative;
-               align-items: center;
-               display: flex;
-               border-radius: 0%;
-            }
-         }
-      }
-   }
-}
+ }
+ 
+ .table table {
+   font-size: 20px;
+   height: 160px;
+   width: 100%; /* Set width to 100% to fill the container */
+   border-collapse: collapse;
+ }
+ 
+ .table table th {
+   border: 2px solid;
+   background-color: rgba(255, 153, 0, 1);
+   font-weight: 800;
+ }
+ 
+ .table table td {
+   border: 2px solid rgba(255, 153, 0, 1);
+   padding: 8px; /* Add padding to cells */
+   text-align: center; /* Center-align cell content */
+ }
+ 
+ .table table .img {
+   border-radius: 50%;
+   height: 44px;
+   width: 44px;
+   transition: all 0.3s ease; /* Add transition for smooth hover effect */
+ }
+ 
+ .table table .img:hover {
+   height: 50vh;
+   width: 50vw;
+   border-radius: 0%;
+ }
+ 
+ .table table .btn button {
+   margin-right: 8px;
+   height: 30px;
+ }
+ 

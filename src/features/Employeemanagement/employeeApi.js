@@ -6,14 +6,11 @@ export const employeeApi = createApi({
     tagTypes: ['Employees'],
     endpoints: (builder) => ({
         getEmployees: builder.query({
-            query: () => (
-                {
-                    url: `users`,
-                    method: `GET`
-                }
-            ),
+            query: () => ({
+                url: `users`,
+                method: `GET`
+            }),
             providesTags: ['Employees']
-
         }),
         addEmployee: builder.mutation({
             query: (employee) => ({
@@ -31,14 +28,29 @@ export const employeeApi = createApi({
             invalidatesTags: ['Employees'],
         }),
         updateEmployee: builder.mutation({
-            query: (employee) => ({
-                url: `users/update/${ID}`,
-                method:'PUT',
-                body:employee
+            query: ( employee) => ({
+                url: `users/update/${employee.ID}`,
+                method: 'PUT',
+                body: employee
             }),
             invalidatesTags: ['Employees']
-        })
-    })
+        }),
+        
+        getOneUser: builder.mutation({
+            query: (ID) => ({
+                url: `users/byID/${ID}`,
+                method: `GET`,
+            }),
+            invalidatesTags: ['Employees']
+        }),
+        getOneUserByEmail: builder.mutation({
+            query: (Email) => ({
+                url: `users/${Email}`,
+                method: `GET`,
+            }),
+            invalidatesTags: ['Employees']
+        }),
+    }),
 });
 
-export const { useGetEmployeesQuery, useAddEmployeeMutation, useDeleteEmployeeMutation,useUpdateEmployeeMutation } = employeeApi;
+export const { useGetEmployeesQuery, useAddEmployeeMutation, useDeleteEmployeeMutation, useUpdateEmployeeMutation, useGetOneUserMutation, useGetOneUserByEmailMutation } = employeeApi;

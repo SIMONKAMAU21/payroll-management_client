@@ -5,7 +5,6 @@ import { SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
 const UpdateUserForm = ({ user, onClose }) => {
   const [editedUser, setEditedUser] = useState({ ...user });
   const [updateUser, { error }] = useUpdateEmployeeMutation();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedUser({ ...editedUser, [name]: value });
@@ -14,8 +13,8 @@ const UpdateUserForm = ({ user, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateUser(editedUser);
-      SuccessToast("User details updated successfully!");
+      const response = await updateUser({employee: editedUser });
+      SuccessToast(response.message);
       onClose();
     } catch (error) {
       ErrorToast("Failed to update user details.");
@@ -27,23 +26,23 @@ const UpdateUserForm = ({ user, onClose }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="FirstName"
-          name="firstname"
-          value={editedUser.firstname}
+          placeholder="First Name"
+          name="Firstname"
+          value={editedUser.Firstname || ''}
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Last Name"
           name="Lastname"
-          value={editedUser.Lastname}
+          value={editedUser.Lastname || ''}
           onChange={handleChange}
         />
         <input
           type="email"
           placeholder="Email"
           name="Email"
-          value={editedUser.Email}
+          value={editedUser.Email || ''}
           onChange={handleChange}
         />
         <button type="submit">Save</button>
