@@ -50,6 +50,7 @@ const ScheduleManagement = () => {
       event.preventDefault();
       try {
          const formData = new FormData(event.target);
+         
          const newShift = {
             Schedules_name: formData.get('scheduleName'),
             StartTime: formData.get('startTime'),
@@ -65,7 +66,7 @@ const ScheduleManagement = () => {
          console.error('Error adding shift:', error);
       }
    };
-
+``
    return (
       <div className="schedule-management">
          <h2>Schedule Management</h2>
@@ -89,6 +90,7 @@ const ScheduleManagement = () => {
                   <th>Start Time</th>
                   <th>End Time</th>
                   <th>Employee</th>
+                  <th>ID</th>
                   <th>Options</th>
                </tr>
             </thead>
@@ -100,13 +102,9 @@ const ScheduleManagement = () => {
                      <td>{shift.StartTime}</td>
                      <td>{shift.EndTime}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>
+                     <td>{shift.ID}</td>
                      <td className='btn'>
-                        {editedIndex === index ? (
-                           <>
-                              <button onClick={() => updateShift(index)}>Save</button>
-                              <button onClick={() => setEditedIndex(null)}>Cancel</button>
-                           </>
-                        ) : (
+                        { (
                            <>
                               <button onClick={() => editShift(index)}>Edit</button>
                               <button onClick={() => deleteShift(shift.ID)}>Delete</button>

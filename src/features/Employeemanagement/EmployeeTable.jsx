@@ -41,9 +41,8 @@ const EmployeeTable = () => {
       <table>
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Position</th>
+            <th>Fullnames</th>
+            <th>Email</th>
             <th>ID</th>
             <th>Image</th>
             <th>Actions</th>
@@ -52,15 +51,14 @@ const EmployeeTable = () => {
         <tbody>
           {employees.map(employee => (
             <tr key={employee.ID}>
-              <td>{employee.Firstname}</td>
-              <td>{employee.Lastname}</td>
-              <td>{employee.Position}</td>
+              <td>{employee.Firstname} {employee.Lastname}</td>
+              <td>{employee.Email}</td>
               <td>{employee.ID}</td>
               <td><img src={employee.PhotoURL} alt="" srcset="" className='img'/></td>
               <td>
-                <button onClick={() => handleRemoveEmployee(employee.ID)}>Remove</button>
-                <button onClick={() => handleEditEmployee(employee.ID)}>Edit</button>
-                <button onClick={() => handleSeeMore(employee.ID)}>See more</button>
+                <button onClick={() => handleRemoveEmployee(employee.ID)} className='btn2'>Remove</button>
+                <button onClick={() => handleEditEmployee(employee.ID)}className='btn3'>Edit</button>
+                <button onClick={() => handleSeeMore(employee.ID)}className='btn1'>See more</button>
               </td>
             </tr>
           ))}

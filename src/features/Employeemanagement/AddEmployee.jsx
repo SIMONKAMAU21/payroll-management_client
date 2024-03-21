@@ -44,7 +44,6 @@ const AddEmployee = ({ closeEmployee }) => {
         if (cloudinaryRes.ok) {
             console.log("RESPONSE JSON ", responseJson);
             const { secure_url } = responseJson
-            // setFormData({ ...formData, PhotoURL: secure_url }); 
             formData.PhotoURL = secure_url
         }
         else {
@@ -69,7 +68,7 @@ const AddEmployee = ({ closeEmployee }) => {
                 Email: '',
                 Password: '',
                 schedule: '',
-                gender: '' // Reset gender field
+                gender: '' 
             });
         } catch (err) {
             ErrorToast(response.message);
@@ -77,7 +76,7 @@ const AddEmployee = ({ closeEmployee }) => {
     };
     const handleChange = (e) => {
         if (e.target.type === 'file') {
-            const file = e.target.files[0]; // Get the selected file
+            const file = e.target.files[0]; 
             setFormData({ ...formData, [e.target.name]: file }); // Update the state with the file
         } else {
             const { name, value } = e.target;
@@ -150,7 +149,6 @@ const AddEmployee = ({ closeEmployee }) => {
                             name="PhotoURL"
                             onChange={(e) => {
                                 const file = e.target.files[0]; // Get the selected file
-                                console.log("i am file ", file);
                                 setFile(file)
                                 // handleChange(file); // Pass the file to handleChange function
                             }}

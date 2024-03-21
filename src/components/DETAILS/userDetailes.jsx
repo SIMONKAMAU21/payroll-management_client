@@ -15,6 +15,7 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
       try {
         const response = await getOneUser(employeeId).unwrap();
         setUserDetails(response);
+        console.log('response', response)
       } catch (error) {
         setIsError(true);
       } finally {
@@ -25,7 +26,7 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
     if (employeeId) {
       fetchUserDetails();
     }
-  }, [employeeId]);
+  }, [employeeId,getOneUser]);
 
   const handleClose = () => {
     onClose();
@@ -53,15 +54,13 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
             <p><strong>Lastname:</strong> {userDetails?.Lastname}</p>
             <p><strong>Position:</strong> {userDetails?.Position}</p>
             <p><strong>ID:</strong> {userDetails?.ID}</p>
-            <p><strong>Schedule:</strong> {userDetails?.Schedule}</p>
-            <p><strong>TimeIn
-              :</strong> {userDetails?.TimeIn
-              }</p>
+            <p><strong>Schedule:</strong> {userDetails?.Schedules_name}</p>
+            <p><strong>TimeIn:</strong> {userDetails?.TimeIn}</p>
             <p><strong>TimeOut:</strong> {userDetails?.TimeOut}</p>
             <p><strong>StartTime:</strong> {userDetails?.StartTime}</p>
             <p><strong>Address:</strong> {userDetails?.Address}</p>
             <p><strong>Date of birth:</strong> {userDetails?.BirthDate}</p>
-            <p><strong>Contact:</strong> {userDetails?.ContactInfo}</p>
+            <p><strong>Contact:</strong>+254 {userDetails?.ContactInfo}</p>
             <p><strong>Email:</strong> {userDetails?.Email}</p>
           </div>
         </div>
