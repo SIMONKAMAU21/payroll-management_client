@@ -1,7 +1,24 @@
 .maincontent {
     height: 85vh;
     width: 97%;
-    margin: auto;
+    .motivation {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+        height: 30px;
+        display: flex;
+        margin: auto;
+        .mtext{
+            background-color: rgb(0, 195, 255);
+            width:60vw;
+            margin: auto;
+        }
+      }
+      
 
     .header {
         height: 5vh;
@@ -30,9 +47,9 @@
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 
                 .clock {
-                    height: 50%;
-                    width: 100%;
+                
                     align-items: center;
+                    background-color: red;
                     text-align: center;
                 }
 
@@ -101,6 +118,7 @@
                 background-color: #fff;
                 margin-bottom: 2rem;
                 border-radius: 10px;
+                overflow: scroll;
 
                 table {
                     border-collapse: collapse;

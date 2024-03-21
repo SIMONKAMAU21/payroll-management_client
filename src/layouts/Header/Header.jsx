@@ -38,7 +38,7 @@ const Header = () => {
           {employeeData && <img src={employeeData.PhotoURL} alt="Profile" />}
         </div>
         <div className='logout'> 
-          <RiLogoutBoxRFill size='40px' color='rgba(255, 153, 0, 1)' onClick={handleLogout} />
+          <RiLogoutBoxRFill size='30px' color='aliceblue' onClick={handleLogout} />
         </div>
       
         </div>

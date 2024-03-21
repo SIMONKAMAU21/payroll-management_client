@@ -2,10 +2,11 @@
    margin: 20px;
    padding: 20px;
    border: 1px solid #ccc;
+  //  background-color: #487cb8;
    border-radius: 5px;
    margin-left: 410px;
    height: 100vh;
-   margin-top: 4rem;
+   margin-top: 1rem;
    overflow-x: scroll;
    .schedule_form{
     background-color: rgb(225, 234, 240);
@@ -80,6 +81,7 @@
    table {
      width: 100%;
      border-collapse: collapse;
+     background-color: #fff;
  
      th, td {
        border: 1px solid #ddd;

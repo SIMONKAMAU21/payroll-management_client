@@ -1,12 +1,8 @@
-
-
-
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WorkTimer from '../../components/Worktime/worktime';
 import '../Employee/Employeebord.scss';
 import Clock from '../../components/clock/clock';
+import PayrollRecord from '../../components/Payroll/payroll';
 import { useGetAttendanceQuery, useGetAttendanceByIdMutation } from '../../features/Attendance/AttendanceApi';
 
 function EmployeeBord() {
@@ -15,6 +11,33 @@ function EmployeeBord() {
   const [isWorkTimerVisible, setWorkTimerVisible] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
+  const [motivation, setMotivation] = useState('');
+
+  const motivationalMessages = [
+    "You're doing great! Keep it up!",
+    "Every accomplishment starts with the decision to try.",
+    "Believe you can and you're halfway there.",
+    "The harder you work for something, the greater you'll feel when you achieve it.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "Your limitation—it's only your imagination.",
+    "Push yourself, because no one else is going to do it for you.",
+    "Great things never come from comfort zones.",
+    "Dream it. Wish it. Do it.",
+    "Success doesn’t just find you. You have to go out and get it.",
+  ];
+
+  const generateRandomMotivation = () => {
+    const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+    return motivationalMessages[randomIndex];
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomMotivation = generateRandomMotivation();
+      setMotivation(randomMotivation);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleStartWorking = () => {
     setStartTime(new Date());
@@ -39,6 +62,9 @@ function EmployeeBord() {
 
   return (
     <div className="maincontent">
+      <div className="motivation">
+      <div className="mtext">{motivation}</div>
+      </div>
       <div className="header">
         <h2>Hello Welcome back</h2>
       </div>
@@ -84,8 +110,8 @@ function EmployeeBord() {
           </div>
           <div className="attendee">
             <div className="head">
-            <h3>Attendance Statics</h3>
-            <hr />
+              <h3>Attendance Statics</h3>
+              <hr />
             </div>
             <div className="days">
               <div className="words">
@@ -94,88 +120,28 @@ function EmployeeBord() {
               <div className="sat">
                 8
               </div>
-              </div>
-              <div className="Days-absent">
-                <div className="absent">
-                  <p> Days Absent</p>
-                </div>
-                <p><span>2</span></p>
-                </div>
-                <div className="leave">
-                 
-                  <div className="offdays">
-                    <p>Unused Leave days</p>
-                  </div>
-                  <div className="num">
-                    <p><span>12</span></p>
-                  </div>
-                  </div>        
-             </div>
-          <div className="payroll">
-            <div className="top">
-              <h2>Payroll</h2>
-              <hr />
             </div>
-            <div className="body">
-              <div className="gross">
-               <div className="upper">
-                <h3>Gross pay</h3>
-                <hr />
-                </div>
-                <div className="overtime">
-                <p>Overtime hours</p>
-                <div className="value">
-                  <p><span>0</span></p>
-                </div>
-                </div>
-                <div className="rate">
-                  <p>Overtime Rate</p>
-                  <div className="val">
-                    <p><span>0</span></p>
-                  </div>
-                </div>
-                <div className="sum">
-                  <div className="nam">
-                    <h3>Total:</h3>
-                  </div>
-                  <div className="cost">
-                    <h3>50000</h3>
-                  </div>
-                </div>
+            <div className="Days-absent">
+              <div className="absent">
+                <p> Days Absent</p>
               </div>
-              <div className="advance">
-                <div className="upper">
-                  <h3>Deductions</h3>
-                  <hr />
-                  </div>
-                  <div className="overtime">
-                <p>Overtime hours</p>
-                <div className="value">
-                  <p><span>0</span></p>
-                </div>
-                </div>
-                <div className="rate">
-                  <p>Overtime Rate</p>
-                  <div className="val">
-                    <p><span>0</span></p>
-                  </div>
-                </div>
-                  <div className="sum">
-                    <div className="nam">
-                      <h3>Total</h3>
-                    </div>
-                    <div className="cost">
-                      <h3>20000 </h3>
-                   
-                  </div>
-                </div>
-              </div>
+              <p><span>2</span></p>
             </div>
+            <div className="leave">
+              <div className="offdays">
+                <p>Unused Leave days</p>
+              </div>
+              <div className="num">
+                <p><span>12</span></p>
+              </div>
+            </div>        
           </div>
-        </div>
-      </div>
-        </div>
-  
+       <PayrollRecord/>
+            
+                  </div>
+                </div>
+              </div>
+       
   );
 }
 

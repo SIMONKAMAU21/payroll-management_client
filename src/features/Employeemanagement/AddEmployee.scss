@@ -7,7 +7,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: rgba(221, 221, 221, 0.39); 
+   background-color: rgba(0, 0, 0, 0.39); 
    z-index: 9999;
    @keyframes myAnimation {
       from{
@@ -29,7 +29,9 @@
    }
 .eventWrap{
    margin: auto;
-   background-color:rgba(0, 0, 0, 0.788);
+   // background-color:rgb(24, 35, 187);
+      background: linear-gradient(to top left, #0c3f8b7a, #164564); /* Green to Blue Gradient */
+   
    top: 50%;
    height: 890px;
    left: 50%;
