@@ -12,8 +12,33 @@ export const attendanceApi = createApi({
             }),
             providesTags:['Attendance']
         }),
+        addAttendance:builder.mutation({
+            query:(Attendance)=>({
+                url:`Attendance/record`,
+                method:`post`,
+                body:Attendance
+            }),
+            providesTags:['Attendance']
+        }),
+        updateAttendance:builder.mutation({
+            query:({Attendance,ID})=>({
+                url:`Attendance/update/${ID}`,
+                method:`PUT`,
+                body:Attendance
+            }),
+            providesTags:['Attendance']
+
+        }),
+        getAttendanceById:builder.mutation({
+            query:()=>({
+                url:`Attendance${employeeId}`,
+                method:`GET`
+            }),
+            providesTags:['Attendance']
+
+        })
     })
 });
 
 
-export const {useGetAttendanceQuery}=attendanceApi;
+export const {useGetAttendanceQuery,useAddAttendanceMutation,useUpdateAttendanceMutation,useGetAttendanceByIdMutation}=attendanceApi;

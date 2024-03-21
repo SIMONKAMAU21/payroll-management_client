@@ -3,41 +3,47 @@ import './Header.scss';
 import img from '../../assets/img1.jpg';
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
-// import ProfileManagement from '../ProfileManagement/ProfileManagement';
-import ProfileManagement from '../../pages/Profile/ProfileManagement';
+import { useEffect } from 'react';
+
 
 const Header = () => {
   const navigate = useNavigate();
-  const [showProfileManagement, setShowProfileManagement] = useState(false);
+  const [employeeData, setEmployeeData] = useState(null);
+
+  useEffect(() => {
+    const userDetailsString = localStorage.getItem('userDetails');
+    if (userDetailsString) {
+      const userDetails = JSON.parse(userDetailsString);
+      setEmployeeData(userDetails);
+    }
+  }, []);
 
   const handleLogout = () => {
     navigate('/');
   };
 
-  const toggleProfileManagement = () => {
-    setShowProfileManagement(!showProfileManagement);
-  };
+
 
   return (
     <div className='container'>
       <div className="logo">
         <div className="text">
-          <h1>logo</h1>
-        </div>
+<img src="" alt="nolog" srcSet="no logo" />        </div>
       </div>
       <div className="profile">
         <div className="search">
           <input type="text" placeholder='search...' />
         </div>
-        <div className="images" onClick={toggleProfileManagement}>
-          <img src={img} alt="Profile" />
-          {showProfileManagement && <ProfileManagement />}
+        <div className="images">
+          {employeeData && <img src={employeeData.PhotoURL} alt="Profile" />}
         </div>
         <div className='logout'> 
           <RiLogoutBoxRFill size='40px' color='rgba(255, 153, 0, 1)' onClick={handleLogout} />
         </div>
+      
+        </div>
+        
       </div>
-    </div>
   );
 };
 

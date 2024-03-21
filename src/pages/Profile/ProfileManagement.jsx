@@ -20,9 +20,31 @@ const ProfileManagement = () => {
     console.log('Password changed');
   };
 
-  const handleProfilePictureUpload = (e) => {
+  const handleProfilePictureUpload = async (e) => {
     const file = e.target.files[0];
-    console.log('Profile picture uploaded:', file);
+    
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'your_upload_preset');
+    formData.append('cloud_name', 'your_cloud_name');
+
+    try {
+      const response = await fetch("https://api.cloudinary.com/v1_1/your_cloud_name/image/upload", {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Profile picture uploaded:', data.secure_url);
+        setProfilePicture(data.secure_url);
+      } else {
+        console.error('Failed to upload profile picture:', data);
+      }
+    } catch (error) {
+      console.error('Error uploading profile picture:', error);
+    }
   };
 
   return (

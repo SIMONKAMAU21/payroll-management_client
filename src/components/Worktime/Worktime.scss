@@ -1,21 +1,59 @@
-.worktimer{
-    text-align: center;
-    height: 220px;
-    background-color: rgb(193, 193, 193);
-    border-radius: 10px;
-    width: 250px;
-    margin: auto;
-   .time{
-    align-items: center;
-    text-align: center;
-    margin-top: 3rem;
-    height: 50px;
-    button{
-        color: white;
-        font-weight: 500;
-        background-color: rgba(247, 73, 4, 0.885);
-        height: 40px;
-        border-radius: 10px;
+.worktimer-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  
+    .worktimer-heading {
+      margin-top: 0;
     }
-   }
-}
+  
+    .worktimer-details {
+      margin-bottom: 20px;
+  
+      p {
+        margin: 5px 0;
+      }
+  
+      .display {
+        display: flex;
+        flex-direction: column;
+  
+        .employee-photo {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 50%;
+          margin-top: 10px;
+        }
+      }
+    }
+  
+    .worktimer-actions {
+      text-align: center;
+  
+      .start-button, .stop-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        transition: background-color 0.3s ease;
+  
+        &.start-button {
+          background-color: green;
+        }
+  
+        &.stop-button {
+          background-color: red;
+        }
+  
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  

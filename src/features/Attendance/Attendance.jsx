@@ -1,21 +1,15 @@
 import React from 'react';
 import './Attendance.scss';
 import { useGetAttendanceQuery } from './AttendanceApi';
-import LowerDashbord from '../../components/DashbordC omponent/lowerDashbord';
-import { LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
+import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
+import LowerDashbord from '../../components/DashbordC omponent/lowerDashbord'
+
 
 const AttendanceReportList = () => {
   const { data: attendance, isLoading, isError } = useGetAttendanceQuery();
-  const userdata = {
-    labels: attendance ? attendance.map(data => data.Firstnameame) : [],
-    datasets: [{
-      label: 'Attendance',
-      data: attendance ? attendance.map(data => data.TimeIn) : [],
-    }],
-  };
 
-  if (isLoading) return <div></div>;
-  if (isError) return <div>Error fetching data</div>;
+  if (isLoading) return <LoadingToast />;
+  if (isError) return <ErrorToast message="Error fetching data" />;
 
   return (
     <div className='Attendance'>
@@ -24,14 +18,14 @@ const AttendanceReportList = () => {
         <div className="items-holder">
           <ul>
             {attendance && attendance.map(data => (
-              <div className="attendances" key={data.ID}>
+              <div className="attendances" key={data.ID[0]}> 
                 <li>
                   <div className='name'>
-                    <h3>{data.Firstname} {data.Lastname}</h3>
+                    <h3>{data.Firstname} {data.Lastname}</h3> 
                   </div>
                   <div className="date-holder">
                     <div className='sdate'>
-                      <p>Start Date: {data.TimeIn}</p>
+                      <p>Start Date: {data.TimeIn}</p> 
                     </div>
                     <div className='sdate'>
                       <p>End Date: {data.TimeOut}</p>
@@ -49,7 +43,8 @@ const AttendanceReportList = () => {
           </ul>
         </div>
         <div className="attendance-graph">
-          <LowerDashbord chartData={userdata} />
+          {/* Pass attendance data to LowerDashboard */}
+          {/* <LowerDashbord attendance={attendance} /> */}
         </div>
       </div>
     </div>
@@ -57,3 +52,5 @@ const AttendanceReportList = () => {
 };
 
 export default AttendanceReportList;
+
+

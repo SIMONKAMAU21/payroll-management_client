@@ -1,24 +1,33 @@
+
+
+
+
+
 import React, { useState } from 'react';
 import WorkTimer from '../../components/Worktime/worktime';
-import '../Employee/Employeebord.scss'
+import '../Employee/Employeebord.scss';
 import Clock from '../../components/clock/clock';
+import { useGetAttendanceQuery, useGetAttendanceByIdMutation } from '../../features/Attendance/AttendanceApi';
 
- 
 function EmployeeBord() {
+  const { data: attendanceData } = useGetAttendanceQuery();
+  const [updateAttendance] = useGetAttendanceByIdMutation();
   const [isWorkTimerVisible, setWorkTimerVisible] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
- 
+
   const handleStartWorking = () => {
     setStartTime(new Date());
     setWorkTimerVisible(true);
+    updateAttendance({ variables: { timeIn: new Date() } });
   };
- 
+
   const handleStopWorking = () => {
     setEndTime(new Date());
     setWorkTimerVisible(false);
+    updateAttendance({ variables: { timeOut: new Date() } });
   };
- 
+
   const calculateTotalHours = () => {
     if (startTime && endTime) {
       const diffInMs = endTime.getTime() - startTime.getTime();
@@ -27,7 +36,7 @@ function EmployeeBord() {
     }
     return null;
   };
- 
+
   return (
     <div className="maincontent">
       <div className="header">
@@ -41,15 +50,14 @@ function EmployeeBord() {
             </div>
             {isWorkTimerVisible && <WorkTimer />}
             <div className="btn">
-            {!isWorkTimerVisible && (
-              <button onClick={handleStartWorking}>Start Working</button>
-            )}
-            {isWorkTimerVisible && (
-              <button onClick={handleStopWorking}>Stop Working</button>
-            )}
+              {!isWorkTimerVisible && (
+                <button onClick={handleStartWorking}>Start Working</button>
+              )}
+              {isWorkTimerVisible && (
+                <button onClick={handleStopWorking}>Stop Working</button>
+              )}
+            </div>
           </div>
-          </div>
-        
         </div>
         <div className="finance">
           <div className="stats">
@@ -63,12 +71,14 @@ function EmployeeBord() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{new Date().toDateString()}</td>
-                  <td>{startTime ? startTime.toLocaleTimeString() : '-'}</td>
-                  <td>{endTime ? endTime.toLocaleTimeString() : '-'}</td>
-                  <td>{calculateTotalHours()}</td>
-                </tr>
+                {attendanceData && attendanceData.map(attendance => (
+                  <tr key={attendance.ID}>
+                    <td>{new Date(attendance.Date).toDateString()}</td>
+                    <td>{attendance.TimeIn ? new Date(attendance.TimeIn).toLocaleTimeString() : '-'}</td>
+                    <td>{attendance.TimeOut ? new Date(attendance.TimeOut).toLocaleTimeString() : '-'}</td>
+                    <td>{calculateTotalHours()}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -164,8 +174,9 @@ function EmployeeBord() {
           </div>
         </div>
       </div>
-    </div>
+        </div>
+  
   );
 }
- 
+
 export default EmployeeBord;
