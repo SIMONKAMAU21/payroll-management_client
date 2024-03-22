@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import WorkTimer from '../../components/Worktime/worktime';
+import { useGetAttendanceQuery, useUpdateAttendanceMutation } from '../../features/Attendance/AttendanceApi';
+import { SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
 import '../Employee/Employeebord.scss';
+import WorkTimer from '../../components/Worktime/worktime';
 import Clock from '../../components/clock/clock';
 import PayrollRecord from '../../components/Payroll/payroll';
-import { useGetAttendanceQuery, useUpdateAttendanceMutation, useAddAttendanceMutation } from '../../features/Attendance/AttendanceApi';
 
 function EmployeeBord() {
-  const { data: attendanceData } = useGetAttendanceQuery();
-  const [updateAttendance] = useUpdateAttendanceMutation();
-  const [addAttendance] = useAddAttendanceMutation();
-  const [isWorkTimerVisible, setWorkTimerVisible] = useState(false);
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
   const [motivation, setMotivation] = useState('');
+  const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceQuery();
+  const [updateAttendance] = useUpdateAttendanceMutation();
 
   const motivationalMessages = [
     "You're doing great! Keep it up!",
@@ -40,50 +37,17 @@ function EmployeeBord() {
     return () => clearInterval(interval);
   }, []);
 
-  const startWorking = async () => {
-    const confirmation = window.confirm('Are you sure you want to start working?');
-    if (confirmation) {
-      setStartTime(new Date());
-      setWorkTimerVisible(true);
-      try {
-        const currentTime = new Date();
-        const response = await addAttendance({ EmployeeID: localStorage.getItem('employeeId'), TimeIn: currentTime.toISOString() });
-        const attendanceId = response.data.ID;
-        localStorage.setItem('attendanceId', attendanceId);
-      } catch (error) {
-        console.error('Error starting work session:', error);
-      }
+ 
+  
+  const calculateTotalTime = () => {
+    if (startTime && stopTime) {
+      const totalTime = Math.round((stopTime - startTime) / 1000);
+      const hours = Math.floor(totalTime / 3600);
+      const minutes = Math.floor((totalTime % 3600) / 60);
+      const seconds = totalTime % 60;
+      return `${hours}h ${minutes}m ${seconds}s`;
     }
-  };
-
-  const stopWorking = async () => {
-    // const confirmation = window.confirm('Are you sure you want to stop working?');
-    // if (confirmation) {
-      const attendanceId = localStorage.getItem('attendanceId');
-      if (!attendanceId) {
-        console.error('Attendance ID not found in localStorage.');
-        return;
-      }
-      console.log(typeof(attendanceId));
-      // setEndTime(new Date());
-      // setWorkTimerVisible(false);
-      // try {
-      //   console.log("attendance id is ",attendanceId);
-      // const my_res =  await updateAttendance({ ID: attendanceId, TimeOut: new Date().toISOString() });
-      // console.log("my stop working response ",my_res);
-      // } catch (error) {
-      //   console.error('Error stopping work session:', error);
-      // }
-    // }
-  };
-
-  const calculateTotalHours = () => {
-    if (startTime && endTime) {
-      const diffInMs = endTime.getTime() - startTime.getTime();
-      const totalHours = diffInMs / (1000 * 60 * 60);
-      return totalHours.toFixed(2);
-    }
-    return null;
+    return 'N/A';
   };
 
   return (
@@ -100,15 +64,7 @@ function EmployeeBord() {
             <div className="clock">
               <Clock />
             </div>
-            {isWorkTimerVisible && <WorkTimer />}
-            <div className="btn">
-              {!isWorkTimerVisible && (
-                <button onClick={startWorking}>Start Working</button>
-              )}
-              {isWorkTimerVisible && (
-                <button onClick={stopWorking}>Stop Working</button>
-              )}
-            </div>
+            <WorkTimer />
           </div>
         </div>
         <div className="finance">
@@ -123,14 +79,25 @@ function EmployeeBord() {
                 </tr>
               </thead>
               <tbody>
-                {attendanceData && attendanceData.map(attendance => (
-                  <tr key={attendance.ID}>
-                    <td>{new Date(attendance.Date).toDateString()}</td>
-                    <td>{attendance.TimeIn ? new Date(attendance.TimeIn).toLocaleTimeString() : '-'}</td>
-                    <td>{attendance.TimeOut ? new Date(attendance.TimeOut).toLocaleTimeString() : '-'}</td>
-                    <td>{calculateTotalHours()}</td>
+                {attendanceLoading ? (
+                  <tr>
+                    <td>Loading...</td>
                   </tr>
-                ))}
+                ) : attendanceError ? (
+                  <tr>
+                    <td>Error fetching attendance data</td>
+                  </tr>
+                ) : (
+                  attendanceData.map(attendance => (
+                    <tr key={attendance.ID}>
+                      <td>{new Date(attendance.Date).toDateString()}</td>
+                      <td>{attendance.TimeIn ? new Date(attendance.TimeIn).toLocaleTimeString() : '-'}</td>
+                      <td>{attendance.TimeOut ? new Date(attendance.TimeOut).toLocaleTimeString() : '-'}</td>
+                      {/* <td>{calculateTotalTime(attendance.TimeIn, attendance.TimeOut)}</td> */}
+                      {/* <td><button onClick={() => handleUpdateAttendance(attendance.ID)}>Update Time Out</button></td> */}
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

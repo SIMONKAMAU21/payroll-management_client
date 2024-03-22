@@ -20,6 +20,7 @@ export const attendanceApi = createApi({
             }),
             providesTags:['Attendance']
         }),
+
         updateAttendance:builder.mutation({
             query:(Attendance)=>({
                 url:`Attendance/update/${Attendance.AttendanceID}`,
@@ -29,13 +30,13 @@ export const attendanceApi = createApi({
             providesTags:['Attendance']
 
         }),
+        
         getAttendanceById:builder.mutation({
             query:()=>({
                 url:`Attendance${employeeId}`,
                 method:`GET`
             }),
             providesTags:['Attendance']
-
         })
     })
 });

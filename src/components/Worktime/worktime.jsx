@@ -8,20 +8,14 @@ const WorkTimer = () => {
   const [startTime, setStartTime] = useState(null);
   const [stopTime, setStopTime] = useState(null);
   const [addAttendance] = useAddAttendanceMutation();
-  const [updateAttendance] = useUpdateAttendanceMutation(); // New hook to update attendance
+  const [updateAttendance] = useUpdateAttendanceMutation();
   const [employeeData, setEmployeeData] = useState(null);
-  const [attendanceId, setAttendanceId] = useState(null); // State to hold attendance ID
 
   useEffect(() => {
     const userDetailsString = localStorage.getItem('userDetails');
     if (userDetailsString) {
       const userDetails = JSON.parse(userDetailsString);
       setEmployeeData(userDetails);
-    }
-
-    const storedAttendanceId = localStorage.getItem('attendanceId');
-    if (storedAttendanceId) {
-      setAttendanceId(storedAttendanceId);
     }
   }, []);
 
@@ -31,13 +25,13 @@ const WorkTimer = () => {
       setIsWorking(true);
       const currentTime = new Date();
       setStartTime(currentTime);
-      
       try {
         const response = await addAttendance({ EmployeeID: employeeData.ID, TimeIn: currentTime.toISOString() }).unwrap();
+        console.log('response', response.ID);
         const attendanceId = response.message.ID.recordsets[0][0].ID;
         const { ID, message } = response.message;
         localStorage.setItem('attendanceId', attendanceId);
-  
+
         SuccessToast(message);
       } catch (error) {
         console.error('Error recording attendance:', error);
@@ -46,32 +40,25 @@ const WorkTimer = () => {
   };
 
   const stopWorking = async () => {
-    const confirmation = window.confirm('Are you sure you want to stop working?');
-    if (confirmation) {
-      setIsWorking(false);
-      const currentTime = new Date();
-      setStopTime(currentTime);
-      const attendanceID = localStorage.getItem('attendanceId');
-      if (!attendanceID) {
-        console.error('Attendance ID not found in localStorage.');
-        return;
-      }
-      const body =  currentTime.toISOString()
-      console.log(body);
-      console.log(typeof(attendanceID));
-
-      try {
-        const response = await updateAttendance({ AttendanceID:attendanceID, TimeOut: currentTime.toISOString() } ).unwrap();
-        console.log('response', response);
-        SuccessToast(response.message);
-        localStorage.removeItem('attendanceId'); 
-      } catch (error) {
-        console.error('Error updating attendance:', error);
-        ErrorToast(response.message)
-      }
+    setIsWorking(false);
+    const currentTime = new Date();
+    setStopTime(currentTime);
+    const attendanceID = localStorage.getItem('attendanceId');
+    if (!attendanceID) {
+      console.error('Attendance ID not found in localStorage.');
+      return;
+    }
+  
+    try {
+      const response = await updateAttendance({ AttendanceID: parseInt(attendanceID), TimeOut: currentTime.toISOString() }).unwrap();
+      SuccessToast(response.message);
+      localStorage.removeItem('attendanceId'); 
+    } catch (error) {
+      console.error('Error updating attendance:', error);
+      ErrorToast(error.message || 'Failed to stop working.');
     }
   };
-
+  
   const calculateTotalTime = () => {
     if (startTime && stopTime) {
       const totalTime = Math.round((stopTime - startTime) / 1000);
@@ -94,8 +81,10 @@ const WorkTimer = () => {
             <p><strong>Email:</strong> {employeeData.Email}</p>
             <p><strong>Address:</strong> {employeeData.Address}</p>
             <p><strong>Contact Info:</strong> {employeeData.ContactInfo}</p>
-<div className="img">            <img className='employee-photo' src={employeeData.PhotoURL} alt="Employee Photo" />
-</div>          </div>
+            <div className="img">
+              <img className='employee-photo' src={employeeData.PhotoURL} alt="Employee Photo" />
+            </div>
+          </div>
         )}
       </div>
       <div className='worktimer-actions'>
@@ -110,15 +99,3 @@ const WorkTimer = () => {
 };
 
 export default WorkTimer;
-
-
-
-export const formatDate = (dateString) => {
-  const formattedDate = new Date(dateString);
-  
-  const formattedDateInUTC = formattedDate.getUTCDate();
-  const formattedMonthInUTC = formattedDate.getUTCMonth() + 1; 
-  const formattedYear = formattedDate.getUTCFullYear();
-  
-  return `${formattedMonthInUTC}/${formattedDateInUTC}/${formattedYear}`;
-};
