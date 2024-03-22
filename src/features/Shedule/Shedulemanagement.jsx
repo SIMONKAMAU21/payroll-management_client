@@ -58,19 +58,19 @@ const ScheduleManagement = () => {
             EmployeeID: formData.get('employee'),
          };
          const response = await addSchedule(newShift).unwrap();
+         console.log('response', response)
          SuccessToast(response.message)
          setShowAddForm(false);
          setModalOpen(false)
       } catch (error) {
-         ErrorToast(response.message)
-         console.error('Error adding shift:', error);
+         ErrorToast(error.message)
       }
    };
-``
+
    return (
       <div className="schedule-management">
          <h2>Schedule Management</h2>
-         <button onClick={toggleModal}>Add Shift</button>
+         <button onClick={toggleModal}>Add Schedule</button>
          <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
                <div className="hold">   <div><input type="text" name="scheduleName" autoComplete='on' placeholder="Schedule Name" /></div>
@@ -102,7 +102,7 @@ const ScheduleManagement = () => {
                      <td>{shift.StartTime}</td>
                      <td>{shift.EndTime}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>
-                     <td>{shift.ID}</td>
+                     <td>{shift.EmployeeID}{shift.ID}</td>
                      <td className='btn'>
                         { (
                            <>

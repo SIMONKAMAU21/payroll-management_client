@@ -2,32 +2,32 @@
    margin: 20px;
    padding: 20px;
    border: 1px solid #ccc;
-  //  background-color: #487cb8;
    border-radius: 5px;
    margin-left: 410px;
    height: 100vh;
    margin-top: 1rem;
    overflow-x: scroll;
    .schedule_form{
-    background-color: rgb(225, 234, 240);
+    background-color: rgba(0, 0, 0, 0.507);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
     margin-bottom: 10px;
     display: flex;
-    height: 50%;
+    height: 80vh;
     flex-direction: column;
     justify-content: space-between;
     .hold{
       display: flex;
       flex-direction: column;
       height: 90%;
-      background-color: #fff;
-      // width: 50%;
+      background-color: #07080891;
       width: 850px;
       gap: 1rem;
-      margin: auto;
+      justify-content: space-around;
+      // margin: auto;
+      margin-top: 65px;
       input{
         background-color: rgb(255, 255, 255);
-        box-shadow: 5px 5px 10px rgb(0, 0, 0);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.363);
         outline: none;
         display: flex;
         border-radius: 10px;

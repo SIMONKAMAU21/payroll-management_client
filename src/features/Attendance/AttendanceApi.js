@@ -21,8 +21,8 @@ export const attendanceApi = createApi({
             providesTags:['Attendance']
         }),
         updateAttendance:builder.mutation({
-            query:({Attendance,ID})=>({
-                url:`Attendance/update/${ID}`,
+            query:(Attendance)=>({
+                url:`Attendance/update/${Attendance.AttendanceID}`,
                 method:`PUT`,
                 body:Attendance
             }),

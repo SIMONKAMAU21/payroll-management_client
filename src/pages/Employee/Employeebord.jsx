@@ -3,11 +3,12 @@ import WorkTimer from '../../components/Worktime/worktime';
 import '../Employee/Employeebord.scss';
 import Clock from '../../components/clock/clock';
 import PayrollRecord from '../../components/Payroll/payroll';
-import { useGetAttendanceQuery, useGetAttendanceByIdMutation } from '../../features/Attendance/AttendanceApi';
+import { useGetAttendanceQuery, useUpdateAttendanceMutation, useAddAttendanceMutation } from '../../features/Attendance/AttendanceApi';
 
 function EmployeeBord() {
   const { data: attendanceData } = useGetAttendanceQuery();
-  const [updateAttendance] = useGetAttendanceByIdMutation();
+  const [updateAttendance] = useUpdateAttendanceMutation();
+  const [addAttendance] = useAddAttendanceMutation();
   const [isWorkTimerVisible, setWorkTimerVisible] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
@@ -39,16 +40,41 @@ function EmployeeBord() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleStartWorking = () => {
-    setStartTime(new Date());
-    setWorkTimerVisible(true);
-    updateAttendance({ variables: { timeIn: new Date() } });
+  const startWorking = async () => {
+    const confirmation = window.confirm('Are you sure you want to start working?');
+    if (confirmation) {
+      setStartTime(new Date());
+      setWorkTimerVisible(true);
+      try {
+        const currentTime = new Date();
+        const response = await addAttendance({ EmployeeID: localStorage.getItem('employeeId'), TimeIn: currentTime.toISOString() });
+        const attendanceId = response.data.ID;
+        localStorage.setItem('attendanceId', attendanceId);
+      } catch (error) {
+        console.error('Error starting work session:', error);
+      }
+    }
   };
 
-  const handleStopWorking = () => {
-    setEndTime(new Date());
-    setWorkTimerVisible(false);
-    updateAttendance({ variables: { timeOut: new Date() } });
+  const stopWorking = async () => {
+    // const confirmation = window.confirm('Are you sure you want to stop working?');
+    // if (confirmation) {
+      const attendanceId = localStorage.getItem('attendanceId');
+      if (!attendanceId) {
+        console.error('Attendance ID not found in localStorage.');
+        return;
+      }
+      console.log(typeof(attendanceId));
+      // setEndTime(new Date());
+      // setWorkTimerVisible(false);
+      // try {
+      //   console.log("attendance id is ",attendanceId);
+      // const my_res =  await updateAttendance({ ID: attendanceId, TimeOut: new Date().toISOString() });
+      // console.log("my stop working response ",my_res);
+      // } catch (error) {
+      //   console.error('Error stopping work session:', error);
+      // }
+    // }
   };
 
   const calculateTotalHours = () => {
@@ -63,7 +89,7 @@ function EmployeeBord() {
   return (
     <div className="maincontent">
       <div className="motivation">
-      <div className="mtext">{motivation}</div>
+        <div className="mtext">{motivation}</div>
       </div>
       <div className="header">
         <h2>Hello Welcome back</h2>
@@ -77,10 +103,10 @@ function EmployeeBord() {
             {isWorkTimerVisible && <WorkTimer />}
             <div className="btn">
               {!isWorkTimerVisible && (
-                <button onClick={handleStartWorking}>Start Working</button>
+                <button onClick={startWorking}>Start Working</button>
               )}
               {isWorkTimerVisible && (
-                <button onClick={handleStopWorking}>Stop Working</button>
+                <button onClick={stopWorking}>Stop Working</button>
               )}
             </div>
           </div>
@@ -136,12 +162,10 @@ function EmployeeBord() {
               </div>
             </div>        
           </div>
-       <PayrollRecord/>
-            
-                  </div>
-                </div>
-              </div>
-       
+          <PayrollRecord />
+        </div>
+      </div>
+    </div>
   );
 }
 

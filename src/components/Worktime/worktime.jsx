@@ -31,6 +31,7 @@ const WorkTimer = () => {
       setIsWorking(true);
       const currentTime = new Date();
       setStartTime(currentTime);
+      
       try {
         const response = await addAttendance({ EmployeeID: employeeData.ID, TimeIn: currentTime.toISOString() }).unwrap();
         const attendanceId = response.message.ID.recordsets[0][0].ID;
@@ -50,8 +51,17 @@ const WorkTimer = () => {
       setIsWorking(false);
       const currentTime = new Date();
       setStopTime(currentTime);
+      const attendanceID = localStorage.getItem('attendanceId');
+      if (!attendanceID) {
+        console.error('Attendance ID not found in localStorage.');
+        return;
+      }
+      const body =  currentTime.toISOString()
+      console.log(body);
+      console.log(typeof(attendanceID));
+
       try {
-        const response = await updateAttendance({ ID: attendanceId, TimeOut: currentTime.toISOString() }).unwrap();
+        const response = await updateAttendance({ AttendanceID:attendanceID, TimeOut: currentTime.toISOString() } ).unwrap();
         console.log('response', response);
         SuccessToast(response.message);
         localStorage.removeItem('attendanceId'); 

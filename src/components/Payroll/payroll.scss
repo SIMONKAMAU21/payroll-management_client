@@ -2,7 +2,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
+    background-color: #fff;
     margin-bottom: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.945);
   
     .record-item {
       display: flex;
@@ -11,6 +13,7 @@
       .record-label {
         flex: 1;
         font-weight: bold;
+        border-bottom: 1px solid;
       }
   
       .record-value {
