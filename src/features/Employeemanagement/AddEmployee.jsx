@@ -8,7 +8,7 @@ const AddEmployee = ({ closeEmployee }) => {
     const [formData, setFormData] = useState({
         Firstname: '',
         Lastname: '',
-        position: '',
+        positionID: '',
         Address: '',
         BirthDate: '',
         PhotoURL: '',
@@ -18,7 +18,7 @@ const AddEmployee = ({ closeEmployee }) => {
         Email: '',
         Password: '',
         schedule: '',
-        gender: '' // Added gender field
+        Gender: '' // Added gender field
     });
     const [file, setFile] = useState(null)
 
@@ -58,7 +58,7 @@ const AddEmployee = ({ closeEmployee }) => {
             setFormData({
                 Firstname: '',
                 Lastname: '',
-                position: '',
+                positionID: '',
                 Address: '',
                 BirthDate: '',
                 PhotoURL: '',
@@ -68,7 +68,7 @@ const AddEmployee = ({ closeEmployee }) => {
                 Email: '',
                 Password: '',
                 schedule: '',
-                gender: '' 
+                Gender: '' 
             });
         } catch (err) {
             ErrorToast(response.message);
@@ -117,16 +117,16 @@ const AddEmployee = ({ closeEmployee }) => {
                              <input
                             type="text"
                             placeholder="Gender"
-                            name="gender"
-                            value={formData.gender}
+                            name="Gender"
+                            value={formData.Gender}
                             onChange={handleChange}
                         />
                        
                         <input
                             type="text"
-                            placeholder="Position"
-                            name="position"
-                            value={formData.position}
+                            placeholder="Positionid"
+                            name="positionID"
+                            value={formData.positionID}
                             onChange={handleChange}
                         />
                         <input
@@ -161,13 +161,7 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.ContactInfo}
                             onChange={handleChange}
                         />
-                        <input
-                            type="text"
-                            placeholder="Admin"
-                            name="Admin"
-                            value={formData.Admin}
-                            onChange={handleChange}
-                        />
+                       
                         <input
                             type="email"
                             placeholder="Email"
@@ -182,13 +176,7 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Password}
                             onChange={handleChange}
                         />
-                        <input
-                            type="text"
-                            placeholder="Schedule" // Added schedule field
-                            name="schedule"
-                            value={formData.schedule}
-                            onChange={handleChange}
-                        />
+                       
                         <div className="footer">
                             <div className="btn">
                                 <button type="submit" disabled={isLoading}>Add Employee</button>

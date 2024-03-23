@@ -52,7 +52,7 @@ const ScheduleManagement = () => {
          const formData = new FormData(event.target);
          
          const newShift = {
-            Schedules_name: formData.get('scheduleName'),
+            Days: formData.get('Days'),
             StartTime: formData.get('startTime'),
             EndTime: formData.get('endTime'),
             EmployeeID: formData.get('employee'),
@@ -73,9 +73,10 @@ const ScheduleManagement = () => {
          <button onClick={toggleModal}>Add Schedule</button>
          <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
-               <div className="hold">   <div><input type="text" name="scheduleName" autoComplete='on' placeholder="Schedule Name" /></div>
+               <div className="hold">   
                   <div>     <input type="datetime-local" name="startTime" placeholder="Start Time" /></div>
                   <div><input type="datetime-local" name="endTime" placeholder="End Time" /></div>
+                  <div><input type="text" name="Days" autoComplete='on' placeholder="Days" /></div>
                   <div> <input type="text" name="employee" placeholder="Employee" /></div></div>
                <div className='btne'>
                   <button type="submit">Add</button>
@@ -86,7 +87,7 @@ const ScheduleManagement = () => {
          <table>
             <thead>
                <tr>
-                  <th>Schedule Name</th>
+                  <th>Days</th>
                   <th>Start Time</th>
                   <th>End Time</th>
                   <th>Employee</th>
@@ -98,7 +99,7 @@ const ScheduleManagement = () => {
                {isError && <p><ErrorToast /></p>}
                {schedulesData && schedulesData.map((shift, index) => (
                   <tr key={index}>
-                     <td>{shift.Schedules_name}</td>
+                     <td>{shift.Days}</td>
                      <td>{shift.StartTime}</td>
                      <td>{shift.EndTime}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>

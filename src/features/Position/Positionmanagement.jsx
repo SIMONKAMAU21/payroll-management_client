@@ -13,16 +13,16 @@ const PositionManagement = () => {
   const handleAddPosition = async () => {
     try {
       if (newPosition.trim() !== '') {
-       const response= await addPosition({ Title: newPosition, Basic_Salary: newBasicSalary }).unwrap();
+       const response= await addPosition({ Position: newPosition, Basic_Salary: newBasicSalary }).unwrap();
         SuccessToast(response.message)
         setNewPosition('');
         setNewBasicSalary('');
       }else{
-        ErrorToast(response.message)
+        ErrorToast("positon Alredy exists")
       }
     } catch (error) {
       console.error('Error adding position:', error);
-      ErrorToast(response.message)
+      ErrorToast("positon Alredy exists")
     }
   };
 
@@ -64,11 +64,13 @@ const PositionManagement = () => {
                   <tr> 
                     <th>Position</th>
                     <th>Basic Salary</th>
+                    <th>Psition ID</th>
                     <th>Options</th>
                   </tr>
                   <tr>
-                    <td>{position.Title}</td>
+                    <td>{position.Position}</td>
                     <td>ksh {position.Basic_Salary}</td>
+                    <td>{position.PositionID}</td>
                     <td>
                       <button onClick={() => handleRemovePosition(position.PositionID)}>Remove</button>
                     </td>

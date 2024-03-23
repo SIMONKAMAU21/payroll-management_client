@@ -7,9 +7,38 @@ const WorkTimer = () => {
   const [isWorking, setIsWorking] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [stopTime, setStopTime] = useState(null);
+  const [motivation, setMotivation] = useState('');
   const [addAttendance] = useAddAttendanceMutation();
   const [updateAttendance] = useUpdateAttendanceMutation();
   const [employeeData, setEmployeeData] = useState(null);
+
+  const Firstname = employeeData ? employeeData.Firstname : "";
+  const motivationalMessages = [
+    "You're doing great! Keep it up!",
+    "Every accomplishment starts with the decision to try.",
+    "Believe you can and you're halfway there.",
+    "The harder you work for something, the greater you'll feel when you achieve it.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "Your limitation—it's only your imagination.",
+    "Push yourself, because no one else is going to do it for you.",
+    "Great things never come from comfort zones.",
+    "Dream it. Wish it. Do it.",
+    "Success doesn’t just find you. You have to go out and get it.",
+    `Hello ${Firstname}, keep pushing!`, 
+];
+
+  const generateRandomMotivation = () => {
+    const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+    return motivationalMessages[randomIndex];
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomMotivation = generateRandomMotivation();
+      setMotivation(randomMotivation);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const userDetailsString = localStorage.getItem('userDetails');
@@ -20,24 +49,29 @@ const WorkTimer = () => {
   }, []);
 
   const startWorking = async () => {
-    const confirmation = window.confirm('Are you sure you want to start working?');
-    if (confirmation) {
       setIsWorking(true);
       const currentTime = new Date();
       setStartTime(currentTime);
       try {
-        const response = await addAttendance({ EmployeeID: employeeData.ID, TimeIn: currentTime.toISOString() }).unwrap();
-        console.log('response', response.ID);
+        const currentDate = currentTime.toISOString().split('T')[0];
+        
+        const response = await addAttendance({ 
+          EmployeeID: employeeData.ID, 
+          Date: currentDate, 
+          TimeIn: currentTime.toISOString() 
+        }).unwrap();
+  
         const attendanceId = response.message.ID.recordsets[0][0].ID;
         const { ID, message } = response.message;
         localStorage.setItem('attendanceId', attendanceId);
-
+  
         SuccessToast(message);
       } catch (error) {
         console.error('Error recording attendance:', error);
       }
-    }
+    
   };
+  
 
   const stopWorking = async () => {
     setIsWorking(false);
@@ -45,8 +79,7 @@ const WorkTimer = () => {
     setStopTime(currentTime);
     const attendanceID = localStorage.getItem('attendanceId');
     if (!attendanceID) {
-      console.error('Attendance ID not found in localStorage.');
-      return;
+      ErrorToast("you dont bhave access") 
     }
   
     try {
@@ -54,7 +87,6 @@ const WorkTimer = () => {
       SuccessToast(response.message);
       localStorage.removeItem('attendanceId'); 
     } catch (error) {
-      console.error('Error updating attendance:', error);
       ErrorToast(error.message || 'Failed to stop working.');
     }
   };
@@ -71,6 +103,7 @@ const WorkTimer = () => {
   };
 
   return (
+     <>
     <div className='worktimer-container'> 
       <h2 className='worktimer-heading'>Work Timer</h2>
       <div className='worktimer-details'>
@@ -94,7 +127,12 @@ const WorkTimer = () => {
           <button className='start-button' onClick={startWorking}>Start Working</button>
         )}
       </div>
+      <div className="motivation">
+        <div className="mtext">{motivation}</div>
+      </div>
     </div>
+    
+     </>
   );
 };
 
