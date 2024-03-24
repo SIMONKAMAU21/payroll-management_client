@@ -11,6 +11,7 @@ const WorkTimer = () => {
   const [addAttendance] = useAddAttendanceMutation();
   const [updateAttendance] = useUpdateAttendanceMutation();
   const [employeeData, setEmployeeData] = useState(null);
+  const [lastStopTime, setLastStopTime] = useState(null); // Track the last stop time
 
   const Firstname = employeeData ? employeeData.Firstname : "";
   const motivationalMessages = [
@@ -47,8 +48,21 @@ const WorkTimer = () => {
       setEmployeeData(userDetails);
     }
   }, []);
+ 
+  useEffect(() => {
+    const lastStopTimeStr=localStorage.getItem("lastStopTime");
+  
+    if (lastStopTimeStr) {
+      setLastStopTime(new Date(lastStopTimeStr)) ;
+    } 
+  }, [])
+  
+
 
   const startWorking = async () => {
+    if (lastStopTime && new Date()-lastStopTime<24*60*60*100) {
+      ErrorToast("You cannot start working again before 24 hours have passed since you last stop.")
+    }
       setIsWorking(true);
       const currentTime = new Date();
       setStartTime(currentTime);
@@ -77,6 +91,7 @@ const WorkTimer = () => {
     setIsWorking(false);
     const currentTime = new Date();
     setStopTime(currentTime);
+    localStorage.setItem('lastStopTime',currentTime.toISOString());
     const attendanceID = localStorage.getItem('attendanceId');
     if (!attendanceID) {
       ErrorToast("you dont bhave access") 

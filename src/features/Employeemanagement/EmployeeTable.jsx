@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './EmployeeTable.scss';
 import { useGetEmployeesQuery, useDeleteEmployeeMutation } from './employeeApi'; 
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
-import UpdateUserForm from './updateEmployee';
 import UserDetailsModal from '../../components/DETAILS/userDetailes';
 
 const EmployeeTable = () => {
@@ -25,7 +24,6 @@ const EmployeeTable = () => {
   };
   const handleSeeMore = async (ID) => {
     setSelectedEmployee(ID);
-    SuccessToast(response.message)
     setShowDetailsModal(true); 
   };
 

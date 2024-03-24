@@ -6,11 +6,11 @@ import Dashbord from '../../pages/Dashbord/Dashbord'
 import Employee from '../../pages/EmployeeManagement/Employee'
 import OvertimeManagement from '../../pages/Overtime/OvertimeManagement'
 import PositionManagement from '../../features/Position/Positionmanagement'
-import PayrollManagement from '../../pages/Payroll/Payroll'
 import ProfileManagement from '../../pages/Profile/ProfileManagement'
 import ScheduleManagement from '../../features/Shedule/Shedulemanagement'
 import AttendanceReportList from '../../features/Attendance/Attendance'
 import { Navigate } from 'react-router-dom'
+import PayrollManagement from '../../features/Payroll/Payroll'
 
 
 const Maincontent = () => {
