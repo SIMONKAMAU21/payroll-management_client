@@ -13,12 +13,12 @@ const EmployeeTable = () => {
   const handleRemoveEmployee = async (ID) => {
     try {
       const response = await deleteEmployee(ID).unwrap();
+      LoadingToast()
       SuccessToast(response.message);
     } catch (error) {
       ErrorToast('Failed to remove employee');
     }
   };
-
   const handleEditEmployee = (ID) => {
     setSelectedEmployee(ID);
   };

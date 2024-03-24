@@ -2,13 +2,14 @@
 import React from 'react';
 import { useGetAllAdvancesQuery } from './AdvanceApi';
 import '../Advance/Advancelist.scss'
+import { LoadingToast } from '../toaster/Toaster';
 
 
 const AdvanceTable = () => {
     const { data: advances, isLoading, isError } = useGetAllAdvancesQuery();
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div>loading... </div>;
     }
 
     if (isError) {

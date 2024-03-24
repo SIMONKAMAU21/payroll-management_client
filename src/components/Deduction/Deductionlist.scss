@@ -1,6 +1,7 @@
 
 .deduction-table-container {
     margin-top: 20px;
+    margin-left: 45px;
   }
   
   .deduction-table {
@@ -16,11 +17,11 @@
   }
   
   .deduction-table th {
-    background-color: #f2f2f2;
+    background-color: #e8f000;
     font-weight: bold;
   }
   
-  .deduction-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  .deduction-table {
+    background-color: #ffffff;
   }
   

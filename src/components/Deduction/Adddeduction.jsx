@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useAddDeductionMutation } from './DeductionApi';
+import Modal from '../modal/Modal';
 
 const AddAdvance = () => {
-    const [addDeduction, { isLoading }] = useAddDeductionMutation(); // Using the deduction mutation hook
+    const [addDeduction, { isLoading }] = useAddDeductionMutation(); 
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleSubmit = async (e) => {
         LoadingToast();
@@ -19,7 +21,7 @@ const AddAdvance = () => {
               Amount: parseFloat(Amount),
               EmployeeID
                 
-            }).unwrap(); // Assuming unwrap() is needed for the mutation hook
+            }).unwrap(); 
 
             console.log('response', response);
             LoadingToast(false);
@@ -33,8 +35,10 @@ const AddAdvance = () => {
     };
 
     return (
-        <div>
-            <div className="form-container">
+        <>
+   <button className="open-modal-btn" onClick={() => setIsModalOpen(true)}>Open Modal</button>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>        <div>
+            <div className="form-container1">
                 <form className='eventWrap' onSubmit={handleSubmit}>
                     <div className="btn"></div>
                     <div className="textarea">
@@ -65,6 +69,8 @@ const AddAdvance = () => {
                 </form>
             </div>
         </div>
+            </Modal>
+           </>
     );
 };
 

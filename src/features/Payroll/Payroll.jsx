@@ -1,22 +1,33 @@
 import React, { useState } from 'react';
 import './Payroll.scss';
-import { useGetPayrollQuery } from './PayrollApi';
+import { useGetPayrollQuery, useAddPayrollMutation } from './PayrollApi';
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
 
-
 const PayrollManagement = () => {
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+  const [employeeID, setEmployeeID] = useState('');
   const { data: payrollData, isLoading, isError } = useGetPayrollQuery();
-  const handleGeneratePayroll = () => {
-  };
-  if (isLoading) {
-    return <LoadingToast/>;
-  }
+  const [isAdding, setIsAdding] = useState(false);
+  const [addError, setAddError] = useState(null);
+  const [addPayrollMutation] = useAddPayrollMutation();
 
-  if (isError) {
-    return <ErrorToast message="Error fetching data" />;
-  }
+  const handleGeneratePayroll = async () => {
+    setIsAdding(true); // Set loading state
+    setAddError(null); // Clear previous error
+
+    try {
+      const response = await addPayrollMutation({ EmployeeID: employeeID });
+      SuccessToast("Payroll generated successfully");
+      setEmployeeID(''); 
+    } catch (error) {
+      setAddError(error.message || 'Error adding payroll data');
+      ErrorToast('Error adding payroll data');
+    } finally {
+      setIsAdding(false); 
+    }
+  };
+
+ 
+  
 
   return (
     <div className="payroll-management">
@@ -24,47 +35,38 @@ const PayrollManagement = () => {
       <div className="input-fields">
         <input
           type="text"
-          placeholder="Month"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
+          placeholder="Employee ID"
+          value={employeeID}
+          onChange={(e) => setEmployeeID(e.target.value)}
         />
         <button onClick={handleGeneratePayroll}>Generate Payroll</button>
       </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Employee ID</th>
-              <th>Gross Pay</th>
-              <th>Deduction ID</th>
-              <th>Net Pay</th>
-              <th>Payroll Date</th>
-            </tr>
-          </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Employee ID</th>
+            <th>Gross Pay</th>
+            <th>Deduction ID</th>
+            <th>Net Pay</th>
+            <th>Payroll Date</th>
+          </tr>
+        </thead>
+        <tbody>
           {payrollData && Array.isArray(payrollData) && (
-  <tbody>
-    {payrollData.map(payrollRecord => (
-      <tr key={payrollRecord.ID}>
-        <td>{payrollRecord.ID}</td>
-        <td>{payrollRecord.EmployeeID}</td>
-        <td>{payrollRecord.GrossPay}</td>
-        <td>{payrollRecord.DeductionID || 'N/A'}</td>
-        <td>{payrollRecord.NetPay}</td>
-        <td>{payrollRecord.PayrollDate}</td>
-      </tr>
-    ))}
-  </tbody>
-)}
-
-        </table>
-      
-    
+            payrollData.map(payrollRecord => (
+              <tr key={payrollRecord.ID}>
+                <td>{payrollRecord.ID}</td>
+                <td>{payrollRecord.EmployeeID}</td>
+                <td>{payrollRecord.GrossPay}</td>
+                <td>{payrollRecord.DeductionID || 'N/A'}</td>
+                <td>{payrollRecord.NetPay}</td>
+                <td>{payrollRecord.PayrollDate}</td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
