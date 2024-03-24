@@ -68,7 +68,6 @@ const Sidebar = () => {
         <div className="menu" key={item.id}>
           <NavLink
             to={item.path}
-            activeClassName='active'
             style={{ textDecoration: 'none', color: 'black' }}
           >
             <div className="holder">

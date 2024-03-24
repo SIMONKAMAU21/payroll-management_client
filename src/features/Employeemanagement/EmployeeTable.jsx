@@ -7,7 +7,7 @@ import UserDetailsModal from '../../components/DETAILS/userDetailes';
 
 const EmployeeTable = () => {
   const { data: employees, isLoading, isError } = useGetEmployeesQuery(); 
-  const [deleteEmployee, { isLoading: deleteLoading }] = useDeleteEmployeeMutation();
+  const [deleteEmployee] = useDeleteEmployeeMutation();
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
@@ -25,11 +25,12 @@ const EmployeeTable = () => {
   };
   const handleSeeMore = async (ID) => {
     setSelectedEmployee(ID);
+    SuccessToast(response.message)
     setShowDetailsModal(true); 
   };
 
   if (isLoading) {
-    return <LoadingToast />;
+    return <LoadingToast/>;
   }
 
   if (isError) {
@@ -54,7 +55,7 @@ const EmployeeTable = () => {
               <td>{employee.Firstname} {employee.Lastname}</td>
               <td>{employee.Email}</td>
               <td>{employee.ID}</td>
-              <td><img src={employee.PhotoURL} alt="" srcset="" className='img'/></td>
+              <td><img src={employee.PhotoURL} alt="no pic"  className='img'/></td>
               <td>
                 <button onClick={() => handleRemoveEmployee(employee.ID)} className='btn2'>Remove</button>
                 <button onClick={() => handleEditEmployee(employee.ID)}className='btn3'>Edit</button>

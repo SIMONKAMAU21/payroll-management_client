@@ -15,7 +15,6 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
       try {
         const response = await getOneUser(employeeId).unwrap();
         setUserDetails(response);
-        console.log('response', response)
       } catch (error) {
         setIsError(true);
       } finally {

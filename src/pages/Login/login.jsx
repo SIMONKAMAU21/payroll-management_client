@@ -4,14 +4,14 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { MdLockPerson, MdOutlineMarkunread } from "react-icons/md";
-import { FaCheckDouble } from "react-icons/fa6";
-import { PuffLoader } from 'react-spinners';
+import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
+
+
 import './login.scss';
 import { useLoginUserMutation } from './loginApi';
 import { RxDashboard } from 'react-icons/rx';
 
 const Login = () => {
-  console.log("nigeria");
   const [loginUser] = useLoginUserMutation();
 
   const navigate = useNavigate();
@@ -27,9 +27,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("I am submitting");
       const response = await loginUser(data).unwrap();
-      console.log("my res is ", response);
 
       const { token, user } = response
       if (user.Admin) {
@@ -39,11 +37,11 @@ const Login = () => {
         navigate('/employee');
       }
       localStorage.setItem('token', token)
-
       localStorage.setItem('userDetails', JSON.stringify(user))
+      SuccessToast('login successfull')
 
     } catch (error) {
-      console.log(error);
+      ErrorToast('In valind cridentials')
     }
   };
 

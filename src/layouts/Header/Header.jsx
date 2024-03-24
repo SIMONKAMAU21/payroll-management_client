@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import img from '../../assets/img1.jpg';
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -19,6 +18,7 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem('userDetailes')
     navigate('/');
   };
 

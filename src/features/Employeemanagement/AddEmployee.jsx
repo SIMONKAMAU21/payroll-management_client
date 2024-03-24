@@ -8,7 +8,7 @@ const AddEmployee = ({ closeEmployee }) => {
     const [formData, setFormData] = useState({
         Firstname: '',
         Lastname: '',
-        positionID: '',
+        PositionID: '',
         Address: '',
         BirthDate: '',
         PhotoURL: '',
@@ -42,7 +42,6 @@ const AddEmployee = ({ closeEmployee }) => {
 
         const responseJson = await cloudinaryRes.json();
         if (cloudinaryRes.ok) {
-            console.log("RESPONSE JSON ", responseJson);
             const { secure_url } = responseJson
             formData.PhotoURL = secure_url
         }
@@ -58,7 +57,7 @@ const AddEmployee = ({ closeEmployee }) => {
             setFormData({
                 Firstname: '',
                 Lastname: '',
-                positionID: '',
+                PositionID: '',
                 Address: '',
                 BirthDate: '',
                 PhotoURL: '',
@@ -124,9 +123,9 @@ const AddEmployee = ({ closeEmployee }) => {
                        
                         <input
                             type="text"
-                            placeholder="Positionid"
-                            name="positionID"
-                            value={formData.positionID}
+                            placeholder="PositionID"
+                            name="PositionID"
+                            value={formData.PositionID}
                             onChange={handleChange}
                         />
                         <input

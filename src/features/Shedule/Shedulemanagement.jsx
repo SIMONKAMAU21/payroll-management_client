@@ -58,12 +58,11 @@ const ScheduleManagement = () => {
             EmployeeID: formData.get('employee'),
          };
          const response = await addSchedule(newShift).unwrap();
-         console.log('response', response)
          SuccessToast(response.message)
          setShowAddForm(false);
          setModalOpen(false)
       } catch (error) {
-         ErrorToast(error.message)
+         ErrorToast("Schedule exists")
       }
    };
 
