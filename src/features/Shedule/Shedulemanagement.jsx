@@ -7,7 +7,6 @@ import Modal from '../../components/modal/Modal';
 const ScheduleManagement = () => {
    const { data: schedulesData, isLoading, isError } = useGetSchedulesQuery();
    const [shifts, setShifts] = useState([]);
-   const [editedIndex, setEditedIndex] = useState(null);
    const [editedShift, setEditedShift] = useState({ date: '', StartTime: '', EndTime: '', employee: '' });
    const [updateSchedule] = useUpdateSchedulesMutation();
    const [deleteSchedule] = useDeleteSchedulesMutation();

@@ -1,0 +1,26 @@
+
+.deduction-table-container {
+    margin-top: 20px;
+  }
+  
+  .deduction-table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  .deduction-table th,
+  .deduction-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .deduction-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .deduction-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

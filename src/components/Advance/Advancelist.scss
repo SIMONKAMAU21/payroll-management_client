@@ -1,0 +1,27 @@
+// AdvanceTable.scss
+
+.advance-table-container {
+    margin-top: 20px;
+  }
+  
+  .advance-table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  .advance-table th,
+  .advance-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .advance-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .advance-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
