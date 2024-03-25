@@ -11,8 +11,8 @@ function EmployeeBord() {
   const formattedLoggedInUser = JSON.parse(loggedInUser);
   const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceQuery();
   const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
-console.log('totalPyroll', totalPayroll)
-console.log('att', attendanceData)
+  console.log('totalPyroll', totalPayroll)
+  console.log('att', attendanceData)
   const calculateTotalTime = (startTime, stopTime) => {
     if (startTime && stopTime) {
       const totalTime = Math.round((stopTime - startTime) / 1000);
@@ -64,8 +64,7 @@ console.log('att', attendanceData)
                       <td>{new Date(attendance.Date).toDateString()}</td>
                       <td>{attendance.TimeIn ? new Date(attendance.TimeIn).toLocaleTimeString() : '-'}</td>
                       <td>{attendance.TimeOut ? new Date(attendance.TimeOut).toLocaleTimeString() : '-'}</td>
-                      {/* <td>{calculateTotalTime(attendance.TimeIn, attendance.TimeOut)}</td> */}
-                      {/* <td><button onClick={() => handleUpdateAttendance(attendance.ID)}>Update Time Out</button></td> */}
+                    
                     </tr>
                   ))
                 )}
@@ -74,21 +73,33 @@ console.log('att', attendanceData)
           </div>
           <div className="attendee">
             <div className="head">
-              <h3>Attendance Statics</h3>
-              <hr />
+              <div className="h1">
+              <h3>Overall pay</h3>
+              </div>
+              <div className="h1">
+                <h3>KSH</h3>
+              </div>
             </div>
             <div className="Days-absent">
               <div className="absent">
-                <p> GrossPay</p>
+                <p>GrossPay</p>
               </div>
-              <p><span>{totalPayroll.GrossPay}</span></p>
+              {totalPayroll && totalPayroll.GrossPay ? (
+                <p><span>{totalPayroll.GrossPay}</span></p>
+              ) : (
+                <p>Data not available</p>
+              )}
             </div>
             <div className="days">
               <div className="words">
-           <p>     Advance:</p>
+                <p>Advance:</p>
               </div>
               <div className="sat">
-              {totalPayroll.AdvanceCash}
+                {totalPayroll && totalPayroll.AdvanceCash ? (
+                  <span>{totalPayroll.AdvanceCash}</span>
+                ) : (
+                  <span>Data not available</span>
+                )}
               </div>
             </div>
             <div className="leave">
@@ -96,20 +107,27 @@ console.log('att', attendanceData)
                 <p>TotalDeductions</p>
               </div>
               <div className="num">
-                <p><span>{totalPayroll.TotalDeductions}</span></p>
+                {totalPayroll && totalPayroll.TotalDeductions ? (
+                  <span>{totalPayroll.TotalDeductions}</span>
+                ) : (
+                  <span>Data not available</span>
+                )}
               </div>
-            </div> 
-            
+            </div>
             <div className="leave">
               <div className="offdays">
                 <p>NetPay</p>
               </div>
               <div className="num">
-                <p><span>{totalPayroll.NetPay}</span></p>
+                {totalPayroll && totalPayroll.NetPay ? (
+                  <span>{totalPayroll.NetPay}</span>
+                ) : (
+                  <span>Data not available</span>
+                )}
               </div>
-            </div>        
-                 
+            </div>
           </div>
+
           <div>
             {payrollLoading ? (
               <p>Loading payroll data...</p>
@@ -117,8 +135,7 @@ console.log('att', attendanceData)
               <p>Error fetching payroll data</p>
             ) : (
               <div>
-                {/* <p>Total Payroll: {totalPayroll?.amount}</p> */}
-                {/* Render other payroll-related information if needed */}
+                <p>Total Payroll: {totalPayroll?.amount}</p>
               </div>
             )}
           </div>

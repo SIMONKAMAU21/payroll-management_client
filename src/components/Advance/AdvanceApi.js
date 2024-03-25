@@ -20,23 +20,22 @@ export const AdvanceApi =createApi({
                 body:Advance
 
             }),
-            providesTags:['Advance']
+            invalidatesTags:['Advance']
         }),
         deleteAdvance:builder.mutation({
             query:(ID)=>({
                 url:`Advance/delete/${ID}`,
                 method:`DELETE`,
             }),
-            providesTags:["Advance"]
+            invalidatesTags:['Advance']
         }),
-        gettingAdvanceByEmployeeiD:builder.mutation({
+        gettingAdvanceByEmployeeiD:builder.query({
             query:(EmployeeID)=>({
                 url:`Advance/employee/${EmployeeID}`,
                 method:`GET`,
-
             }),
             providesTags:['Advance']
         })
     })
 })
-export const {useGetAllAdvancesQuery,useAddAdvanceMutation,useDeleteAdvanceMutation,useGettingAdvanceByEmployeeiDMutation}=AdvanceApi
+export const {useGetAllAdvancesQuery,useAddAdvanceMutation,useDeleteAdvanceMutation,useGettingAdvanceByEmployeeiDQuery}=AdvanceApi

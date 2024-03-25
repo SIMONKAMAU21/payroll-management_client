@@ -27,10 +27,12 @@ const AddAdvance = () => {
             LoadingToast(false);
             SuccessToast(response.message);
             e.target.reset();
+            setIsModalOpen(false);
         } catch (err) {
             console.error('An error occurred:', err);
-            ErrorToast('An error occurred. Please try again later.');
+            ErrorToast('deduction exists');
             LoadingToast(false);
+            setIsModalOpen(false)
         }
     };
 

@@ -20,16 +20,17 @@ export const DeductionApi = createApi({
                 body: Deduction
 
             }),
-            providesTags: ['Deduction']
+            invalidatesTags:["Deduction"]
         }),
         deleteDeduction: builder.mutation({
             query: (DeductionID) => ({
                 url: `Deduction/delete/${DeductionID}`,
                 method: `DELETE`,
             }),
-            providesTags: ["Deduction"]
+            invalidatesTags:["Deduction"]
+
         }),
-        gettingDeductionByEmployeeiD: builder.mutation({
+        gettingDeductionByEmployeeiD: builder.query({
             query: (EmployeeID) => ({
                 url: `Deduction/employee/${EmployeeID}`,
                 method: `GET`,
@@ -39,4 +40,4 @@ export const DeductionApi = createApi({
         })
     })
 })
-export const { useGetAllDeductionsQuery, useAddDeductionMutation, useDeleteDeductionMutation, useGettingDeductionByEmployeeiDMutation } = DeductionApi
+export const { useGetAllDeductionsQuery, useAddDeductionMutation, useDeleteDeductionMutation, useGettingDeductionByEmployeeiDQuery } = DeductionApi

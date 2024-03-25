@@ -1,54 +1,38 @@
-.Attendance{
+.Attendance {
+   padding: 20px;
    margin-left: 410px;
-   height: 100vh;
+   height: 60vh;
    margin-top: 4rem;
-   overflow-x: scroll;
    gap: 10px;
-   .heading{
-      background-color:rgba(255,153,0,1);
-      width: 250px;
-      height: 50px;
-      text-align: center;
-      border-radius: 10px;
-      align-items: center;
-      display: flex;
-   }
-   .common-holder{
-      display: flex;
-   }
-   .attendances{
-      display: flex;
-      box-shadow: 10px 5px 5px rgba(0,0,0,0.25);
-      flex-direction: row;
-      background-color: #fff;
-      border-bottom: 1px solid rgba(255,153,0,1);
-      width: 450px;
-      .date-holder{
-         display: flex;
-         gap: 10px;
-         flex-direction: column;
-         .edate{
-            display: flex;
-            // background-color: #9e6262;
-            background: linear-gradient(to right ,rgb(8, 179, 125),rgb(255, 160, 6));
-            width: 250px;
-         }
-         .sdate{
-            display: flex;
-            background-color: #7cb6d2;
-         }
-         .name{
-            background-color:rgba(255,153,0,1);
-         }
-      }
-    
-   }
-   .attendance-graph{
-      width: 950px;
-      margin-left: 120px;
-      background-color: #fff;
-      box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.25);
-
-
-   }
-}
+ }
+ 
+ .heading {
+   font-size: 24px;
+ }
+ 
+ .common-holder {
+   display: flex;
+   justify-content: space-between;
+ }
+ 
+ .attendance-table {
+   width: 100%;
+   border-collapse: collapse;
+   background-color: #fff;
+ }
+ 
+ .attendance-table th, .attendance-table td {
+   padding: 8px;
+   border: 1px solid #967575;
+   text-align: left;
+ }
+ 
+ .attendance-table th {
+   background-color: #25aadf;
+   font-weight: bold;
+ }
+ 
+ .attendance-table tbody tr:nth-child(even) {
+   background-color: #f9f9f9;
+ }
+ 

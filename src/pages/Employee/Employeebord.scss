@@ -80,30 +80,57 @@
                 border-radius: 10px;
                 margin-bottom: 2rem;
                 height: 300px;
+                font-weight: 900;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
                 background-color: #ffffff;
+                overflow: scroll;
              
 
                 .head {
-                    margin: 1rem;
+                    margin-top: 1rem;
+                    align-items:center ;
+                    background-color: #b5edf9;
+                    display: flex;
+                    border-bottom: 2px solid;
+                    display: flex;
+                    gap: 550px;
+
+                    .h1{
+                        display: flex;
+                    }
                 }
 
                 .days {
                     display: flex;
-                    justify-content: space-between;
                     margin: 1rem;
+                    gap: 550px;
+                    align-items: center;
+                    border-bottom: 2px solid;
+
                 }
 
                 .Days-absent {
                     display: flex;
-                    justify-content: space-between;
                     margin: 1rem;
+                    gap: 550px;
+                    align-items: center;
+                    border-bottom: 2px solid;
+
                 }
 
                 .leave {
                     display: flex;
-                    justify-content: space-between;
                     margin: 1rem;
+                    gap: 550px;
+                    align-items: center;
+                    border-bottom: 2px solid;
+
+                }
+                .leave {
+                    display: flex;
+                    margin: 1rem;
+                    gap: 550px;
+                    align-items: center;
                 }
             }
 

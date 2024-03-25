@@ -8,10 +8,10 @@ export const employeeApi = createApi({
         getEmployees: builder.query({
             query: () => ({
                 url: `users`,
-                method: `GET`
+                method: `GET`,
             }),
-            invalidatesTags: ['Employees'],
-        }),
+            providesTags : ['Employees'] 
+}),
         addEmployee: builder.mutation({
             query: (employee) => ({
                 url: 'users/register',

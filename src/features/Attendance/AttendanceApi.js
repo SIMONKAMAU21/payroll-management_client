@@ -1,45 +1,46 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const attendanceApi = createApi({
-    reducerPath:'attendanceApi',
+    reducerPath: 'attendanceApi',
     baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:8000/api/` }),
-    tagTypes:['Attendance'],
-    endpoints:(builder)=>({
-        getAttendance:builder.query({
-            query:()=>({
-                url:`Attendance`,
-                method:`GET`
+    tagTypes: ['Attendance'],
+    endpoints: (builder) => ({
+        getAttendance: builder.query({
+            query: () => ({
+                url: `Attendance`,
+                method: `GET`,
+                providesTags:['Advance']
             }),
-            invalidatesTags:['Attendance']
         }),
-        addAttendance:builder.mutation({
-            query:(Attendance)=>({
-                url:`Attendance/record`,
-                method:`post`,
-                body:Attendance
+        addAttendance: builder.mutation({
+            query: (Attendance) => ({
+                url: `Attendance/record`,
+                method: `post`,
+                body: Attendance
             }),
-            invalidatesTags:['Attendance']
-        }),
-
-        updateAttendance:builder.mutation({
-            query:(Attendance)=>({
-                url:`Attendance/update/${Attendance.AttendanceID}`,
-                method:`PUT`,
-                body:Attendance
-            }),
-            invalidatesTags:['Attendance']
+            invalidatesTags: ['Attendance']
 
         }),
-        
-        getAttendanceById:builder.mutation({
-            query:()=>({
-                url:`Attendance${employeeId}`,
-                method:`GET`
+
+        updateAttendance: builder.mutation({
+            query: (Attendance) => ({
+                url: `Attendance/update/${Attendance.AttendanceID}`,
+                method: `PUT`,
+                body: Attendance
             }),
-            invalidatesTags:['Attendance']
+            providesTags: ['Attendance']
+        }),
+
+        getAttendanceById: builder.mutation({
+            query: () => ({
+                url: `Attendance${employeeId}`,
+                method: `GET`
+            }),
+            providesTags: ['Attendance']
+
         })
     })
 });
 
 
-export const {useGetAttendanceQuery,useAddAttendanceMutation,useUpdateAttendanceMutation,useGetAttendanceByIdMutation}=attendanceApi;
+export const { useGetAttendanceQuery, useAddAttendanceMutation, useUpdateAttendanceMutation, useGetAttendanceByIdMutation } = attendanceApi;

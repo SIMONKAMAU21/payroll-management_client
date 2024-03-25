@@ -18,7 +18,7 @@ const AddEmployee = ({ closeEmployee }) => {
         Email: '',
         Password: '',
         schedule: '',
-        Gender: '' // Added gender field
+        Gender: ''
     });
     const [file, setFile] = useState(null)
 
@@ -50,7 +50,6 @@ const AddEmployee = ({ closeEmployee }) => {
         }
 
         try {
-            console.log("form data ", formData);
             const response = await addEmployee(formData).unwrap();
             SuccessToast(response.message);
             closeEmployee();
@@ -70,27 +69,27 @@ const AddEmployee = ({ closeEmployee }) => {
                 Gender: '' 
             });
         } catch (err) {
-            ErrorToast(response.message);
+            ErrorToast("could not add employee");
+            LoadingToast(false)
+            console.log('error', error+message)
         }
     };
     const handleChange = (e) => {
         if (e.target.type === 'file') {
             const file = e.target.files[0]; 
-            setFormData({ ...formData, [e.target.name]: file }); // Update the state with the file
+            setFormData({ ...formData, [e.target.name]: file }); 
         } else {
             const { name, value } = e.target;
-            setFormData({ ...formData, [name]: value }); // Update the state with other form fields
+            setFormData({ ...formData, [name]: value }); 
         }
-        console.log("new state is ", formData);
     };
 
 
     return (
         <div>
             <div className="form-container">
-                <form className='eventWrap' onSubmit={handleSubmit}>
+                <form className='eventWrap1' onSubmit={handleSubmit}>
                     <div className="btn">
-                        {/* <button onClick={closeEmployee}>X</button> */}
                     </div>
                     <div className="textarea">
                         <div className="animation">
@@ -179,8 +178,7 @@ const AddEmployee = ({ closeEmployee }) => {
                         <div className="footer">
                             <div className="btn">
                                 <button type="submit" disabled={isLoading}>Add Employee</button>
-                                {isLoading && <LoadingToast />}
-                                {error && <ErrorToast message={error.message} />}
+                          
                             </div>
                         </div>
                     </div>
