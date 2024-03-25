@@ -3,6 +3,7 @@ import './Shedulemanagement.scss';
 import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMutation, useAddSchedulesMutation } from './scheduleApi';
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
 import Modal from '../../components/modal/Modal';
+import {StyleSheet,Text,View, PDFDownloadLink} from '@react-pdf/renderer'
 
 const ScheduleManagement = () => {
    const { data: schedulesData, isLoading, isError } = useGetSchedulesQuery();
@@ -51,7 +52,6 @@ const ScheduleManagement = () => {
          const formData = new FormData(event.target);
          
          const newShift = {
-            Days: formData.get('Days'),
             StartTime: formData.get('startTime'),
             EndTime: formData.get('endTime'),
             EmployeeID: formData.get('employee'),
@@ -85,7 +85,6 @@ const ScheduleManagement = () => {
          <table>
             <thead>
                <tr>
-                  <th>Days</th>
                   <th>Start Time</th>
                   <th>End Time</th>
                   <th>Employee</th>
@@ -97,7 +96,6 @@ const ScheduleManagement = () => {
                {isError && <p><ErrorToast /></p>}
                {schedulesData && schedulesData.map((shift, index) => (
                   <tr key={index}>
-                     <td>{shift.Days}</td>
                      <td>{shift.StartTime}</td>
                      <td>{shift.EndTime}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>

@@ -3,7 +3,6 @@ import '../Overtime/OvertimeManagement.scss';
 import AddDeduction from '../../components/Deduction/Adddeduction';
 import AddAdvanceRecord from '../../components/Advance/AddAdvanceRecord';
 import AdvanceTable from '../../components/Advance/Advancelist';
-import AddAdvance from '../../components/Deduction/Adddeduction';
 import DeductionTable from '../../components/Deduction/Deductionlist';
 
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useAddAttendanceMutation, useUpdateAttendanceMutation } from '../../features/Attendance/AttendanceApi';
+import { useAddAttendanceMutation } from '../../features/Attendance/AttendanceApi';
 import { SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
 import '../Worktime/Worktime.scss';
+import UpdateEmployee from '../Editprofile/editProfile';
 
 const WorkTimer = () => {
   const [isWorking, setIsWorking] = useState(false);
@@ -9,9 +10,20 @@ const WorkTimer = () => {
   const [stopTime, setStopTime] = useState(null);
   const [motivation, setMotivation] = useState('');
   const [addAttendance] = useAddAttendanceMutation();
-  const [updateAttendance] = useUpdateAttendanceMutation();
   const [employeeData, setEmployeeData] = useState(null);
-  const [lastStopTime, setLastStopTime] = useState(null); // Track the last stop time
+  const [lastStopTime, setLastStopTime] = useState(null); 
+  const[showEditForm,setShowEditForm]=useState(false);
+
+  const handleShow=()=>{
+    setShowEditForm(true);
+  
+  }
+  const handleClose=()=>{
+    setShowEditForm(false)
+  }
+
+
+
 
   const Firstname = employeeData ? employeeData.Firstname : "";
   const motivationalMessages = [
@@ -145,8 +157,11 @@ const WorkTimer = () => {
       <div className="motivation">
         <div className="mtext">{motivation}</div>
       </div>
+      <div className="btn">
+        <button onClick={handleShow}>Edit profile</button>
+      </div>
     </div>
-    
+    {showEditForm && <UpdateEmployee closeEmployee={handleClose}/>}
      </>
   );
 };

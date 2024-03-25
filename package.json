@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "chart.js": "^4.4.2",
-    "react-chartjs-2": "^5.2.0",
     "19-reacthookform-with-yup": "link:",
     "@hookform/resolvers": "^3.3.4",
+    "@react-pdf/renderer": "^3.4.0",
     "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.7",
+    "chart.js": "^4.4.2",
     "cloudinary": "^2.0.1",
     "hiphonic-client-react": "link:",
     "hooks": "^0.3.2",
@@ -23,6 +23,7 @@
     "react": "^18.2.0",
     "react-big-calendar": "^1.11.0",
     "react-calendar": "^4.8.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.50.1",
