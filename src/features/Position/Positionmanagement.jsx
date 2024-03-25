@@ -64,13 +64,15 @@ const PositionManagement = () => {
                   <tr> 
                     <th>Position</th>
                     <th>Basic Salary</th>
-                    <th>Psition ID</th>
+                    <th>P.ID E.ID</th>
+                    <th>Names</th>
                     <th>Options</th>
                   </tr>
                   <tr>
                     <td>{position.Position}</td>
                     <td>ksh {position.Basic_Salary}</td>
-                    <td>{position.PositionID}</td>
+                    <td>{position.PositionID}{position.ID}</td>
+                    <td>{position.Firstname},{position.Lastname}</td>
                     <td>
                       <button onClick={() => handleRemovePosition(position.PositionID)}>Remove</button>
                     </td>

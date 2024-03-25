@@ -11,7 +11,7 @@ export const payrollApi=createApi({
                 url:`payrolls`,
                 method:`GET`
             }),
-            providesTags:['Payroll']
+            invalidatesTags:['Payroll']
         }),
         addPayroll:builder.mutation({
             query:(payroll)=>({
@@ -19,11 +19,18 @@ export const payrollApi=createApi({
                 method:`POST`,
                 body:payroll
             }),
+            invalidatesTags:['Payroll']
+        }),
+        getPayrollById:builder.query({
+            query:(Employee)=>({
+                url:`Payrolls/${Employee.ID}`,
+                method:`GET`,
+            }),
             providesTags:['Payroll']
         }),
-        getPayrollById:builder.mutation({
-            query:()=>({
-                url:`payroll/${EmployeeID}`,
+        getTotalPayrollByEmployeeID:builder.query({
+            query:(Employee)=>({
+                url:`Payrolls/total/${Employee.ID}`,
                 method:`GET`,
             }),
             providesTags:['Payroll']
@@ -31,4 +38,4 @@ export const payrollApi=createApi({
     })
 })
 
-export const{useGetPayrollQuery,useAddPayrollMutation,useGetPayrollByIdMutation}=payrollApi
+export const{useGetPayrollQuery,useAddPayrollMutation,useGetPayrollByIdQuery,useGetTotalPayrollByEmployeeIDQuery}=payrollApi

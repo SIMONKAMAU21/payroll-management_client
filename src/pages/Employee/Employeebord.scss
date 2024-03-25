@@ -77,11 +77,12 @@
             align-items: center;
 
             .attendee {
-                width: 100%;
                 border-radius: 10px;
                 margin-bottom: 2rem;
+                height: 300px;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-                background-color: #fff;
+                background-color: #ffffff;
+             
 
                 .head {
                     margin: 1rem;
@@ -153,7 +154,6 @@
                         height: 147px;
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
                         text-align: center;
 
                         .overtime {
@@ -184,7 +184,6 @@
                     .advance {
                         flex: 1;
                         height: 147px;
-                        display: flex;
                         text-align: center;
                         flex-direction: column;
                         justify-content: space-between;

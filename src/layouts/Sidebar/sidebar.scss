@@ -27,12 +27,11 @@
       font-weight: 100;
 
       &:hover {
-        background-color: rgb(240, 240, 240);
+        background: linear-gradient(to top left, #380752, #000000, #073452);
+        color: white;
+
       }
 
-      &.active {
-        background-color: blue; /* Define your active state background color */
-      }
     }
   }
 }

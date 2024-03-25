@@ -9,11 +9,10 @@
     .record-item {
       display: flex;
       margin-bottom: 10px;
-  
       .record-label {
         flex: 1;
         font-weight: bold;
-        border-bottom: 1px solid;
+        width: 80vw;
       }
   
       .record-value {

@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useGetAttendanceQuery, useUpdateAttendanceMutation } from '../../features/Attendance/AttendanceApi';
-import { SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
+import React from 'react';
+import { useGetAttendanceQuery } from '../../features/Attendance/AttendanceApi';
+import { useGetTotalPayrollByEmployeeIDQuery } from '../../features/Payroll/PayrollApi';
 import '../Employee/Employeebord.scss';
 import WorkTimer from '../../components/Worktime/worktime';
 import Clock from '../../components/clock/clock';
 import PayrollRecord from '../../components/Payroll/payroll';
 
 function EmployeeBord() {
+  const loggedInUser = localStorage.getItem('userDetails');
+  const formattedLoggedInUser = JSON.parse(loggedInUser);
   const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceQuery();
-
-  const calculateTotalTime = () => {
+  const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
+console.log('totalPyroll', totalPayroll)
+console.log('att', attendanceData)
+  const calculateTotalTime = (startTime, stopTime) => {
     if (startTime && stopTime) {
       const totalTime = Math.round((stopTime - startTime) / 1000);
       const hours = Math.floor(totalTime / 3600);
@@ -73,28 +77,50 @@ function EmployeeBord() {
               <h3>Attendance Statics</h3>
               <hr />
             </div>
-            <div className="days">
-              <div className="words">
-                <p>Total worked days</p>
-              </div>
-              <div className="sat">
-                8
-              </div>
-            </div>
             <div className="Days-absent">
               <div className="absent">
-                <p> Days Absent</p>
+                <p> GrossPay</p>
               </div>
-              <p><span>2</span></p>
+              <p><span>{totalPayroll.GrossPay}</span></p>
+            </div>
+            <div className="days">
+              <div className="words">
+           <p>     Advance:</p>
+              </div>
+              <div className="sat">
+              {totalPayroll.AdvanceCash}
+              </div>
             </div>
             <div className="leave">
               <div className="offdays">
-                <p>Unused Leave days</p>
+                <p>TotalDeductions</p>
               </div>
               <div className="num">
-                <p><span>12</span></p>
+                <p><span>{totalPayroll.TotalDeductions}</span></p>
+              </div>
+            </div> 
+            
+            <div className="leave">
+              <div className="offdays">
+                <p>NetPay</p>
+              </div>
+              <div className="num">
+                <p><span>{totalPayroll.NetPay}</span></p>
               </div>
             </div>        
+                 
+          </div>
+          <div>
+            {payrollLoading ? (
+              <p>Loading payroll data...</p>
+            ) : payrollError ? (
+              <p>Error fetching payroll data</p>
+            ) : (
+              <div>
+                {/* <p>Total Payroll: {totalPayroll?.amount}</p> */}
+                {/* Render other payroll-related information if needed */}
+              </div>
+            )}
           </div>
           <PayrollRecord />
         </div>

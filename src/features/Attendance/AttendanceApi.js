@@ -10,7 +10,7 @@ export const attendanceApi = createApi({
                 url:`Attendance`,
                 method:`GET`
             }),
-            providesTags:['Attendance']
+            invalidatesTags:['Attendance']
         }),
         addAttendance:builder.mutation({
             query:(Attendance)=>({
@@ -18,7 +18,7 @@ export const attendanceApi = createApi({
                 method:`post`,
                 body:Attendance
             }),
-            providesTags:['Attendance']
+            invalidatesTags:['Attendance']
         }),
 
         updateAttendance:builder.mutation({
@@ -27,7 +27,7 @@ export const attendanceApi = createApi({
                 method:`PUT`,
                 body:Attendance
             }),
-            providesTags:['Attendance']
+            invalidatesTags:['Attendance']
 
         }),
         
@@ -36,7 +36,7 @@ export const attendanceApi = createApi({
                 url:`Attendance${employeeId}`,
                 method:`GET`
             }),
-            providesTags:['Attendance']
+            invalidatesTags:['Attendance']
         })
     })
 });

@@ -10,7 +10,7 @@ export const employeeApi = createApi({
                 url: `users`,
                 method: `GET`
             }),
-            providesTags: ['Employees']
+            invalidatesTags: ['Employees'],
         }),
         addEmployee: builder.mutation({
             query: (employee) => ({

@@ -11,8 +11,8 @@ const PayrollManagement = () => {
   const [addPayrollMutation] = useAddPayrollMutation();
 
   const handleGeneratePayroll = async () => {
-    setIsAdding(true); // Set loading state
-    setAddError(null); // Clear previous error
+    setIsAdding(true); 
+    setAddError(null); 
 
     try {
       const response = await addPayrollMutation({ EmployeeID: employeeID });

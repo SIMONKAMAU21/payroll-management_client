@@ -12,7 +12,7 @@ export const positionApi = createApi({
                     method: `GET`
                 }
             ),
-            providesTags: ['Positions']
+            invalidatesTags: ['Positions'],
 
         }),
         addPositions: builder.mutation({
