@@ -4,7 +4,23 @@
     padding: 20px;
     margin-bottom: 20px;
     background-color: #f9f9f9;
-  
+  .btn{
+    button{
+      background-color: blue;
+      height: 30px;
+      width: 220px;
+      border-radius: 10px;
+      color:  white;
+      border: none;
+
+      font-size: 20px;
+      &:hover{
+        background-color: #fff;
+        color: blue;
+        border: 1px solid;
+      }
+    }
+  }
     .worktimer-heading {
       margin-top: 0;
     }

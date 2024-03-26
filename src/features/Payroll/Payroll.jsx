@@ -15,12 +15,12 @@ const PayrollManagement = () => {
     setAddError(null); 
 
     try {
-      const response = await addPayrollMutation({ EmployeeID: employeeID });
-      SuccessToast("Payroll generated successfully");
+      const response = await addPayrollMutation({ EmployeeID: employeeID }).unwrap();
+      SuccessToast(response.message);
       setEmployeeID(''); 
     } catch (error) {
       setAddError(error.message || 'Error adding payroll data');
-      ErrorToast('Error adding payroll data');
+      ErrorToast('Employee ID not found');
     } finally {
       setIsAdding(false); 
     }

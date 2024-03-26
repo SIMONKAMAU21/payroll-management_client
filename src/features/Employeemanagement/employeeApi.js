@@ -23,7 +23,7 @@ export const employeeApi = createApi({
         deleteEmployee: builder.mutation({
             query: (ID) => ({
                 url: `users/delete/${ID}`,
-                method: `DELETE`
+                method: `DELETE`,
             }),
             invalidatesTags: ['Employees'],
         }),
@@ -33,15 +33,15 @@ export const employeeApi = createApi({
                 method: 'PUT',
                 body: employee
             }),
-            invalidatesTags: ['Employees']
+            invalidatesTags:['Employees']
         }),
         
-        getOneUser: builder.mutation({
+        getOneUser: builder.query({
             query: (ID) => ({
                 url: `users/byID/${ID}`,
                 method: `GET`,
             }),
-            invalidatesTags: ['Employees']
+            providesTags : ['Employees'] 
         }),
         getOneUserByEmail: builder.mutation({
             query: (Email) => ({
@@ -53,4 +53,4 @@ export const employeeApi = createApi({
     }),
 });
 
-export const { useGetEmployeesQuery, useAddEmployeeMutation, useDeleteEmployeeMutation, useUpdateEmployeeMutation, useGetOneUserMutation, useGetOneUserByEmailMutation } = employeeApi;
+export const { useGetEmployeesQuery, useAddEmployeeMutation, useDeleteEmployeeMutation, useUpdateEmployeeMutation, useGetOneUserQuery, useGetOneUserByEmailMutation } = employeeApi;

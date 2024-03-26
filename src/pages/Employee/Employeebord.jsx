@@ -1,18 +1,19 @@
 import React from 'react';
-import { useGetAttendanceQuery } from '../../features/Attendance/AttendanceApi';
 import { useGetTotalPayrollByEmployeeIDQuery } from '../../features/Payroll/PayrollApi';
 import '../Employee/Employeebord.scss';
 import WorkTimer from '../../components/Worktime/worktime';
 import Clock from '../../components/clock/clock';
 import PayrollRecord from '../../components/Payroll/payroll';
+import Attendance from '../../components/AttendanceDetails/Attendance';
 
 function EmployeeBord() {
+
   const loggedInUser = localStorage.getItem('userDetails');
-  const formattedLoggedInUser = JSON.parse(loggedInUser);
-  const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceQuery();
+  const formattedLoggedInUser = JSON.parse(loggedInUser); 
+   const EmployeeID = formattedLoggedInUser.EmployeeID
   const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
-  console.log('totalPyroll', totalPayroll)
-  console.log('att', attendanceData)
+  // console.log('att', attendanceData)
+
   const calculateTotalTime = (startTime, stopTime) => {
     if (startTime && stopTime) {
       const totalTime = Math.round((stopTime - startTime) / 1000);
@@ -39,38 +40,7 @@ function EmployeeBord() {
           </div>
         </div>
         <div className="finance">
-          <div className="stats">
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Time In</th>
-                  <th>Time Out</th>
-                  <th>Total Hours Worked</th>
-                </tr>
-              </thead>
-              <tbody>
-                {attendanceLoading ? (
-                  <tr>
-                    <td>Loading...</td>
-                  </tr>
-                ) : attendanceError ? (
-                  <tr>
-                    <td>Error fetching attendance data</td>
-                  </tr>
-                ) : (
-                  attendanceData.map(attendance => (
-                    <tr key={attendance.ID}>
-                      <td>{new Date(attendance.Date).toDateString()}</td>
-                      <td>{attendance.TimeIn ? new Date(attendance.TimeIn).toLocaleTimeString() : '-'}</td>
-                      <td>{attendance.TimeOut ? new Date(attendance.TimeOut).toLocaleTimeString() : '-'}</td>
-                    
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+<Attendance/>
           <div className="attendee">
             <div className="head">
               <div className="h1">
@@ -110,7 +80,7 @@ function EmployeeBord() {
                 {totalPayroll && totalPayroll.TotalDeductions ? (
                   <span>{totalPayroll.TotalDeductions}</span>
                 ) : (
-                  <span>Data not available</span>
+                  <span>-</span>
                 )}
               </div>
             </div>
@@ -122,7 +92,7 @@ function EmployeeBord() {
                 {totalPayroll && totalPayroll.NetPay ? (
                   <span>{totalPayroll.NetPay}</span>
                 ) : (
-                  <span>Data not available</span>
+                  <span>-</span>
                 )}
               </div>
             </div>
@@ -132,7 +102,7 @@ function EmployeeBord() {
             {payrollLoading ? (
               <p>Loading payroll data...</p>
             ) : payrollError ? (
-              <p>Error fetching payroll data</p>
+              <p>No payments yet</p>
             ) : (
               <div>
                 <p>Total Payroll: {totalPayroll?.amount}</p>

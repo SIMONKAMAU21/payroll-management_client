@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Attendance.scss';
 import { useGetAttendanceQuery } from './AttendanceApi';
 import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
 
 const AttendanceReportList = () => {
   const { data: attendance, isLoading, isError } = useGetAttendanceQuery();
-  const[attendanceList,setAttendanceList]=useState([]);
-  useState(()=>{
-    if(attendance){
-setAttendanceList(attendance)
+  const [attendanceList, setAttendanceList] = useState([]);
+
+  useEffect(() => {
+    if (attendance) {
+      setAttendanceList(attendance);
     }
-  },[attendance])
-console.log('attendance', attendance)
+  }, [attendance]);
+
   if (isLoading) return <LoadingToast />;
   if (isError) return <ErrorToast message="Error fetching data" />;
 
@@ -19,6 +20,7 @@ console.log('attendance', attendance)
     <div className='Attendance'>
       <h2 className='heading'>Attendance Reports</h2>
       <div className="search-bar">
+        {/* Your search bar UI goes here */}
       </div>
       <div className="attendance-table-container">
         <table className="attendance-table">
@@ -32,15 +34,15 @@ console.log('attendance', attendance)
             </tr>
           </thead>
           <tbody>
-           {attendanceList.map(data=>(
-              <tr key={data.ID||'-'}>
-                <td>{data.Firstname||'-'} {data.Lastname||'-'}</td>
-                <td>{data.TimeIn||'-'}</td>
-                <td>{data.TimeOut|| "-"}</td>
-                <td>{data.Date||'-'}||</td>
-                <td>{data.PositionID||'-'}</td>
+            {attendanceList.map(data => (
+              <tr key={data.ID || '-'}>
+                <td>{data.Firstname || '-'} {data.Lastname || '-'}</td>
+                <td>{data.TimeIn || '-'}</td>
+                <td>{data.TimeOut || "-"}</td>
+                <td>{data.Date || '-'}</td>
+                <td>{data.PositionID || '-'}</td>
               </tr>
-             ))}
+            ))}
           </tbody>
         </table>
       </div>

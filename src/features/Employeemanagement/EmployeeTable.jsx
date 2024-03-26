@@ -11,10 +11,12 @@ const EmployeeTable = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const handleRemoveEmployee = async (ID) => {
+    LoadingToast()
     try {
       const response = await deleteEmployee(ID).unwrap();
       LoadingToast()
       SuccessToast(response.message);
+      LoadingToast(false)
     } catch (error) {
       ErrorToast('Failed to remove employee');
     }
@@ -28,7 +30,7 @@ const EmployeeTable = () => {
   };
 
   if (isLoading) {
-    return <LoadingToast/>;
+    return<p>loading...</p>;
   }
 
   if (isError) {

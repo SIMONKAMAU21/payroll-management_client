@@ -9,8 +9,8 @@ export const attendanceApi = createApi({
             query: () => ({
                 url: `Attendance`,
                 method: `GET`,
-                providesTags:['Advance']
             }),
+            providesTags:['Advance']
         }),
         addAttendance: builder.mutation({
             query: (Attendance) => ({
@@ -28,19 +28,18 @@ export const attendanceApi = createApi({
                 method: `PUT`,
                 body: Attendance
             }),
-            providesTags: ['Attendance']
+            invalidatesTags: ['Attendance']
         }),
 
-        getAttendanceById: builder.mutation({
-            query: () => ({
-                url: `Attendance${employeeId}`,
+        getAttendanceById: builder.query({
+            query: (Employee) => ({
+                url: `Attendance/${Employee.ID}`,
                 method: `GET`
             }),
             providesTags: ['Attendance']
-
-        })
+        }),
     })
 });
 
 
-export const { useGetAttendanceQuery, useAddAttendanceMutation, useUpdateAttendanceMutation, useGetAttendanceByIdMutation } = attendanceApi;
+export const { useGetAttendanceQuery, useAddAttendanceMutation, useUpdateAttendanceMutation,  useGetAttendanceByIdQuery} = attendanceApi;

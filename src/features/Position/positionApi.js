@@ -6,14 +6,11 @@ export const positionApi = createApi({
     tagTypes: ['Positions'],
     endpoints: (builder) => ({
         getPositions: builder.query({
-            query: () => (
-                {
+            query: () => ({
                     url: `Positions`,
-                    method: `GET`
-                }
-            ),
-            invalidatesTags: ['Positions'],
-
+                    method: `GET`,
+                 }),
+                provideTags: ['Positions'],
         }),
         addPositions: builder.mutation({
             query: (Positions) => ({

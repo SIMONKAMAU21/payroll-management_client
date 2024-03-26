@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
-import { useGetOneUserMutation } from '../../features/Employeemanagement/employeeApi';
 import '../DETAILS/userDetailes.scss';
+import { useGetOneUserQuery } from '../../features/Employeemanagement/employeeApi';
 
 const UserDetailsModal = ({ employeeId, onClose }) => {
   const [userDetails, setUserDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [getOneUser] = useGetOneUserMutation();
+  const { data: userData, isLoading, isError } = useGetOneUserQuery(employeeId);
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
-      setIsLoading(true);
-      try {
-        const response = await getOneUser(employeeId).unwrap();
-        setUserDetails(response);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (employeeId) {
-      fetchUserDetails();
+    if (userData) {
+      setUserDetails(userData);
     }
-  }, [employeeId,getOneUser]);
+  }, [userData]);
 
   const handleClose = () => {
     onClose();
