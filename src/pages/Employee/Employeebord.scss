@@ -1,16 +1,15 @@
 .maincontent {
-    height: 85vh;
-    width: 97%;
-
+    height: 100vh;
+    width: 100%;
+    background-color: #dddddd;
     .motivation {
         font-size: 20px;
         font-weight: bold;
-        color: #ffffff;
         text-align: center;
         margin-bottom: 20px;
-        background: linear-gradient(to top left, #380752, #000000, #073452);
+        background: linear-gradient(to top left, #0b080c, #000000, #000000);
+        color: rgb(21, 255, 0);
          border-radius: 10px;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.658);
         height: 120px;
         display: flex;
         margin: auto;
@@ -24,10 +23,10 @@
 
 
     .header {
-        width: 320px;
-        margin-left: 35px;
+        width: 350px;
+        margin: 10px 0 10px 40px;
         background-color: #fff;
-        align-items: center;
+        height: 40px;
         text-align: center;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.938);
 
@@ -37,8 +36,8 @@
         width: 97%;
         height: 100%;
         display: flex;
-        justify-content: space-between;
         margin: auto;
+        justify-content: space-between;
 
         .attendance {
             width: 20%;
@@ -51,13 +50,16 @@
                 flex-direction: column;
                 background-color: #fff;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+                background: linear-gradient(to top left, #080525, #070731, #073452);
 
-                .clock {
+
+                .clock1 {
 
                     align-items: center;
-                    background: linear-gradient(to top left, #380752, #000000, #073452);
+                    background: linear-gradient(to top left, #a63fdd, #070731, #073452);
                     text-align: center;
-                    color: aliceblue;
+                    height: 50px;
+                    color: rgb(212, 212, 212);
                 }
 
             }
@@ -73,26 +75,24 @@
         .finance {
             width: 77%;
             height: 100%;
-            padding: 15px;
             align-items: center;
 
             .attendee {
                 border-radius: 10px;
-                margin-bottom: 2rem;
                 height: 300px;
                 font-weight: 900;
+                color: white;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-                background-color: #ffffff;
-                overflow: scroll;
+                background: linear-gradient(to left, #1a454b, #050518, #000000);
              
 
                 .head {
-                    margin-top: 1rem;
                     align-items:center ;
-                    background-color: #b5edf9;
+                    background-color: rgb(235, 88, 4);
                     display: flex;
-                    border-bottom: 2px solid;
                     display: flex;
+                    height: 50px;
+                    color: #000000;
                     gap: 550px;
 
                     .h1{
@@ -105,7 +105,6 @@
                     margin: 1rem;
                     gap: 550px;
                     align-items: center;
-                    border-bottom: 2px solid;
 
                 }
 
@@ -114,7 +113,6 @@
                     margin: 1rem;
                     gap: 550px;
                     align-items: center;
-                    border-bottom: 2px solid;
 
                 }
 
@@ -123,14 +121,16 @@
                     margin: 1rem;
                     gap: 550px;
                     align-items: center;
-                    border-bottom: 2px solid;
+                    border-bottom: 1px solid rgb(1, 159, 187);
+
 
                 }
-                .leave {
+                .leave1 {
                     display: flex;
                     margin: 1rem;
-                    gap: 550px;
+                    gap: 500px;
                     align-items: center;
+                    border-bottom: 1px solid rgb(1, 159, 187);
                 }
             }
 
@@ -138,10 +138,11 @@
                 height: 25%;
                 width: 100%;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.945);
-                background-color: #fff;
-                margin-bottom: 2rem;
+                background: linear-gradient(to top left, #1a454b, #050518, #000000);
+                margin-bottom: 1.5rem;
                 border-radius: 10px;
-                overflow: scroll;
+                overflow: hidden;
+                color: white;
 
                 table {
                     border-collapse: collapse;
@@ -156,96 +157,18 @@
                 }
 
                 th {
-                    background-color: rgb(231, 66, 1);
+                    background-color: rgb(235, 88, 4);
                 }
 
                 tr:nth-child(even) {
                     background-color: #f2f2f2;
+                    color: rgb(0, 0, 0);
+                    font-size: 18px;
                 }
 
             }
 
-            .payroll {
-                height: 30%;
-                width: 100%;
-                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-                background-color: #a11a1a;
-                border-radius: 10px;
-                text-align: center;
-
-                .body {
-                    display: flex;
-
-                    .gross {
-                        flex: 1;
-                        height: 147px;
-                        display: flex;
-                        flex-direction: column;
-                        text-align: center;
-
-                        .overtime {
-                            display: flex;
-                            justify-content: space-around;
-                            margin: 1rem;
-                            background-color: rgb(177, 177, 177);
-                        }
-
-                        .rate {
-                            display: flex;
-                            justify-content: space-around;
-                            background-color: rgb(177, 177, 177);
-
-                        }
-
-                        .sum {
-                            display: flex;
-                            justify-content: space-between;
-                            padding: 15px;
-                            height: 20px;
-                            align-items: center;
-                            color: white;
-                            background-color: rgb(231, 66, 1);
-                        }
-                    }
-
-                    .advance {
-                        flex: 1;
-                        height: 147px;
-                        text-align: center;
-                        flex-direction: column;
-                        justify-content: space-between;
-
-                        .overtime {
-                            display: flex;
-                            justify-content: space-around;
-                            background-color: rgb(177, 177, 177);
-                            margin: 1rem;
-                        }
-
-                        .rate {
-                            display: flex;
-                            justify-content: space-around;
-                            background-color: rgb(177, 177, 177);
-                            border-left: 1px solid;
-
-
-
-                        }
-
-                        .sum {
-                            display: flex;
-                            justify-content: space-between;
-                            padding: 15px;
-                            height: 20px;
-                            align-items: center;
-                            text-align: center;
-                            color: rgb(255, 255, 255);
-                            background-color: rgb(231, 66, 1);
-                            border-left: 1px solid;
-                        }
-                    }
-                }
+      
             }
         }
     }
-}

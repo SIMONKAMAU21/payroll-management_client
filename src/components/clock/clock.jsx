@@ -15,7 +15,7 @@ const Clock = () => {
  
   return (
     <div>
-      <h2>{currentTime}</h2>
+      <h1>{currentTime}</h1>
     </div>
   );
 };

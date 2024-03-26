@@ -90,7 +90,6 @@ const Login = () => {
           </div>
           <div className="animation1">
             <RxDashboard size='34px' color='white' />
-            welcome Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatibus atque dolorum aliquid assumenda laborum velit nulla culpa corrupti sunt veniam quae suscipit? Explicabo reiciendis, quos amet porro nesciunt autem!
           </div>
         </div>
        

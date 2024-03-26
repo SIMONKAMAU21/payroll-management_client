@@ -6,9 +6,8 @@
  .animation1{
     animation: Animation2 12s linear 10s infinite alternate;
     position: relative;
-    background-color: #5fc4fa;
     color: rgb(236, 236, 236);
-    margin-top: 330px;
+    display: flex;
     font-size: 20px;
  }
 
@@ -136,6 +135,7 @@
         font-size: 16px;
         font-weight: 700;
         width: 50%;
+        bottom: none;
         height: 100%;
         font-weight: 600;
         font-size: 20px;

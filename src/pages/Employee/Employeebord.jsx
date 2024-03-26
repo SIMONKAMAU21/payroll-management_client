@@ -12,28 +12,18 @@ function EmployeeBord() {
   const formattedLoggedInUser = JSON.parse(loggedInUser);
   const EmployeeID = formattedLoggedInUser.EmployeeID
   const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
-  // console.log('att', attendanceData)
 
-  const calculateTotalTime = (startTime, stopTime) => {
-    if (startTime && stopTime) {
-      const totalTime = Math.round((stopTime - startTime) / 1000);
-      const hours = Math.floor(totalTime / 3600);
-      const minutes = Math.floor((totalTime % 3600) / 60);
-      const seconds = totalTime % 60;
-      return `${hours}h ${minutes}m ${seconds}s`;
-    }
-    return 'N/A';
-  };
+  
 
   return (
     <div className="maincontent">
       <div className="header">
-        <h2>Hello Welcome back</h2>
+        <h3>Hello Welcome back</h3>
       </div>
       <div className="main">
         <div className="attendance">
           <div className="working">
-            <div className="clock">
+            <div className="clock1">
               <Clock />
             </div>
             <WorkTimer />
@@ -72,7 +62,7 @@ function EmployeeBord() {
                 )}
               </div>
             </div>
-            <div className="leave">
+            <div className="leave1">
               <div className="offdays">
                 <p>TotalDeductions</p>
               </div>
