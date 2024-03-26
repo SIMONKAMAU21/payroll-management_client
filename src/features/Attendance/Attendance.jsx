@@ -20,7 +20,6 @@ const AttendanceReportList = () => {
     <div className='Attendance'>
       <h2 className='heading'>Attendance Reports</h2>
       <div className="search-bar">
-        {/* Your search bar UI goes here */}
       </div>
       <div className="attendance-table-container">
         <table className="attendance-table">

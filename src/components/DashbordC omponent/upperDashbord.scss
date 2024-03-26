@@ -1,10 +1,15 @@
 .top-holder{
    display: flex;
-   margin-top: 5rem;
+   // margin-top: 5rem;
    width: 90%;
-   height: 20;
+   height: 320px;
+   align-items: center;
+   margin: auto;
+   border-radius: 10px;
+   box-shadow:5px 5px 10px rgba(0,0,0,0.25);
    gap: 10px;
    justify-content: space-around;
+   background-color: #fff;
    @keyframes myAnimation {
       from{
          top: -10px;
@@ -19,19 +24,21 @@
       justify-content: space-between;
       animation-name: myAnimation;
       animation-duration: 3s;
-      // animation-delay: 1s;
       animation-direction: reverse;
       animation-timing-function: ease-in-out;
       display: flex;
       flex-direction: column;
+      border-radius: 10px;
+      overflow: hidden;
       position: relative;
       width: 50%;
-      background: linear-gradient(to top right, rgb(10, 37, 24),rgb(8, 166, 223), rgb(0, 123, 255));
+      background-color: #def0f3;
       box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
       width: 350px;
       height: 180px;
       .head{
-         background-color: rgb(168, 165, 164);
+         border-bottom: 1px solid #ccc;
+         padding: 10px;
          
       }
       .total{
@@ -39,15 +46,16 @@
          justify-content: space-between;
          align-items: baseline;
          gap: 10px;
+
          .text{
-            height: 40px;
             background-color:rgba(255,153,0,1);
             align-items: center;
-            width: 40%;
+            padding: 10px 15px;
+            min-width: 40%;
          }
          .number{
-            height: 40px;
-            width: 40%;
+            padding: 10px 15px;
+            min-width: 40%;
             background-color:rgba(217,217,217,1);
             align-items: center;
             text-align: center;

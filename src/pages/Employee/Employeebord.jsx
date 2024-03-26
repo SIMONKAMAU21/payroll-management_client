@@ -9,8 +9,8 @@ import Attendance from '../../components/AttendanceDetails/Attendance';
 function EmployeeBord() {
 
   const loggedInUser = localStorage.getItem('userDetails');
-  const formattedLoggedInUser = JSON.parse(loggedInUser); 
-   const EmployeeID = formattedLoggedInUser.EmployeeID
+  const formattedLoggedInUser = JSON.parse(loggedInUser);
+  const EmployeeID = formattedLoggedInUser.EmployeeID
   const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
   // console.log('att', attendanceData)
 
@@ -40,11 +40,11 @@ function EmployeeBord() {
           </div>
         </div>
         <div className="finance">
-<Attendance/>
+          <Attendance />
           <div className="attendee">
             <div className="head">
               <div className="h1">
-              <h3>Overall pay</h3>
+                <h3>Overall pay</h3>
               </div>
               <div className="h1">
                 <h3>KSH</h3>

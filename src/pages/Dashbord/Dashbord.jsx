@@ -15,13 +15,17 @@ const Dashbord = () => {
     }]
   });
   return (
-    <div className='dashbord'>
+    <div className='dashbord1'>
+<div className="upper">
 <UpperDashbord/>
+</div>
 <div className="dashbord-text">
   <div><h3>Attendance graph</h3></div>
 </div>
-<div className="lower"><LowerDashbord chartData={userdata} />
-</div>    </div>
+<div className="lower">
+  <LowerDashbord chartData={userdata} />
+</div>  
+  </div>
 
   )
 }

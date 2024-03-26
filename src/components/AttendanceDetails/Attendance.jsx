@@ -6,8 +6,6 @@ const Attendance = () => {
     const loggedInUser = localStorage.getItem('userDetails');
     const formattedLoggedInUser = JSON.parse(loggedInUser);
     const EmployeeID = formattedLoggedInUser.ID;
-
-    // Fetch attendance data using the provided query hook
     const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceByIdQuery(formattedLoggedInUser);
 
     return (
