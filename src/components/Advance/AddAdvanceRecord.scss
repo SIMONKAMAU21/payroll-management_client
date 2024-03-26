@@ -1,5 +1,5 @@
 .eventWrap {
-    background-color: #fff;
+    background-color: #1d1916;
     border-radius: 10px;
     height: 50vh;
     width: 520px;
@@ -19,7 +19,7 @@
         width: 420px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.308);
         border: none;
-        background-color: #acacac94;
+        background-color: #c9ebff;
         color: black;
         font-weight: 600;
         font-size: 20px;
@@ -51,7 +51,7 @@
           cursor: pointer;
   
           &:hover {
-            background-color: #1e90ff; /* Slightly darker shade on hover */
+            background-color: #226433; 
           }
   
           &:disabled {

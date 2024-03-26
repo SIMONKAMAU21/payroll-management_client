@@ -7,21 +7,24 @@
   .advance-table {
     width: 90%;
     border-collapse: collapse;
+    margin: 10px 0 10px 0;
   }
   
   .advance-table th,
   .advance-table td {
     padding: 8px;
-    border: 1px solid #ffd000;
+    border: 1px solid #eeeeee;
     text-align: left;
   }
   
   .advance-table th {
-    background-color: #e8f000;
+    background-color: #00acf0;
     font-weight: bold;
   }
   
   .advance-table tbody {
-    background-color: #f2f2f2;
+    color: #fff;
+    background: linear-gradient(to top left,rgb(21, 4, 66),rgba(16, 41, 80, 0.973),rgb(7, 6, 66));
+
   }
   

@@ -24,19 +24,6 @@ const WorkTimer = () => {
     setShowEditForm(false);
   };
 
-  const motivationalMessages = [
-    "You're doing great! Keep it up!",
-    "Every accomplishment starts with the decision to try.",
-    "Believe you can and you're halfway there.",
-    "The harder you work for something, the greater you'll feel when you achieve it.",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-    "Your limitation—it's only your imagination.",
-    "Push yourself, because no one else is going to do it for you.",
-    "Great things never come from comfort zones.",
-    "Dream it. Wish it. Do it.",
-    "Success doesn’t just find you. You have to go out and get it.",
-    `Hello ${employeeData ? employeeData.Firstname : ""}, keep pushing!`,
-  ];
 
   const generateRandomMotivation = () => {
     const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
@@ -168,3 +155,16 @@ const WorkTimer = () => {
 };
 
 export default WorkTimer;
+
+export   const motivationalMessages = [
+  "You're doing great! Keep it up!",
+  "Every accomplishment starts with the decision to try.",
+  "Believe you can and you're halfway there.",
+  "The harder you work for something, the greater you'll feel when you achieve it.",
+  "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+  "Your limitation—it's only your imagination.",
+  "Push yourself, because no one else is going to do it for you.",
+  "Great things never come from comfort zones.",
+  "Dream it. Wish it. Do it.",
+  "Success doesn’t just find you. You have to go out and get it.",
+];

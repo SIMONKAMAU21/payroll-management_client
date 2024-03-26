@@ -1,4 +1,3 @@
-// DeductionTable.jsx
 import React from 'react';
 import { useGetAllDeductionsQuery } from './DeductionApi';
 import '../Deduction/Deductionlist.scss'

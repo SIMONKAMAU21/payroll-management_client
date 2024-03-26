@@ -1,22 +1,29 @@
 .table {
   margin-top: 10px;
   height: 100vh;
+  font-size: 18px;
+  font-weight: 700;
 
   table {
     width: 95%;
     border-collapse: collapse;
     margin: auto;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.151);
+    background: linear-gradient(to top left,black,rgba(21, 32, 66, 0.973),rgb(29, 36, 12));
+
+
 
     th, td {
       padding: 10px;
       text-align: left;
       border-bottom: 1px solid #ccc;
+      color: #fff;
     }
 
     th {
-      background-color: #f2f2f2;
+      background-color: #28b1a3;
+      color: rgb(17, 52, 75);
+
     }
 
     .img {
@@ -32,6 +39,7 @@
       padding: 5px 10px;
       background-color: #ff0000;
       color: #fff;
+      width: 90px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -49,6 +57,8 @@
       color: #fff;
       border: none;
       border-radius: 5px;
+      width: 90px;
+
       cursor: pointer;
       transition: background-color 0.3s ease;
 
@@ -62,6 +72,8 @@
       margin-bottom: 5px;
       padding: 5px 10px;
       background-color: #28a745;
+      width: 90px;
+
       color: #fff;
       border: none;
       border-radius: 5px;

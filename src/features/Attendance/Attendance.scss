@@ -1,13 +1,22 @@
 .Attendance {
    padding: 20px;
    margin-left: 410px;
-   height: 60vh;
-   margin-top: 4rem;
+   height: 100vh;
+   margin-top: 1rem;
+   width: 79vw;
    gap: 10px;
+   background-color: #ebf7fc;
+   
+
+   border-radius: 10px;
  }
  
  .heading {
    font-size: 24px;
+   background-color: #2baed6;
+   padding-left: 10px;
+   border-radius: 10px;
+   border-bottom: 1px solid;
  }
  
  .common-holder {
@@ -18,21 +27,32 @@
  .attendance-table {
    width: 100%;
    border-collapse: collapse;
-   background-color: #fff;
+   box-shadow: 5px 10px 10px rgba(48, 129, 105, 0.25);
+   font-size: 18px;
+   margin: 10px 0;
+   color: rgb(255, 255, 255);
+   background: linear-gradient(to top left,rgb(5, 153, 238),rgba(15, 49, 46, 0.973),rgb(29, 36, 12));
+
+
  }
  
  .attendance-table th, .attendance-table td {
    padding: 8px;
-   border: 1px solid #967575;
+   border: 1px solid #afafaf;
    text-align: left;
  }
  
  .attendance-table th {
-   background-color: #25aadf;
-   font-weight: bold;
+  background-color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.863);
  }
  
  .attendance-table tbody tr:nth-child(even) {
-   background-color: #f9f9f9;
+  color: rgb(17, 19, 17);
+   background: linear-gradient(to top left,rgb(99, 95, 104),rgba(6, 255, 110, 0.973),rgb(136, 155, 51));
+
+   
  }
  

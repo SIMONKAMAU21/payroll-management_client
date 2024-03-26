@@ -3,13 +3,29 @@ import '../Sidebar/sidebar.scss';
 import { NavLink } from 'react-router-dom';
 import { FaApple } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
-// import { FaPeopleRoof } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
+
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { FaCcAmazonPay } from "react-icons/fa";
+import { motivationalMessages } from '../../components/Worktime/worktime';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Sidebar = () => {
+  const [motivation, setMotivation] = useState('');
+
+  const generateRandomMotivation = () => {
+    const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+    return motivationalMessages[randomIndex];
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomMotivation = generateRandomMotivation();
+      setMotivation(randomMotivation);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const Menu = [
     {
@@ -21,7 +37,6 @@ const Sidebar = () => {
     {
       title: "Employee management",
       path: "/Employee management",
-      // icon: <FaPeopleRoof size='34px' color='aliceblue' />,
       id: 2,
     },
     {
@@ -54,12 +69,6 @@ const Sidebar = () => {
       path: "/Payroll management",
       id: 7,
     },
-    {
-      title: "Profile management",
-      path: "/Profile management",
-      icon: <FaCcAmazonPay size='34px' color='aliceblue' />,
-      id: 8,
-    },
   ];
 
   return (
@@ -79,7 +88,10 @@ const Sidebar = () => {
           </NavLink>
         </div>
       ))}
-    </div>
+     <div className="motivation">
+          <div className="mtext">{motivation}</div>
+        </div> 
+   </div>
   );
 };
 

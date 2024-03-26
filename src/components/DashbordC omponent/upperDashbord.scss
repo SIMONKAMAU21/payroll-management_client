@@ -1,15 +1,14 @@
 .top-holder{
    display: flex;
-   // margin-top: 5rem;
    width: 90%;
    height: 320px;
    align-items: center;
-   margin: auto;
+   margin: 10px 10px 0px 90px;
    border-radius: 10px;
    box-shadow:5px 5px 10px rgba(0,0,0,0.25);
    gap: 10px;
    justify-content: space-around;
-   background-color: #fff;
+   background-color: #f0f0f0;
    @keyframes myAnimation {
       from{
          top: -10px;
@@ -32,12 +31,12 @@
       overflow: hidden;
       position: relative;
       width: 50%;
-      background-color: #def0f3;
+      background-color: #b0bbbd;
       box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
       width: 350px;
       height: 180px;
       .head{
-         border-bottom: 1px solid #ccc;
+         border-bottom: 1px solid #0400ff;
          padding: 10px;
          
       }

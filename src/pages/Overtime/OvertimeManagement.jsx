@@ -25,7 +25,7 @@ const OvertimeManagement = () => {
   return (
     <div className="overtime-management-container">
 <div className="deduction">
-<div className="heading">
+<div className="heading1">
         <button onClick={handleToggleDeductionForm}>Add Deduction</button>
       </div>
       {showDeductionForm && <AddDeduction />}
@@ -33,7 +33,7 @@ const OvertimeManagement = () => {
 </div>
 
     <div className="advance">
-<div className="heading">
+<div className="heading1">
 <button onClick={handleToggleAdvanceForm}>Add Advance</button>
 </div>
       {showAdvanceForm && <AddAdvanceRecord />}

@@ -1,20 +1,29 @@
 .employee {
   margin-left: 410px;
   height: 100vh;
-  margin-top: 3rem;
+  margin-top: 1rem;
+  background-color: #eff7fc;
+  border-radius: 10px;
 .btn{
    width: 250px;
    display: flex;
    justify-content: space-around;
    button{
-      margin-top: 3rem;
       width: 250px;
-      box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
-      font-size: 16px;
+      margin: 10px 15px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.281);
+      font-size: 18px;
       height: 50px;
       border-radius: 10px;
+      border: none;
       font-weight: 600;
-      background-color:rgba(255,153,0,1);
+      background-color:rgba(46, 133, 233, 0.801);
+  &:hover{
+   cursor: pointer;
+   background-color:rgba(27, 161, 56, 0.781);
+   color: #eff7fc;
+}
+      
    }
 }
 }

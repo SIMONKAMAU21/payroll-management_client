@@ -4,8 +4,9 @@
    border: 1px solid #ccc;
    border-radius: 5px;
    margin-left: 410px;
+   background-color: #fff;
    height: 100vh;
-   margin-top: 3rem;
+   margin-top: 1rem;
    overflow-x: scroll;
  
    h2 {
@@ -18,8 +19,10 @@
      input {
        padding: 8px;
        margin-right: 10px;
-       border: 1px solid #ccc;
+       border: 2px solid #2ca9b9;
+       background-color: #d8d8d8;
        border-radius: 5px;
+       font-size: 18px;
      }
  
      button {
@@ -40,17 +43,23 @@
    table {
      width: 100%;
      border-collapse: collapse;
-     background-color: #fff;
+    //  background-color: #fff;
+    color: white;
+    background: linear-gradient(to top left,black,rgba(21, 50, 66, 0.973),rgb(29, 36, 12));
+
+     font-size: 18px;
+     font-weight: 700;
 
  
      th, td {
-       border: 1px solid rgba(255,153,0,1);
        padding: 8px;
        text-align: left;
+       border-bottom: 1px solid;
      }
  
      th {
-       background-color:rgba(255,153,0,1);
+       background-color:rgb(191, 255, 15);
+       color: black;
      }
    }
  }

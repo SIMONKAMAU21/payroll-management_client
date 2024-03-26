@@ -5,7 +5,8 @@
    border-radius: 5px;
    margin-left: 410px;
    height: 100vh;
-   margin-top: 4rem;
+   margin-top: 1rem;
+   background-color: #fff;
    overflow-x: scroll;
  
    h2 {
@@ -18,9 +19,12 @@
      input {
        padding: 8px;
        margin-right: 10px;
-       border: 1px solid #ccc;
        border-radius: 5px;
+       border: none;
+       color: blue;
        outline: none;
+       background-color: #dde1e6;
+       font-size: 19px;
      }
  
      button {
@@ -41,15 +45,26 @@
    .position-list {
      list-style: none;
      padding: 0;
+     color: #fff;
+      font-size: 18px;
+
  
      li {
        margin-bottom: 5px;
      }
      th,td{
-      background-color: #fcfcfc;
-      box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+      background: linear-gradient(to top left,rgb(26, 165, 45),rgba(16, 41, 80, 0.973),rgb(7, 6, 66));
       width: 550px;
-      height: 50px;
+      height: 60px;
+      text-align: center;
+      border-collapse: collapse;
+  
+     }
+ 
+     td{
+      background: linear-gradient(to top left,rgb(4, 43, 66),rgba(4, 9, 19, 0.973),rgb(5, 12, 1));
+      width: 550px;
+      height: 60px;
       text-align: center;
       border-collapse: collapse;
   

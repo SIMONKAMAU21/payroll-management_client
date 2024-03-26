@@ -2,28 +2,29 @@
    margin: 20px;
    padding: 20px;
    border: 1px solid #ccc;
+   background-color: #ffffffe3;
    border-radius: 5px;
    margin-left: 410px;
    height: 100vh;
    margin-top: 1rem;
    overflow-x: scroll;
    .schedule_form{
-    background-color: rgba(0, 0, 0, 0.507);
+    background-color: rgba(0, 0, 0, 0.644);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
     margin-bottom: 10px;
     display: flex;
-    height: 80vh;
+    height: 60vh;
+    border-radius: 10px;
     flex-direction: column;
     justify-content: space-between;
     .hold{
       display: flex;
       flex-direction: column;
-      height: 90%;
-      background-color: #07080891;
-      width: 850px;
+      height: 60%;
+      background-color: #0000009a;
+      width: 650px;
       gap: 1rem;
       justify-content: space-around;
-      // margin: auto;
       margin-top: 65px;
       input{
         background-color: rgb(255, 255, 255);
@@ -46,8 +47,8 @@
       display: flex;
       button{
         background-color: rgb(255, 115, 0);
-        margin: auto;
         width: 50%;
+        margin: 10px 0 50px 100px;
         font-weight: 700;
         font-size: 20px;
         border-radius: 10px;
@@ -81,7 +82,11 @@
    table {
      width: 100%;
      border-collapse: collapse;
-     background-color: #fff;
+     color: #fff;
+     background: linear-gradient(to top left,rgb(0, 0, 0),rgba(78, 16, 80, 0.973),rgb(1, 6, 8));
+ 
+     font-size: 18px;
+     font-weight: 700;
  
      th, td {
        border: 1px solid #ddd;
@@ -97,7 +102,8 @@
    }
  }
      th {
-       background-color:rgba(255,153,0,1);
+       background-color:rgb(29, 27, 26);
+       color: white;
      }
    }
  }

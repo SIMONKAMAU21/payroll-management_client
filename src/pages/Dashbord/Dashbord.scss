@@ -1,22 +1,24 @@
 .dashbord1 {
   margin-left: 410px;
   height: 100vh;
-  background-color: #ffffff79;
-  .upper{
-    margin-top: 2rem;
-  }
+  background-color: #c6c9c7;
+  margin-top: 1rem;
+  width: 79%;
+  border-radius: 10px;
+
   
   .lower {
     height: 400px;
     width: 90%;
     margin-left: 100px;
     margin-top: 30px;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    background-color: #dce5e6;
+
   }
   .dashbord-text {
-       background: linear-gradient(to top left, #1d07e0, #0c0411be); 
-    border-bottom: 1px solid #91ff00;
+    background: linear-gradient(to top left, #1d07e0, #0c0411be); 
+    border-bottom: 1px solid #dd0acb;
     width: 400px;
     border-radius: 10px;
     align-items: center;
