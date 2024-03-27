@@ -47,7 +47,7 @@ function EmployeeBord() {
               {totalPayroll && totalPayroll.GrossPay ? (
                 <p><span>{totalPayroll.GrossPay}</span></p>
               ) : (
-                <p>Data not available</p>
+                <p>-</p>
               )}
             </div>
             <div className="days">
@@ -58,7 +58,7 @@ function EmployeeBord() {
                 {totalPayroll && totalPayroll.AdvanceCash ? (
                   <span>{totalPayroll.AdvanceCash}</span>
                 ) : (
-                  <span>Data not available</span>
+                  <span>-</span>
                 )}
               </div>
             </div>

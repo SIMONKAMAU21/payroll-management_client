@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Attendance.scss';
 import { useGetAttendanceQuery } from './AttendanceApi';
-import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
+import { LoadingToast, ErrorToast, SuccessToast } from '../../components/toaster/Toaster';
 
 const AttendanceReportList = () => {
+  SuccessToast("attendance reports")
   const { data: attendance, isLoading, isError } = useGetAttendanceQuery();
   const [attendanceList, setAttendanceList] = useState([]);
 
@@ -13,7 +14,7 @@ const AttendanceReportList = () => {
     }
   }, [attendance]);
 
-  if (isLoading) return <LoadingToast />;
+  if (isLoading) return <p>loading....</p>;
   if (isError) return <ErrorToast message="Error fetching data" />;
 
   return (

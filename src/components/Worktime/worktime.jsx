@@ -55,7 +55,7 @@ const WorkTimer = () => {
   }, []);
 
   const startWorking = async () => {
-    if (lastStopTime && new Date() - lastStopTime < 24 * 60 * 60 * 1000) {
+    if (lastStopTime && new Date() - lastStopTime < 60 * 1000 ) {
       ErrorToast("You cannot start working again before 24 hours have passed since your last stop.");
     } else {
       setIsWorking(true);

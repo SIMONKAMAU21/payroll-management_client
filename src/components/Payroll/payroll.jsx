@@ -41,7 +41,7 @@ const PayrollRecord = () => {
   }
 
   if (!payroll || payroll.length === 0) {
-    return <div>No payroll data found.</div>;
+    return <div>no payments done.</div>;
   }
 
   return (

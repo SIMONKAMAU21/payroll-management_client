@@ -71,7 +71,6 @@ const AddEmployee = ({ closeEmployee }) => {
         } catch (err) {
             ErrorToast("could not add employee");
             LoadingToast(false)
-            console.log('error', error+message)
         }
     };
     const handleChange = (e) => {

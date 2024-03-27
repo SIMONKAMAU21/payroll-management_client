@@ -34,7 +34,7 @@ const EmployeeTable = () => {
   }
 
   if (isError) {
-    return <ErrorToast message="Error fetching data" />;
+    return <ErrorToast/>;
   }
 
   return (
