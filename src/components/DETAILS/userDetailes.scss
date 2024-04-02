@@ -17,6 +17,8 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     max-width: 80%;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     max-height: 80%;
 
     .close {

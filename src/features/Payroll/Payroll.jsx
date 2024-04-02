@@ -2,43 +2,58 @@ import React, { useState } from 'react';
 import './Payroll.scss';
 import { useGetPayrollQuery, useAddPayrollMutation } from './PayrollApi';
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
+import { useEffect } from 'react';
+import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
 
 const PayrollManagement = () => {
   const [employeeID, setEmployeeID] = useState('');
+  const [employeeList, setEmployeeList] = useState([])
   const { data: payrollData, isLoading, isError } = useGetPayrollQuery();
+  const { data: employeeData } = useGetEmployeesQuery();
   const [isAdding, setIsAdding] = useState(false);
   const [addError, setAddError] = useState(null);
   const [addPayrollMutation] = useAddPayrollMutation();
-
+  // console.log('employeeData', employeeData)
+  useEffect(() => {
+    if (employeeData) {
+      setEmployeeList(employeeData)
+    }
+  }, []);
   const handleGeneratePayroll = async () => {
-    setIsAdding(true); 
-    setAddError(null); 
+    setIsAdding(true);
+    setAddError(null);
 
     try {
       const response = await addPayrollMutation({ EmployeeID: employeeID }).unwrap();
       SuccessToast(response.message);
-      setEmployeeID(''); 
+      setEmployeeID('');
     } catch (error) {
       setAddError(error.message || 'Error adding payroll data');
       ErrorToast('Employee ID not found');
     } finally {
-      setIsAdding(false); 
+      setIsAdding(false);
     }
   };
 
- 
-  
+
+
 
   return (
     <div className="payroll-management">
       <h2>Payroll Management</h2>
       <div className="input-fields">
-        <input
-          type="text"
-          placeholder="Employee ID"
+        <select
           value={employeeID}
-          onChange={(e) => setEmployeeID(e.target.value)}
-        />
+          onChange={(e) => setEmployeeID(e.target.value)}>
+          <option value="">
+            select employee id
+          </option>
+          {employeeList.map(employee => (
+            <option key={employee.ID} value={employee.ID}>
+              {employee.Firstname}
+            </option>
+          ))}
+        </select>
         <button onClick={handleGeneratePayroll}>Generate Payroll</button>
       </div>
       <table>

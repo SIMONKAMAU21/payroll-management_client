@@ -1,28 +1,9 @@
-// .route {
-//    width: 100vw;
-//    height: 100vh;
-//    font-family: Arial, Helvetica, sans-serif;
-//    position: fixed;
-//    background: linear-gradient(to top left, #041e42, #3b5998); /* Blue Gradient */
-// }
-// .route {
-//    width: 100vw;
-//    height: 100vh;
-//    font-family: Arial, Helvetica, sans-serif;
-//    position: fixed;
-//    background: linear-gradient(to top left, #ff7e5f, #feb47b); /* Peach Gradient */
-// }
-// .route {
-//    width: 100vw;
-//    height: 100vh;
-//    font-family: Arial, Helvetica, sans-serif;
-//    position: fixed;
-//    background: linear-gradient(to top left, #90caf9, #64b5f6); /* Sky Blue Gradient */
-// }
+
 .route {
    width: 100vw;
    height: 100vh;
    font-family: Arial, Helvetica, sans-serif;
    position: fixed;
-   background: linear-gradient(to top left, #159da1f8, #19363a); /* Green to Blue Gradient */
+   filter: grayscale(22%);
+   background: linear-gradient(to top left, #159da1f8, #19363a); 
 }

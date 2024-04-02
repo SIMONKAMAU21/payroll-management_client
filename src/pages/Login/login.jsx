@@ -49,50 +49,56 @@ const Login = () => {
     <div className="login-container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-wrap">
-          <div className="animation">
+          <div className="container-form">
+            <div className="form-lholder">
+              <div className="inputs-holder">
+                <div className='input-holder'>
+                  <input
+                    placeholder="Email..."
+                    {...register('Email')}
+                  />
+                  <div className="react">
+                    <MdOutlineMarkunread size="34px" color="black" />
+                  </div>
+                </div>
+                <p>{errors.Email?.message}</p>
+                <div className='input-holder'>
+                  <input
+                    type="password"
+                    placeholder="Password.."
+                    {...register('Password')}
+                  />
+                  <div className="react">
+                    <MdLockPerson size="34px" color="black" />
+                  </div>
+                </div>
+                <p>{errors.Password?.message}</p>
+              </div>
+              <div className='btn'>
+                <button type="submit">
+                  Login
+                </button>
+              </div>
+              <div>
+              </div>
 
-            <RxDashboard size='34px' color='rgb(0, 211, 248)' />
-          </div>
-          
-          <div className="form-lholder">
-            <div className="inputs-holder">
-              <div className='input-holder'>
-                <input
-                  placeholder="Email..."
-                  {...register('Email')}
-                />
-                <div className="react">
-                  <MdOutlineMarkunread size="34px" color="rgba(9, 5, 132, 0.743)" />
-                </div>
-              </div>
-              <p>{errors.Email?.message}</p>
-              <div className='input-holder'>
-                <input
-                  type="password"
-                  placeholder="Password.."
-                  {...register('Password')}
-                />
-                <div className="react">
-                  <MdLockPerson size="34px" color="rgba(9, 5, 132, 0.743)" />
-                </div>
-              </div>
-              <p>{errors.Password?.message}</p>
-            </div>
-            <div className='btn'>
-              <button type="submit">
-                Login
-              </button>
-            </div>
-            <div>
-              <h4>Good to see you again</h4>
             </div>
 
-          </div>
-          <div className="animation1">
-            <RxDashboard size='34px' color='white' />
+            <div className="text-login">
+              <div className="welcome">
+                <h1>WELCOME</h1>
+              </div>
+               <div className="p-text">
+                <h2> <span>TO PAYROLL AND MANAGEMENT SYSTEM</span></h2>
+                <p>PLEASE ENTER YOUR CREDENTIALS TO ACCESS YOUR ACCOUNT</p>
+              </div>
+              <div className="extra">
+                <p>Made easy for you</p>
+              </div>
+            </div>
           </div>
         </div>
-       
+
       </form>
 
     </div>
