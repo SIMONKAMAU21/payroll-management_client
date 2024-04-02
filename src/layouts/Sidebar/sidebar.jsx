@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { FaApple } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { FaClock } from "react-icons/fa";
-
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { FaCcAmazonPay } from "react-icons/fa";
@@ -29,9 +28,9 @@ const Sidebar = () => {
 
   const Menu = [
     {
-      title: "Dashbord",
+      title: "Home",
       path: "/Dashbord",
-      icon: <RxDashboard size='34px' color='aliceblue' />,
+      icon: <RxDashboard size='34px' color='#2f4f4f'  />,
       id: 1,
     },
     {
@@ -42,30 +41,30 @@ const Sidebar = () => {
     {
       title: "Attendance reports",
       path: "/Attendance reports",
-      icon: <FaApple color='aliceblue' size='34px' />,
+      icon: <FaApple color='#2f4f4f'  size='34px' />,
       id: 3,
     },
     {
       title: "Overtime management",
       path: "/Overtime management",
-      icon: <FaClock size='34px' color='aliceblue' />,
+      icon: <FaClock size='34px' color='#2f4f4f'  />,
       id: 4,
     },
     {
       title: "Shedule management",
       path: "/Shedule management",
-      icon: <IoCalendarNumberOutline size='34px' color='aliceblue' />,
+      icon: <IoCalendarNumberOutline size='34px' color='#2f4f4f'  />,
       id: 5,
     },
     {
       title: "Position management",
       path: "/Position management",
-      icon: <RiGitRepositoryFill color='aliceblue' size='34px' />,
+      icon: <RiGitRepositoryFill color='#2f4f4f'  size='34px' />,
       id: 6,
     },
     {
       title: "Payroll management",
-      icon: <FaCcAmazonPay size='34px' color='aliceblue' />,
+      icon: <FaCcAmazonPay size='34px' color='#2f4f4f' />,
       path: "/Payroll management",
       id: 7,
     },
