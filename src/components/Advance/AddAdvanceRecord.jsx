@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useAddAdvanceMutation } from './AdvanceApi';
 import '../Advance/AddAdvanceRecord.scss';
-import Modal from '../modal/Modal';
+import Modal from '../modal/modal';
 
 const AddAdvance = () => {
   const [addAdvance, { isLoading }] = useAddAdvanceMutation();

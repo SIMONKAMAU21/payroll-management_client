@@ -51,19 +51,19 @@ const PayrollRecord = () => {
 <div className="payroll-record">
       <div className="record-item">
         <span className="record-label">Employee ID:</span>
-        <span className="record-value">{payroll[0].EmployeeID}</span>
+        <span className="record-value">{payroll.EmployeeID}</span>
       </div>
       <div className="record-item">
         <span className="record-label">Gross Pay:</span>
-        <span className="record-value">{payroll[0].GrossPay}</span>
+        <span className="record-value">{payroll.GrossPay}</span>
       </div>
       <div className="record-item">
         <span className="record-label">Net Pay:</span>
-        <span className="record-value">{payroll[0].NetPay}</span>
+        <span className="record-value">{payroll.NetPay}</span>
       </div>
       <div className="record-item">
         <span className="record-label">Payroll Date:</span>
-        <span className="record-value">{payroll[0].PayrollDate}</span>
+        <span className="record-value">{payroll.PayrollDate}</span>
       </div>
     
     </div>

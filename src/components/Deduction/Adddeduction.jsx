@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useAddDeductionMutation } from './DeductionApi';
-import Modal from '../modal/Modal';
+import Modal from '../modal/modal';
 
 const AddAdvance = () => {
     const [addDeduction, { isLoading }] = useAddDeductionMutation(); 

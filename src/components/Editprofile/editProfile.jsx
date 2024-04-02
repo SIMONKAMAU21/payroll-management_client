@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { RxDashboard } from "react-icons/rx";
-import Modal from '../modal/Modal';
 import { useUpdateEmployeeMutation } from '../../features/Employeemanagement/employeeApi';
 import { useEffect } from 'react';
 import { ErrorToast, SuccessToast } from '../toaster/Toaster';
+import  Modal from '../modal/modal'
 
 const UpdateEmployee = ({ closeEmployee }) => {
     const [formData, setFormData] = useState({

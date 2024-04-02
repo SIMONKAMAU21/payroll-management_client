@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Shedulemanagement.scss';
 import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMutation, useAddSchedulesMutation } from './scheduleApi';
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
-import Modal from '../../components/modal/Modal';
+// import Modal from '../../components/modal/Modal';
+import Modal from '../../components/modal/modal'
 import {StyleSheet,Text,View, PDFDownloadLink} from '@react-pdf/renderer'
 
 const ScheduleManagement = () => {
