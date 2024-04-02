@@ -27,8 +27,8 @@ const AttendanceReportList = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Start Date</th>
-              <th>End Date</th>
+              <th>Time in</th>
+              <th>Time out</th>
               <th>Date</th>
               <th>Position</th>
             </tr>
@@ -37,12 +37,13 @@ const AttendanceReportList = () => {
             {attendanceList.map(data => (
               <tr key={data.ID || '-'}>
                 <td>{data.Firstname || '-'} {data.Lastname || '-'}</td>
-                <td>{data.TimeIn || '-'}</td>
-                <td>{data.TimeOut || "-"}</td>
-                <td>{data.Date || '-'}</td>
+                <td>{data.TimeIn ? new Date(data.TimeIn).toLocaleTimeString() : '-'}</td>
+                <td>{data.TimeOut ? new Date(data.TimeOut).toLocaleTimeString() : '-'}</td>
+                <td>{data.Date ? new Date (data.Date).toLocaleDateString():'-'}</td>
                 <td>{data.PositionID || '-'}</td>
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>
@@ -51,3 +52,12 @@ const AttendanceReportList = () => {
 };
 
 export default AttendanceReportList;
+
+function calculateHoursWorked(startTime, endTime) {
+  const start = new Date(startTime);
+  const end = new Date(endTime);
+  const diff = end - start;
+  const hours = Math.floor(diff / 1000 / 60 / 60);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+  return `${hours} hours ${minutes} minutes`;
+}

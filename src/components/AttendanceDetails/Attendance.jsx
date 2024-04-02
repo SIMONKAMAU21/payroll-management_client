@@ -35,7 +35,8 @@ const Attendance = () => {
                             attendanceData.attendanceRecords.map(record => (
                                 <tr key={record.ID}>
                                     <td>{new Date(record.Date).toDateString()}</td>
-                                    <td>{record.TimeIn ? new Date(record.TimeIn).toLocaleTimeString() : '-'}</td>
+                                    <td>{record.TimeIn ? new Date(record.TimeIn).toLocaleTimeString(0.
+                                        ) : '-'}</td>
                                     <td>{record.TimeOut ? new Date(record.TimeOut).toLocaleTimeString() : '-'}</td>
                                     <td>{record.TimeOut ? calculateHoursWorked(record.TimeIn, record.TimeOut) : '-'}</td>
                                 </tr>

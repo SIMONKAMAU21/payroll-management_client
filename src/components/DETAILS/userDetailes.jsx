@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
 import '../DETAILS/userDetailes.scss';
 import { useGetOneUserQuery } from '../../features/Employeemanagement/employeeApi';
 
 const UserDetailsModal = ({ employeeId, onClose }) => {
-  const [userDetails, setUserDetails] = useState(null);
   const { data: userData, isLoading, isError } = useGetOneUserQuery(employeeId);
-
-  useEffect(() => {
-    if (userData) {
-      setUserDetails(userData);
-    }
-  }, [userData]);
 
   const handleClose = () => {
     onClose();
@@ -32,21 +25,22 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
         <h2>User Details</h2>
         <div className="user-details-container">
           <div className="user-image-container">
-            <img src={userDetails?.PhotoURL} alt="User" className="user-image" />
+            <img src={userData?.PhotoURL} alt="User" className="user-image" />
           </div>
           <div className="user-details">
-            <p><strong>Firstname:</strong> {userDetails?.Firstname || "-"}</p>
-            <p><strong>Lastname:</strong> {userDetails?.Lastname}</p>
-            <p><strong>Position:</strong> {userDetails?.Position}</p>
-            <p><strong>ID:</strong> {userDetails?.ID}</p>
-            <p><strong>Schedule:</strong> {userDetails?.Schedules_name}</p>
-            <p><strong>TimeIn:</strong> {userDetails?.TimeIn}</p>
-            <p><strong>TimeOut:</strong> {userDetails?.TimeOut}</p>
-            <p><strong>StartTime:</strong> {userDetails?.StartTime}</p>
-            <p><strong>Address:</strong> {userDetails?.Address}</p>
-            <p><strong>Date of birth:</strong> {userDetails?.BirthDate}</p>
-            <p><strong>Contact:</strong>+254 {userDetails?.ContactInfo}</p>
-            <p><strong>Email:</strong> {userDetails?.Email}</p>
+            <p><span>Firstname:</span> {userData?.Firstname || "-"}</p>
+            <p><span><span>Lastname:</span></span> {userData?.Lastname} </p>
+            <p><span><span>Position:</span></span> {userData?.Position}</p>
+            <p><span><span>ID:</span></span> {userData?.ID}</p>
+            <p><span><span>Schedule:</span></span> {userData?.Schedule}</p>
+            <p><span>TimeIn:</span> {userData.TimeIn?new Date(userData.TimeIn).toLocaleTimeString(): '-'}</p>
+            <p><span>TimeOut:</span> {userData.TimeOut ? new Date (userData.TimeOut).toLocaleTimeString(): '-'}</p>
+            <p><span>StartTime:</span>{userData?.StartTime ? new Date (userData.StartTime).toLocaleTimeString(): '-'}</p>
+            <p><span><span>EndTime:</span></span> {userData?.EndTime ? new Date (userData.EndTime).toLocaleTimeString(): '-'}</p>
+            <p><span><span>Address:</span></span> {userData.Address}</p>
+            <p><span><span>Date of birth:</span></span> {userData?.BirthDate ? new Date (userData.BirthDate).toLocaleDateString():"-"}</p>
+            <p><span><span>Contact:</span></span>+254 {userData?.ContactInfo}</p>
+            <p><span><span>Email:</span></span> {userData?.Email}</p>
           </div>
         </div>
       </div>
