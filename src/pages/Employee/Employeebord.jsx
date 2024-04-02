@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetTotalPayrollByEmployeeIDQuery } from '../../features/Payroll/PayrollApi';
+import { useGetPayrollByIdQuery} from '../../features/Payroll/PayrollApi';
 import '../Employee/Employeebord.scss';
 import WorkTimer from '../../components/Worktime/worktime';
 import Clock from '../../components/clock/clock';
@@ -11,9 +11,9 @@ function EmployeeBord() {
   const loggedInUser = localStorage.getItem('userDetails');
   const formattedLoggedInUser = JSON.parse(loggedInUser);
   const EmployeeID = formattedLoggedInUser.EmployeeID
-  const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetTotalPayrollByEmployeeIDQuery(formattedLoggedInUser);
+  const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetPayrollByIdQuery(formattedLoggedInUser);
 
-  
+  console.log('totalPayroll', totalPayroll)
 
   return (
     <div className="maincontent">

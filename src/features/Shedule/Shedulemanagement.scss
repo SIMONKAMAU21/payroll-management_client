@@ -82,9 +82,8 @@
    table {
      width: 100%;
      border-collapse: collapse;
-     color: #fff;
-     background: linear-gradient(to top left,rgb(0, 0, 0),rgba(78, 16, 80, 0.973),rgb(1, 6, 8));
- 
+     background-color: rgb(218, 219, 218);
+     
      font-size: 18px;
      font-weight: 700;
  
@@ -102,7 +101,7 @@
    }
  }
      th {
-       background-color:rgb(29, 27, 26);
+      background-color: #28b1a3;
        color: white;
      }
    }

@@ -53,7 +53,7 @@ const PayrollManagement = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {payrollData && Array.isArray(payrollData) && (
+          {payrollData && Array.isArray(payrollData) && (
             payrollData.map(payrollRecord => (
               <tr key={payrollRecord.ID}>
                 <td>{payrollRecord.ID}</td>
@@ -64,7 +64,7 @@ const PayrollManagement = () => {
                 <td>{payrollRecord.PayrollDate}</td>
               </tr>
             ))
-          )} */}
+          )}
         </tbody>
       </table>
     </div>

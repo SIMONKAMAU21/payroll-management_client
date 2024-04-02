@@ -30,7 +30,7 @@ export const payrollApi=createApi({
         }),
         getTotalPayrollByEmployeeID:builder.query({
             query:(Employee)=>({
-                url:`Payrolls/total/${Employee.ID}`,
+                url:`Payrolls/${Employee.ID}`,
                 method:`GET`,
             }),
             providesTags:['Payroll']
