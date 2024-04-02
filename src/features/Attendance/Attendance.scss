@@ -30,9 +30,7 @@
    box-shadow: 5px 10px 10px rgba(48, 129, 105, 0.25);
    font-size: 18px;
    margin: 10px 0;
-   color: rgb(255, 255, 255);
-   background: linear-gradient(to top left,rgb(5, 153, 238),rgba(15, 49, 46, 0.973),rgb(29, 36, 12));
-
+   background-color: rgb(218, 219, 218);
 
  }
  
@@ -43,7 +41,7 @@
  }
  
  .attendance-table th {
-  background-color: #000000;
+  background-color: #28b1a3;
   font-weight: bold;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.863);
@@ -51,8 +49,8 @@
  
  .attendance-table tbody tr:nth-child(even) {
   color: rgb(17, 19, 17);
-   background: linear-gradient(to top left,rgb(99, 95, 104),rgba(6, 255, 110, 0.973),rgb(136, 155, 51));
-
+  font-size: 18px;
+  font-weight: 600;
    
  }
  

@@ -9,20 +9,17 @@
     border-collapse: collapse;
     margin: auto;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.151);
-    background: linear-gradient(to top left,black,rgba(21, 32, 66, 0.973),rgb(29, 36, 12));
-
-
-
+    background-color: rgb(218, 219, 218);
+    color: rgb(8, 5, 5);
     th, td {
       padding: 10px;
       text-align: left;
       border-bottom: 1px solid #ccc;
-      color: #fff;
     }
 
     th {
       background-color: #28b1a3;
-      color: rgb(17, 52, 75);
+      color: rgb(255, 255, 255);
 
     }
 

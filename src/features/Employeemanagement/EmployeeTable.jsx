@@ -58,7 +58,6 @@ const EmployeeTable = () => {
               <td><img src={employee.PhotoURL} alt="no pic"  className='img'/></td>
               <td>
                 <button onClick={() => handleRemoveEmployee(employee.ID)} className='btn2'>Remove</button>
-                <button onClick={() => handleEditEmployee(employee.ID)}className='btn3'>Edit</button>
                 <button onClick={() => handleSeeMore(employee.ID)}className='btn1'>See more</button>
               </td>
             </tr>
