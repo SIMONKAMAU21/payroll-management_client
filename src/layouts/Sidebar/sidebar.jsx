@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Sidebar/sidebar.scss';
 import { NavLink } from 'react-router-dom';
-import { FaApple } from "react-icons/fa";
-import { RxDashboard } from "react-icons/rx";
+import { TbReportSearch } from "react-icons/tb";
+import { FaHome } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { RiGitRepositoryFill } from "react-icons/ri";
 import { FaCcAmazonPay } from "react-icons/fa";
+import { IoPerson } from "react-icons/io5";
 import { motivationalMessages } from '../../components/Worktime/worktime';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const Sidebar = () => {
   const [motivation, setMotivation] = useState('');
 
-  const generateRandomMotivation = () => {
-    const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
-    return motivationalMessages[randomIndex];
-  };
   useEffect(() => {
     const interval = setInterval(() => {
       const randomMotivation = generateRandomMotivation();
@@ -26,40 +21,46 @@ const Sidebar = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const generateRandomMotivation = () => {
+    const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+    return motivationalMessages[randomIndex];
+  };
+
   const Menu = [
     {
       title: "Home",
-      path: "/Dashbord",
-      icon: <RxDashboard size='34px' color='#2f4f4f'  />,
+      path: "/Dashboard",
+      icon: <FaHome  size='34px' color='#2f4f4f' />,
       id: 1,
     },
     {
       title: "Employee management",
       path: "/Employee management",
+      icon: <IoPerson size='34px' color='#2f4f4f' />,
       id: 2,
     },
     {
       title: "Attendance reports",
       path: "/Attendance reports",
-      icon: <FaApple color='#2f4f4f'  size='34px' />,
+      icon: <TbReportSearch  color='#2f4f4f' size='34px' />,
       id: 3,
     },
     {
       title: "Overtime management",
       path: "/Overtime management",
-      icon: <FaClock size='34px' color='#2f4f4f'  />,
+      icon: <FaClock size='34px' color='#2f4f4f' />,
       id: 4,
     },
     {
-      title: "Shedule management",
-      path: "/Shedule management",
-      icon: <IoCalendarNumberOutline size='34px' color='#2f4f4f'  />,
+      title: "Schedule management", // Corrected spelling
+      path: "/Schedule management",
+      icon: <IoCalendarNumberOutline size='34px' color='#2f4f4f' />,
       id: 5,
     },
     {
       title: "Position management",
       path: "/Position management",
-      icon: <RiGitRepositoryFill color='#2f4f4f'  size='34px' />,
+      icon: <RiGitRepositoryFill color='#2f4f4f' size='34px' />,
       id: 6,
     },
     {
@@ -72,11 +73,12 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar-holder'>
-      {Menu.map((item, index) => (
+      {Menu.map((item) => (
         <div className="menu" key={item.id}>
           <NavLink
             to={item.path}
             style={{ textDecoration: 'none', color: 'black' }}
+            activeClassName="active"
           >
             <div className="holder">
               <div className="value">
@@ -87,10 +89,10 @@ const Sidebar = () => {
           </NavLink>
         </div>
       ))}
-     <div className="motivation">
-          <div className="mtext">{motivation}</div>
-        </div> 
-   </div>
+      <div className="motivation">
+        <div className="mtext">{motivation}</div>
+      </div>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@
   margin-top: 0.5rem;
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
   position: fixed;
+
   .motivation{
     background: linear-gradient(to top left, #000000,black,#1a0b42);
     height: 120px;
@@ -25,6 +26,8 @@
     align-items: center;
     display: flex;
 
+    }
+  
     .value {
       cursor: pointer;
       background-color: rgb(255, 255, 255);
@@ -39,12 +42,16 @@
       border-radius:5px;
       font-size: 20px;
       font-weight: 100;
+      &.active{
+        background-color: red;
+        color: blue($color: #000000);
 
       &:hover {
         background: linear-gradient(to top left, #380752, #000000, #073452);
         color: white;
 
       }
+
 
     }
   }

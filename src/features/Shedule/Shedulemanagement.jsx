@@ -72,7 +72,7 @@ const ScheduleManagement = () => {
          <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
                <div className="hold">   
-                  <div>     <input type="date" name="startTime" placeholder="Start Time" /></div>
+                  <div>  <input type="date" name="startTime" placeholder="Start Time" /></div>
                   <div><input type="date" name="endTime" placeholder="End Time" /></div>
                   <div><input type="text" name="Days" autoComplete='on' placeholder="Days" /></div>
                   <div> <input type="text" name="employee" placeholder="Employee" /></div></div>

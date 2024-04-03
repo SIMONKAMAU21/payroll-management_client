@@ -21,14 +21,16 @@ const DeductionTable = () => {
                     <tr>
                         <th>Description</th>
                         <th>Amount</th>
+                        <th>Employee</th>
                         <th>Employee ID</th>
                     </tr>
                 </thead>
                 <tbody>
                     {deductions.map((deduction, index) => (
                         <tr key={index}>
-                            <td>{deduction.Description}</td>
-                            <td>{deduction.Amount}</td>
+                            <td>{deduction.Description|| "-"}</td>
+                            <td>{deduction.Amount|| "-"}</td>
+                            <td>{deduction.Firstname} {deduction.Lastname} </td>
                             <td>{deduction.EmployeeID}</td>
                         </tr>
                     ))}

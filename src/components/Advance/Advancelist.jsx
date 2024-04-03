@@ -24,14 +24,16 @@ const AdvanceTable = () => {
                     <tr>
                         <th>Date</th>
                         <th>Amount</th>
+                        <th>Employee </th>
                         <th>Employee ID</th>
                     </tr>
                 </thead>
                 <tbody>
                     {advances.map((advance, index) => (
                         <tr key={index}>
-                            <td>{advance.Date}</td>
+                            <td>{advance.Date? new Date (advance.Date).toLocaleDateString():"-"} </td>
                             <td>{advance.Amount}</td>
+                            <td>{advance.Firstname} {advance.Lastname} </td>
                             <td>{advance.EmployeeID}</td>
                         </tr>
                     ))}

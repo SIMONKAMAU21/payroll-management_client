@@ -122,13 +122,13 @@ const WorkTimer = () => {
       <div className='worktimer-container'>
         <h2 className='worktimer-heading'>Work Timer</h2>
         <div className='worktimer-details'>
-          <p><strong>Total time worked:</strong> {calculateTotalTime()}</p>
+          <p><span>Total time worked:</span> {calculateTotalTime()}</p>
           {employeeData && (
             <div className='display'>
-              <p><strong>Name:</strong> {employeeData.Firstname} {employeeData.Lastname}</p>
-              <p><strong>Email:</strong> {employeeData.Email}</p>
-              <p><strong>Address:</strong> {employeeData.Address}</p>
-              <p><strong>Contact Info:</strong> {employeeData.ContactInfo}</p>
+              <p><span>Name:</span> {employeeData.Firstname} {employeeData.Lastname}</p>
+              <p><span>Email:</span> {employeeData.Email}</p>
+              <p><span>Address:</span> {employeeData.Address}</p>
+              <p><span>Contact Info:</span> +254 {employeeData.ContactInfo}</p>
               <div className="img">
                 <img className='employee-photo' src={employeeData.PhotoURL} alt="Employee Photo" />
               </div>

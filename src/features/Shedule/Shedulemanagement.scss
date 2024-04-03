@@ -83,12 +83,11 @@
      width: 100%;
      border-collapse: collapse;
      background-color: rgb(218, 219, 218);
-     
      font-size: 18px;
      font-weight: 700;
  
      th, td {
-       border: 1px solid #ddd;
+       border: 1px solid #b90000;
        padding: 8px;
        text-align: left;
      }
@@ -101,7 +100,7 @@
    }
  }
      th {
-      background-color: #28b1a3;
+      background-color: #a3293d;
        color: white;
      }
    }

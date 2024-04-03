@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useAddDeductionMutation } from './DeductionApi';
 import Modal from '../modal/modal';
+import { useGetEmployeesQuery } from '../../features/Employeemanagement/employeeApi';
 
 const AddAdvance = () => {
     const [addDeduction, { isLoading }] = useAddDeductionMutation(); 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [employeeID,setEmployeeID]=useState("");
+    const{data:employeeData}=useGetEmployeesQuery()
 
     const handleSubmit = async (e) => {
         LoadingToast();
         e.preventDefault();
         const Description = e.target.Description.value;
         const Amount = e.target.Amount.value;
-        const EmployeeID = e.target.EmployeeID.value;
-
         try {
             const response = await addDeduction({
             
               Description,
               Amount: parseFloat(Amount),
-              EmployeeID
+              EmployeeID:employeeID
                 
             }).unwrap(); 
 
@@ -56,12 +57,18 @@ const AddAdvance = () => {
                             name="Amount"
                             id='Amount'
                         />
-                        <input
-                            type="text"
-                            placeholder="Employee ID"
-                            name="EmployeeID"
-                            id='EmployeeID'
-                        />
+                         <select
+                value={employeeID}
+                onChange={(e) => setEmployeeID(e.target.value)}>
+                <option value="">
+                  select Employee
+                </option>
+                {employeeData && employeeData.map(employee => (
+                  <option key={employee.ID} value={employee.ID}>
+                    {employee.Firstname|| '-'} {employee.Lastname} {employee.ID}
+                  </option>
+                ))}
+              </select>
                         <div className="footer">
                             <div className="btn">
                                 <button type="submit" disabled={isLoading}>Add Deduction</button>

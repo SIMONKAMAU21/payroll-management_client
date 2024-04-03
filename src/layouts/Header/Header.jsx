@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import UpdateEmployee from '../../components/Editprofile/editProfile';
 import { LoadingToast,SuccessToast,ErrorToast } from '../../components/toaster/Toaster';
+import { FaAws } from "react-icons/fa6";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Header = () => {
     <div className='container'>
       <div className="logo">
         <div className="text">
-          <img src="" alt="nolog" srcSet="no logo" />
+          <FaAws  size="42px"/>
         </div>
       </div>
       <div className="profile">

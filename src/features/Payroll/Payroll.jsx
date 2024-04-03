@@ -7,18 +7,14 @@ import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
 
 const PayrollManagement = () => {
   const [employeeID, setEmployeeID] = useState('');
-  const [employeeList, setEmployeeList] = useState([])
   const { data: payrollData, isLoading, isError } = useGetPayrollQuery();
   const { data: employeeData } = useGetEmployeesQuery();
   const [isAdding, setIsAdding] = useState(false);
   const [addError, setAddError] = useState(null);
   const [addPayrollMutation] = useAddPayrollMutation();
-  // console.log('employeeData', employeeData)
-  useEffect(() => {
-    if (employeeData) {
-      setEmployeeList(employeeData)
-    }
-  }, []);
+
+
+
   const handleGeneratePayroll = async () => {
     setIsAdding(true);
     setAddError(null);
@@ -48,9 +44,9 @@ const PayrollManagement = () => {
           <option value="">
             select employee id
           </option>
-          {employeeList.map(employee => (
+          {employeeData&&employeeData.map(employee => (
             <option key={employee.ID} value={employee.ID}>
-              {employee.Firstname}
+              {employee.Firstname} {employee.Lastname} {employee.ID}
             </option>
           ))}
         </select>
@@ -64,7 +60,8 @@ const PayrollManagement = () => {
             <th>Gross Pay</th>
             <th>Deduction ID</th>
             <th>Net Pay</th>
-            <th>Payroll Date</th>
+            <th> Date</th>
+            <th> Time</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +73,8 @@ const PayrollManagement = () => {
                 <td>{payrollRecord.GrossPay}</td>
                 <td>{payrollRecord.DeductionID || 'N/A'}</td>
                 <td>{payrollRecord.NetPay}</td>
-                <td>{payrollRecord.PayrollDate}</td>
+                <td>{payrollRecord.PayrollDate ?new Date(payrollRecord.PayrollDate).toLocaleDateString():"-"}</td>
+                <td>{payrollRecord.PayrollDate ?new Date(payrollRecord.PayrollDate).toLocaleTimeString():"-"}</td>
               </tr>
             ))
           )}

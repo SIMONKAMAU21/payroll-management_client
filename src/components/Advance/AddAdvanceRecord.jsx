@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useAddAdvanceMutation } from './AdvanceApi';
 import '../Advance/AddAdvanceRecord.scss';
 import Modal from '../modal/modal';
 import { useGetEmployeesQuery } from '../../features/Employeemanagement/employeeApi';
-import { useEffect } from 'react';
 
 const AddAdvance = () => {
   const [addAdvance, { isLoading }] = useAddAdvanceMutation();
   const [employeeID, setEmployeeID] = useState('');
   const { data: employeeData } = useGetEmployeesQuery();
-  const [employeeList, setEmployeeList] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  console.log('employeeData', employeeData)
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const date = e.target.Date.value;
     const amount = e.target.Amount.value;
-
-    useEffect(() => {
-      if (employeeData) {
-        setEmployeeList(employeeData)
-      }
-    }, []);
 
     try {
       LoadingToast();
@@ -37,7 +26,6 @@ const AddAdvance = () => {
     } catch (err) {
       ErrorToast('An error occurred. Please try again later.');
     } finally {
-      LoadingToast(false);
     }
   };
 
@@ -66,7 +54,7 @@ const AddAdvance = () => {
                 <option value="">
                   select Employee
                 </option>
-                {employeeList.map(employee => (
+                {employeeData && employeeData.map(employee => (
                   <option key={employee.ID} value={employee.ID}>
                     {employee.Firstname}
                   </option>

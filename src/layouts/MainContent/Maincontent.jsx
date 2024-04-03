@@ -20,12 +20,12 @@ const Maincontent = () => {
 <Header/>
 <Sidebar/>
 <Routes>
-  <Route path='/admin'element= {<Navigate to='/Dashbord' replace/> } />
-<Route path='/Dashbord' element={<Dashbord/>} exact/>
+  <Route path='/admin'element= {<Navigate to='/Dashboard' replace/> } />
+<Route path='/Dashboard' element={<Dashbord/>} exact/>
 <Route path='/Employee management' element ={<Employee/>}/>
 <Route path='/Attendance reports' element={<AttendanceReportList/>}/>
 <Route path='/Overtime management' element ={<OvertimeManagement/>}/>
-<Route path= '/Shedule management' element = {<ScheduleManagement/>}/>
+<Route path= '/Schedule management' element = {<ScheduleManagement/>}/>
 <Route path='/Position management' element ={<PositionManagement/>}/>
 <Route path ='/Payroll management' element={<PayrollManagement/>}/>
 <Route path='/profile management' element ={<ProfileManagement/>}/>

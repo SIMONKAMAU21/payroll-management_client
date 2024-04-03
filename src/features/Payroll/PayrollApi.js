@@ -11,7 +11,7 @@ export const payrollApi=createApi({
                 url:`payrolls`,
                 method:`GET`
             }),
-            invalidatesTags:['Payroll']
+            providesTags:['Payroll']
         }),
         addPayroll:builder.mutation({
             query:(payroll)=>({
