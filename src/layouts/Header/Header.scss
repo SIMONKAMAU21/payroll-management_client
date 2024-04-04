@@ -9,9 +9,13 @@
   color: #fff;
 
   .logo {
+    display: flex;
+    justify-content: space-between;
     .text {
       font-size: 24px;
       font-weight: bold;
+      display: flex;
+      margin: auto;
     }
   }
 

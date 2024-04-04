@@ -4,8 +4,9 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import UpdateEmployee from '../../components/Editprofile/editProfile';
-import { LoadingToast,SuccessToast,ErrorToast } from '../../components/toaster/Toaster';
+import { LoadingToast, SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
 import { FaAws } from "react-icons/fa6";
+import Spinner from '../../components/spinner/spinner';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,8 +43,9 @@ const Header = () => {
   return (
     <div className='container'>
       <div className="logo">
+          <div><Spinner /> </div>
         <div className="text">
-          <FaAws  size="42px"/>
+          <div><FaAws size="42px" /></div>
         </div>
       </div>
       <div className="profile">

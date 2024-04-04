@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './Positionmanagement.scss';
 import { useGetPositionsQuery, useAddPositionsMutation, useDeletePositionsMutation } from './positionApi';
 import { ErrorToast, SuccessToast ,LoadingToast} from '../../components/toaster/Toaster';
+import Positionsdetailes from '../../components/PositionsDetailes/positionsdetailes';
 
 const PositionManagement = () => {
   const { data: positionsData, isLoading, isError } = useGetPositionsQuery();
   const [newPosition, setNewPosition] = useState('');
-  const [newBasicSalary, setNewBasicSalary] = useState(''); // New state for basic salary
+  const [newBasicSalary, setNewBasicSalary] = useState(''); 
   const [addPosition] = useAddPositionsMutation();
   const [deletePosition] = useDeletePositionsMutation();
+  const [selectedPosition, setSelectedPosition] = useState(null);
+  const[showPositionDetailes,setShowPositionDetailes]=useState(false);
 
   const handleAddPosition = async () => {
     try {
@@ -34,6 +37,10 @@ const PositionManagement = () => {
       console.error('Error removing position:', error);
     }
   };
+  const handleSeeMore=async(ID)=>{
+    setSelectedPosition(ID)
+    setShowPositionDetailes(true)
+  }
 
   return (
     <div className="position-management">
@@ -53,7 +60,7 @@ const PositionManagement = () => {
         />
         <button onClick={handleAddPosition}>Add Position</button>
       </div>
-      {isLoading && <p>loadi....</p>}
+      {isLoading && <p>loading....</p>}
       {isError && <p><ErrorToast /></p>}
       <ul className="position-list">
         {positionsData &&
@@ -65,16 +72,15 @@ const PositionManagement = () => {
                     <th>Position</th>
                     <th>Basic Salary</th>
                     <th>P.ID E.ID</th>
-                    <th>Names</th>
                     <th>Options</th>
                   </tr>
                   <tr>
                     <td>{position.Position}</td>
                     <td>ksh {position.Basic_Salary}</td>
                     <td>{position.PositionID}{position.ID}</td>
-                    <td>{position.Firstname},{position.Lastname}</td>
                     <td>
                       <button onClick={() => handleRemovePosition(position.PositionID)}>Remove</button>
+                      <button onClick={()=>handleSeeMore(position.PositionID)}>see More</button>
                     </td>
                   </tr>
                 </tbody>
@@ -82,6 +88,7 @@ const PositionManagement = () => {
             </li>
           ))}
       </ul>
+      {showPositionDetailes && <Positionsdetailes positionId={selectedPosition} onClose={()=>setShowPositionDetailes(false)}/>}
     </div>
   );
 };

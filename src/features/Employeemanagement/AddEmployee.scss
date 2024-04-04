@@ -7,7 +7,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: rgba(2, 1, 1, 0.596); 
+   background-color: rgba(2, 1, 1, 0.864); 
    z-index: 9999;
    @keyframes myAnimation {
       from{
@@ -29,10 +29,13 @@
    }
 .eventWrap1{
    margin: auto;
-   background-color: #fff;
+   background-color: #ffffff;
    top: 50%;
-   height: 95vh;
+   height: 97vh;
    width: 30%;
+   overflow: auto;
+   -ms-overflow-style: none;
+   scrollbar-width: none;
    border-radius: 10px;
    
      }
@@ -50,16 +53,16 @@
       gap:10px;
       width: 100%;
       align-items: center;
-      .animation{
-         animation: myAnimation 1s linear 1s infinite alternate;
-         position: relative;
-         transform: rotate(-90deg);
-      }
-      .animation1{
-         animation: myAnimation2 1s linear 1s infinite alternate;
-         position: relative;
-         transform: rotate(-90deg);
-      }
+      // .animation{
+      //    animation: myAnimation 1s linear 1s infinite alternate;
+      //    position: relative;
+      //    transform: rotate(-90deg);
+      // }
+      // .animation1{
+      //    animation: myAnimation2 1s linear 1s infinite alternate;
+      //    position: relative;
+      //    transform: rotate(-90deg);
+      // }
       input{
          border-radius: 5px;
          font-size: 20px;
@@ -68,7 +71,7 @@
          padding: 10px;
          border: none;
          height: 55px;
-         background-color: #cecdd1;
+         background-color: #928f9bb2;
 
 &::placeholder{
    color: rgb(0, 0, 0);

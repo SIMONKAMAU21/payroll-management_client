@@ -96,8 +96,8 @@ const ScheduleManagement = () => {
                {isError && <p><ErrorToast /></p>}
                {schedulesData && schedulesData.map((shift, index) => (
                   <tr key={index}>
-                     <td>{shift.StartTime? new Date(shift.StartTime).toLocaleTimeString():'-'}</td>
-                     <td>{shift.EndTime? new Date (shift.EndTime).toLocaleTimeString(): '-'}</td>
+                     <td>{shift.StartTime? new Date(shift.StartTime).toLocaleDateString():'-'}</td>
+                     <td>{shift.EndTime? new Date (shift.EndTime).toLocaleDateString(): '-'}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>
                      <td>{shift.EmployeeID}{shift.ID}</td>
                      <td className='btn'>

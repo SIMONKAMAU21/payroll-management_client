@@ -10,12 +10,11 @@ import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster
 import './login.scss';
 import { useLoginUserMutation } from './loginApi';
 import { RxDashboard } from 'react-icons/rx';
+import Spinner from '../../components/spinner/spinner';
 
 const Login = () => {
   const [loginUser] = useLoginUserMutation();
-
   const navigate = useNavigate();
-
   const schema = yup.object().shape({
     Email: yup.string().email('Invalid email').required('Email is required'),
     Password: yup.string().required('Password is required'),
@@ -39,7 +38,6 @@ const Login = () => {
       localStorage.setItem('token', token)
       localStorage.setItem('userDetails', JSON.stringify(user))
       SuccessToast('login successfull')
-
     } catch (error) {
       ErrorToast('In valind cridentials')
     }
@@ -47,7 +45,9 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      
       <form onSubmit={handleSubmit(onSubmit)}>
+        
         <div className="form-wrap">
           <div className="container-form">
             <div className="form-lholder">
@@ -79,6 +79,9 @@ const Login = () => {
                   Login
                 </button>
               </div>
+              <div className="spinner">
+              <Spinner/>
+              </div>
               <div>
               </div>
 
@@ -95,6 +98,7 @@ const Login = () => {
               <div className="extra">
                 <p>Made easy for you</p>
               </div>
+           
             </div>
           </div>
         </div>

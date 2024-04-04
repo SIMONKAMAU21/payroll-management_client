@@ -9,8 +9,8 @@ export const positionApi = createApi({
             query: () => ({
                     url: `Positions`,
                     method: `GET`,
+                    provideTags: ['Positions'],
                  }),
-                provideTags: ['Positions'],
         }),
         addPositions: builder.mutation({
             query: (Positions) => ({
@@ -34,8 +34,15 @@ export const positionApi = createApi({
                 body:Positions
             }),
             invalidatesTags: ['Positions']
-        })
-    })
+        }),
+        getPositionsById:builder.query({
+            query:(ID)=>({
+                url:`Positions/${ID}`,
+                method:'GET',
+                providesTags:['Positions']
+            }),
+        }),
+    }),
 });
 
-export const { useGetPositionsQuery, useAddPositionsMutation, useDeletePositionsMutation,useUpdatePositionsMutation } = positionApi;
+export const { useGetPositionsQuery, useAddPositionsMutation, useDeletePositionsMutation,useUpdatePositionsMutation,useGetPositionsByIdQuery } = positionApi;

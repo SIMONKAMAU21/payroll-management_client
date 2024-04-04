@@ -3,6 +3,7 @@ import './AddEmployee.scss';
 import { useAddEmployeeMutation } from './employeeApi';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
 import { RxDashboard } from "react-icons/rx";
+import Spinner from '../../components/spinner/spinner';
 
 const AddEmployee = ({ closeEmployee }) => {
     const [formData, setFormData] = useState({
@@ -91,12 +92,10 @@ const AddEmployee = ({ closeEmployee }) => {
                     <div className="btn">
                     </div>
                     <div className="textarea">
+                        
                         <div className="animation">
-                             <RxDashboard size='34px' color='rgb(0, 211, 248)' />
-                        </div> 
-                        <div className="animation1">
-                             <RxDashboard size='34px' color='rgb(0, 211, 248)' />
-                        </div> 
+                        <Spinner/>
+                        </div>  
                          <input
                             type="text"
                             placeholder="First Name"
