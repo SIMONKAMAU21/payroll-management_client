@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { RxDashboard } from "react-icons/rx";
 import { useUpdateEmployeeMutation } from '../../features/Employeemanagement/employeeApi';
 import { useEffect } from 'react';
 import { ErrorToast, SuccessToast } from '../toaster/Toaster';
 import  Modal from '../modal/modal'
+import Spinner from '../spinner/spinner'
 
 const UpdateEmployee = ({ closeEmployee }) => {
     const [formData, setFormData] = useState({
@@ -80,8 +80,7 @@ const UpdateEmployee = ({ closeEmployee }) => {
                     <form className='eventWrap1' onSubmit={handleSubmit}>
                         <div className="btn"></div>
                         <div className="textarea">
-                            <div className="animation"><RxDashboard size='34px' color='rgb(0, 211, 248)' /></div>
-                            <div className="animation1"><RxDashboard size='34px' color='rgb(0, 211, 248)' /></div>
+                         <Spinner/>
                             <input type="text" placeholder="First Name" name="Firstname" value={formData.Firstname} onChange={handleChange} />
                             <input type="text" placeholder="Last Name" name="Lastname" value={formData.Lastname} onChange={handleChange} />
                             <input type="text" placeholder="Gender" name="Gender" value={formData.Gender} onChange={handleChange} />

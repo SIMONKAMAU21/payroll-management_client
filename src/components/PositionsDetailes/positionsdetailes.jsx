@@ -6,8 +6,8 @@ const Positionsdetailes = ({ positionId, onClose }) => {
   const { data: positionDetails, isLoading, isError } = useGetPositionsByIdQuery(positionId);
   console.log('first', positionDetails)
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay1" onClick={onClose}>
+      <div className="modal-content1" onClick={(e) => e.stopPropagation()}>
         <button className="close-button" onClick={onClose}>Close</button>
         <h2>Position Details</h2>
         {isLoading && <p>Loading...</p>}
