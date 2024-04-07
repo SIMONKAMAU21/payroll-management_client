@@ -1,0 +1,28 @@
+.text-holder{
+   margin-left: 410px;
+   height: 100vh;
+   margin-top: 1rem;
+   background-color: #eff7fc;
+   border-radius: 10px;
+   font-size: 18px;
+   .text{
+      height:auto;
+      margin: 10px 90px;
+      background-color: rgb(182, 186, 189);
+      padding: 10px;
+   }
+   .btn{
+      margin: 10px 90px;
+      button{
+         width: 120px;
+         background-color: #fff;
+         margin: 9px;
+         font-size: 20px;
+         border-radius: 10px;
+         &:hover{
+            background-color: green;
+            color: white;
+         }
+      }
+   }
+}

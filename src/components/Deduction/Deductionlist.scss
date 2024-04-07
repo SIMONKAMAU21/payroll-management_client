@@ -1,34 +1,32 @@
-
 .deduction-table-container {
-    margin-top: 20px;
-    margin-left: 45px;
-  }
-  h2{
-color: rgb(26, 34, 148);
-border-bottom: 1px solid;
-  }
-  .deduction-table {
-    width: 90%;
-    border-collapse: collapse;
-    font-size: 18px;
-    margin: 10px 0 10px 0;
-  }
-  
-  .deduction-table th,
-  .deduction-table td {
-    padding: 8px;
-    border: 1px solid #eeeeee;
-    text-align: left;
-  }
-  
-  .deduction-table th {
-    background-color: #a3293d;
-    font-weight: bold;
-    color: rgb(253, 253, 253);
-  }
-  
-  .deduction-table {
-    background-color: rgb(218, 219, 218);
+  margin-top: 20px;
+  margin-left: 45px;
+}
+h2 {
+  color: rgb(26, 34, 148);
+  border-bottom: 1px solid;
+}
+.deduction-table {
+  width: 90%;
+  border-collapse: collapse;
+  font-size: 18px;
+  margin: 10px 0 10px 0;
+}
 
-  }
-  
+.deduction-table th,
+.deduction-table td {
+  padding: 8px;
+  border: 1px solid #eeeeee;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.deduction-table th {
+  background-color: #a3293d;
+  font-weight: bold;
+  color: rgb(253, 253, 253);
+}
+
+.deduction-table {
+  background-color: rgb(218, 219, 218);
+}

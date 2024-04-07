@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Payroll.scss';
 import { useGetPayrollQuery, useAddPayrollMutation } from './PayrollApi';
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
-import { useEffect } from 'react';
 import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
 
 const PayrollManagement = () => {

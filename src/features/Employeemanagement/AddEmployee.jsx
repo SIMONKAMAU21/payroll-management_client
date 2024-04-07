@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './AddEmployee.scss';
 import { useAddEmployeeMutation } from './employeeApi';
+import { useGetPositionsQuery } from '../Position/positionApi';
 import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster/Toaster';
-import { RxDashboard } from "react-icons/rx";
 import Spinner from '../../components/spinner/spinner';
 
 const AddEmployee = ({ closeEmployee }) => {
+    const {data:positions ,isError}=useGetPositionsQuery();
+    const [position,setPosition]=useState('')
+    console.log('positions', positions)
     const [formData, setFormData] = useState({
         Firstname: '',
         Lastname: '',
@@ -87,6 +90,7 @@ const AddEmployee = ({ closeEmployee }) => {
 
     return (
         <div>
+            {/* <button onClick={closeEmployee}> close</button> */}
             <div className="form-container">
                 <form className='eventWrap1' onSubmit={handleSubmit}>
                     <div className="btn">
@@ -117,14 +121,18 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Gender}
                             onChange={handleChange}
                         />
-                       
-                        <input
-                            type="text"
-                            placeholder="PositionID"
-                            name="PositionID"
-                            value={formData.PositionID}
-                            onChange={handleChange}
-                        />
+                       <select    value={formData.PositionID}
+                        onChange={()=>setPosition(e.target.value)}>
+                     <option value="">
+                        Select Position
+                     </option>
+                     {positions && positions.map(position=>(
+                        <option key={position.PositionID} value={position.PositionID}>
+                            {position.PositionID} {position.Position}
+
+                        </option>
+                     ))}
+                       </select>
                         <input
                             type="text"
                             placeholder="Address"

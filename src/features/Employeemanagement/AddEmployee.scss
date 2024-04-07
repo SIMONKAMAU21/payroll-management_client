@@ -53,16 +53,16 @@
       gap:10px;
       width: 100%;
       align-items: center;
-      // .animation{
-      //    animation: myAnimation 1s linear 1s infinite alternate;
-      //    position: relative;
-      //    transform: rotate(-90deg);
-      // }
-      // .animation1{
-      //    animation: myAnimation2 1s linear 1s infinite alternate;
-      //    position: relative;
-      //    transform: rotate(-90deg);
-      // }
+      select{
+         border-radius: 5px;
+         font-size: 20px;
+         width: 80%;
+         outline: none;
+         padding: 10px;
+         border: none;
+         height: 55px;
+         background-color: #928f9bb2;
+      }
       input{
          border-radius: 5px;
          font-size: 20px;
@@ -86,7 +86,8 @@
    display: flex;
    align-items: center;
    button{
-      margin:20px 0px 0px 190px;
+      // margin:20px 0px 0px 190px;
+      margin:0 90px;
       border-radius: 10px;
       background-color:rgb(20, 145, 218);
       color: rgb(255, 255, 255);

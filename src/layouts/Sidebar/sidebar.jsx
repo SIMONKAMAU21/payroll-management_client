@@ -69,6 +69,12 @@ const Sidebar = () => {
       path: "/Payroll management",
       id: 7,
     },
+    {
+      title: "Project overview",
+      icon: <FaCcAmazonPay size='34px' color='#2f4f4f' />,
+      path: "/overview",
+      id: 8,
+    },
   ];
 
   return (
