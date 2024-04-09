@@ -65,7 +65,7 @@ const PositionManagement = () => {
       <ul className="position-list">
         {positionsData &&
           positionsData.map((position) => (
-            <li key={position.ID}>
+            <li key={position.PositionID}>
               <table>
                 <tbody>
                   <tr> 

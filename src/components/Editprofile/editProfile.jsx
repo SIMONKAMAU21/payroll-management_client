@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useUpdateEmployeeMutation } from '../../features/Employeemanagement/employeeApi';
 import { useEffect } from 'react';
-import { ErrorToast, SuccessToast } from '../toaster/Toaster';
+import { ErrorToast, LoadingToast, SuccessToast } from '../toaster/Toaster';
 import  Modal from '../modal/modal'
 import Spinner from '../spinner/spinner'
 
@@ -33,6 +33,7 @@ const UpdateEmployee = ({ closeEmployee }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        LoadingToast(true)
 
         const data = new FormData();
         const file_data = file || formData.PhotoURL;
@@ -56,10 +57,12 @@ const UpdateEmployee = ({ closeEmployee }) => {
             const response = await updateEmployee(formData).unwrap();
             localStorage.setItem('userDetails', JSON.stringify(formData))
             SuccessToast(response.message);
+            LoadingToast(false)
             closeEmployee();
         } catch (err) {
             ErrorToast("Could not update employee");
-            console.error('Error updating employee:', err);
+            LoadingToast(false)
+            closeEmployee()
         }
     };
 
@@ -84,7 +87,6 @@ const UpdateEmployee = ({ closeEmployee }) => {
                             <input type="text" placeholder="First Name" name="Firstname" value={formData.Firstname} onChange={handleChange} />
                             <input type="text" placeholder="Last Name" name="Lastname" value={formData.Lastname} onChange={handleChange} />
                             <input type="text" placeholder="Gender" name="Gender" value={formData.Gender} onChange={handleChange} />
-                            <input type="text" placeholder="PositionID" name="PositionID" value={formData.PositionID} onChange={handleChange} />
                             <input type="text" placeholder="Address" name="Address" value={formData.Address} onChange={handleChange} />
                             <input type="date" placeholder="Date of Birth" name="BirthDate" value={formData.BirthDate} onChange={handleChange} />
                             <input type="file" placeholder="Photo URL" name="PhotoURL" onChange={(e) => setFile(e.target.files[0])} />

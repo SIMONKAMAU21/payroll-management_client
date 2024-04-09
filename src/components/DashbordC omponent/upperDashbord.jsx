@@ -17,7 +17,7 @@ const UpperDashbord = () => {
       <div className="top-holder">
          <div className="div">
             <div className="head">
-               <h2>Number of employees</h2>
+               <h3>Number of employees</h3>
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
@@ -26,7 +26,7 @@ const UpperDashbord = () => {
          </div>
          <div className="div">
             <div className="head"> 
-               <h2>Number of Admins</h2>
+               <h3>Number of Admins</h3>
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>

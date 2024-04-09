@@ -15,26 +15,29 @@ const AddAdvance = () => {
         e.preventDefault();
         const Description = e.target.Description.value;
         const Amount = e.target.Amount.value;
-        try {
-            const response = await addDeduction({
-            
-              Description,
-              Amount: parseFloat(Amount),
-              EmployeeID:employeeID
-                
-            }).unwrap(); 
-
-            console.log('response', response);
-            LoadingToast(false);
-            SuccessToast(response.message);
-            e.target.reset();
-            setIsModalOpen(false);
-        } catch (err) {
-            console.error('An error occurred:', err);
-            ErrorToast('deduction exists');
-            LoadingToast(false);
-            setIsModalOpen(false)
+        if (Description==="",Amount==="") {
+            ErrorToast("fill both spaces")
+            LoadingToast(false)
+        } else {
+            try {
+                const response = await addDeduction({
+                  Description,
+                  Amount: parseFloat(Amount),
+                  EmployeeID:employeeID
+                    
+                }).unwrap(); 
+    
+                LoadingToast(false);
+                SuccessToast(response.message);
+                e.target.reset();
+                setIsModalOpen(false);
+            } catch (err) {
+                ErrorToast("Deduction exists");
+                LoadingToast(false);
+                setIsModalOpen(false)
+            }
         }
+  
     };
 
     return (

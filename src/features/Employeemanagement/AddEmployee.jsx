@@ -8,7 +8,6 @@ import Spinner from '../../components/spinner/spinner';
 const AddEmployee = ({ closeEmployee }) => {
     const {data:positions ,isError}=useGetPositionsQuery();
     const [position,setPosition]=useState('')
-    console.log('positions', positions)
     const [formData, setFormData] = useState({
         Firstname: '',
         Lastname: '',

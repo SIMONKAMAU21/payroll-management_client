@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Shedulemanagement.scss';
 import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMutation, useAddSchedulesMutation } from './scheduleApi';
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
+import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
 import Modal from '../../components/modal/modal'
 import {StyleSheet,Text,View, PDFDownloadLink} from '@react-pdf/renderer'
 
@@ -12,9 +13,9 @@ const ScheduleManagement = () => {
    const [updateSchedule] = useUpdateSchedulesMutation();
    const [deleteSchedule] = useDeleteSchedulesMutation();
    const [addSchedule] = useAddSchedulesMutation();
+   const{data:employees}=useGetEmployeesQuery();
    const [showAddForm, setShowAddForm] = useState(false);
    const [modalOpen, setModalOpen]= useState(false)
-
    const editShift = (index) => {
       setEditedIndex(index);
       setEditedShift(shifts[index]);
@@ -48,6 +49,8 @@ const ScheduleManagement = () => {
 
    const handleAddShift = async (event) => {
       event.preventDefault();
+      LoadingToast(true)
+
       try {
          const formData = new FormData(event.target);
          
@@ -57,11 +60,14 @@ const ScheduleManagement = () => {
             EmployeeID: formData.get('employee'),
          };
          const response = await addSchedule(newShift).unwrap();
+         LoadingToast(false)
          SuccessToast(response.message)
-         setShowAddForm(false);
+
          setModalOpen(false)
       } catch (error) {
          ErrorToast("Schedule exists")
+         LoadingToast(false)
+         setModalOpen(false)
       }
    };
 
@@ -71,11 +77,22 @@ const ScheduleManagement = () => {
          <button onClick={toggleModal}>Add Schedule</button>
          <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
-               <div className="hold">   
                   <div>  <input type="date" name="startTime" placeholder="Start Time" /></div>
                   <div><input type="date" name="endTime" placeholder="End Time" /></div>
                   <div><input type="text" name="Days" autoComplete='on' placeholder="Days" /></div>
-                  <div> <input type="text" name="employee" placeholder="Employee" /></div></div>
+                  <div> <input type="text" name="employee" placeholder="Employee" /></div>
+                  <div>
+                     <select >
+                        <option>select employee</option>
+                        {employees && employees.map(employee=>(
+                                 <option key={employee.ID} >
+                                 {employee.Firstname} {employee.Lastname}
+                              </option>
+
+                        ))}
+                  
+                     </select>
+                  </div>
                <div className='btne'>
                   <button type="submit">Add</button>
 

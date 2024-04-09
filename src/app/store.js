@@ -8,6 +8,8 @@ import { loginApi } from "../pages/Login/loginApi";
 import { payrollApi } from "../features/Payroll/PayrollApi";
 import { DeductionApi } from "../components/Deduction/DeductionApi";
 import { AdvanceApi } from "../components/Advance/AdvanceApi";
+import { messageApi } from "../features/messages/messageApi";
+import { conversationApi } from "../features/conversation/conversationApi";
 
 
 
@@ -20,9 +22,11 @@ export const store =configureStore({
      [loginApi.reducerPath]:loginApi.reducer,
      [payrollApi.reducerPath]:payrollApi.reducer,
      [DeductionApi.reducerPath]:DeductionApi.reducer,
-     [AdvanceApi.reducerPath]:AdvanceApi.reducer
+     [AdvanceApi.reducerPath]:AdvanceApi.reducer,
+     [messageApi.reducerPath]:messageApi.reducer,
+     [conversationApi.reducerPath]:conversationApi.reducer
     },
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(employeeApi.middleware,positionApi.middleware,ScheduleApi.middleware,attendanceApi.middleware,loginApi.middleware,payrollApi.middleware,DeductionApi.middleware,AdvanceApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(employeeApi.middleware,positionApi.middleware,ScheduleApi.middleware,attendanceApi.middleware,loginApi.middleware,payrollApi.middleware,DeductionApi.middleware,AdvanceApi.middleware,messageApi.middleware,conversationApi.middleware)
 })
 setupListeners(store.dispatch)
 

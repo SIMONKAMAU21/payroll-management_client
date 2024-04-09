@@ -8,26 +8,22 @@ const PayrollManagement = () => {
   const [employeeID, setEmployeeID] = useState('');
   const { data: payrollData, isLoading, isError } = useGetPayrollQuery();
   const { data: employeeData } = useGetEmployeesQuery();
-  const [isAdding, setIsAdding] = useState(false);
-  const [addError, setAddError] = useState(null);
   const [addPayrollMutation] = useAddPayrollMutation();
 
 
 
   const handleGeneratePayroll = async () => {
-    setIsAdding(true);
-    setAddError(null);
+   LoadingToast( )
 
     try {
       const response = await addPayrollMutation({ EmployeeID: employeeID }).unwrap();
       SuccessToast(response.message);
+      LoadingToast(false)
       setEmployeeID('');
     } catch (error) {
-      setAddError(error.message || 'Error adding payroll data');
       ErrorToast('Employee ID not found');
-    } finally {
-      setIsAdding(false);
-    }
+      LoadingToast(false)
+    } 
   };
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingToast, ErrorToast } from '../../components/toaster/Toaster';
+import { LoadingToast, ErrorToast, SuccessToast } from '../../components/toaster/Toaster';
 import '../DETAILS/userDetailes.scss';
 import { useGetOneUserQuery } from '../../features/Employeemanagement/employeeApi';
 
@@ -11,13 +11,17 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
   };
 
   if (isLoading) {
-    return <LoadingToast />;
+    return <p>loading...</p>;
   }
 
   if (isError) {
     return <ErrorToast message="Error fetching user details" />;
   }
-
+  if(userData === null) {
+    SuccessToast("no user details");
+    return null
+  }
+  
   return (
     <div className="modal">
       <div className="modal-content">

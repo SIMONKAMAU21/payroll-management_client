@@ -12,21 +12,27 @@ const AddAdvance = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
+    LoadingToast()
     e.preventDefault();
     const date = e.target.Date.value;
     const amount = e.target.Amount.value;
+if (date==="",amount==="") {
+  LoadingToast(false)
+  ErrorToast("fill all spaces")
+} else {
+  try {
+    const response = await addAdvance({ Date: date, Amount: amount, EmployeeID: employeeID }).unwrap();
+    LoadingToast(false)
+    SuccessToast(response.message);
+    setIsModalOpen(false);
+    e.target.reset();
+  } catch (err) {
+    ErrorToast('An error occurred. Please try again later.');
+    LoadingToast(false)
+    setIsModalOpen(false)
+  } 
+}
 
-    try {
-      LoadingToast();
-      const response = await addAdvance({ Date: date, Amount: amount, EmployeeID: employeeID }).unwrap();
-      console.log('response', response);
-      SuccessToast(response.message);
-      setIsModalOpen(false);
-      e.target.reset();
-    } catch (err) {
-      ErrorToast('An error occurred. Please try again later.');
-    } finally {
-    }
   };
 
   return (
@@ -56,7 +62,7 @@ const AddAdvance = () => {
                 </option>
                 {employeeData && employeeData.map(employee => (
                   <option key={employee.ID} value={employee.ID}>
-                    {employee.Firstname}
+                    {employee.Firstname} {employee.Lastname} {employee.ID}
                   </option>
                 ))}
               </select>
