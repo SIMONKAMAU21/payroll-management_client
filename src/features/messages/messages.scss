@@ -13,10 +13,16 @@
   height: 100vh;
   display: flex;
   margin-top: 1rem;
+  .input1{
+    width: 90%;
+    position: fixed;
+    bottom: 10px;
+  }
   .message1 {
     flex: 4;
     overflow: auto;
     scrollbar-width: none;
+    height: 85%;
     border-radius: 10px;
     .message {
       &.right {

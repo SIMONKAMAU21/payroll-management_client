@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useGetMessagesQuery } from './messageApi';
 import '../messages/messages.scss';
 import { useGetConversationsQuery } from '../conversation/conversationApi';
+import Input from '../../components/sendmessage/input';
+import { useGetparticipantsQuery } from '../participant/participantApi';
 
 const Messages = () => {
    const [currentUserID, setCurrentUserID] = useState(null);
    const [selectedConversationId, setSelectedConversationId] = useState(null);
+const{data:participant}=useGetparticipantsQuery(selectedConversationId)
+console.log('participant', participant)
 
    useEffect(() => {
       const userDetails = JSON.parse(localStorage.getItem('userDetails'));
@@ -17,16 +21,15 @@ const Messages = () => {
    const { data: conversations } = useGetConversationsQuery();
 
    useEffect(() => {
-      if (conversations && conversations.length > 0) {
-         // Assuming you want to use the first conversation's ID
+      if (conversations && conversations.length > 0 && selectedConversationId === null) {
          setSelectedConversationId(conversations[0].Conversation_Id);
       }
-   }, []);
+   }, [conversations, selectedConversationId]);
 
    const { data: messages, error, isLoading } = useGetMessagesQuery(selectedConversationId);
 
    if (isLoading) return <div>Loading...</div>;
-   if (error) return <div>Error: {error.message}</div>;
+   if (error) return <div className='error'>error...</div>;
 
    return (
       <div className='messages'>
@@ -52,12 +55,15 @@ const Messages = () => {
                </div>
             ))}
          </div>
+         <div className="input1">
+               <Input  selectedConversationId={selectedConversationId}/>
+            </div>
          <div className="conversation">
             <div className="text">
                <h3>latest conversations</h3>
             </div>
             <div className="text1">
-               {conversations && conversations.map(conversation => (
+               {participant && conversations.map(conversation => (
                   <div key={conversation.Conversation_Id}>
                      <button
                         className="conversationButton"
@@ -70,6 +76,13 @@ const Messages = () => {
                            </div>
                         </div>
                      </button>
+                  </div>
+               ))}
+               {participant && participant.map(participant=>(
+                  <div key={participant.Participant_id}>
+                     {participant.Title|| "-"}
+
+
                   </div>
                ))}
             </div>

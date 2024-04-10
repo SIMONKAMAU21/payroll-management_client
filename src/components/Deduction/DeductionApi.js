@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-
+const token=localStorage.getItem("token")
 export const DeductionApi = createApi({
     reducerPath: "DeductionApi",
     baseQuery: fetchBaseQuery({ baseUrl: ` http://localhost:8000/api/`}),
@@ -9,7 +9,10 @@ export const DeductionApi = createApi({
         getAllDeductions: builder.query({
             query: () => ({
                 url: `Deduction`,
-                method: `GET`
+                method: `GET`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             providesTags: ['Deduction']
         }),
@@ -17,7 +20,10 @@ export const DeductionApi = createApi({
             query: (Deduction) => ({
                 url: `Deduction/register`,
                 method: `POST`,
-                body: Deduction
+                body: Deduction,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
 
             }),
             invalidatesTags:["Deduction"]
@@ -26,6 +32,9 @@ export const DeductionApi = createApi({
             query: (DeductionID) => ({
                 url: `Deduction/delete/${DeductionID}`,
                 method: `DELETE`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             invalidatesTags:["Deduction"]
 
@@ -34,6 +43,9 @@ export const DeductionApi = createApi({
             query: (EmployeeID) => ({
                 url: `Deduction/employee/${EmployeeID}`,
                 method: `GET`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
 
             }),
             providesTags: ['Deduction']

@@ -15,7 +15,7 @@ const UserDetailsModal = ({ employeeId, onClose }) => {
   }
 
   if (isError) {
-    return <ErrorToast message="Error fetching user details" />;
+    return <div className='error'>error..</div>;
   }
   if(userData === null) {
     SuccessToast("no user details");

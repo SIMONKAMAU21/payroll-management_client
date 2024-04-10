@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const token=localStorage.getItem("token")
+console.log('token', token)
 export const employeeApi = createApi({
     reducerPath: 'employeeApi',
     baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:8000/api/` }),
@@ -9,6 +10,9 @@ export const employeeApi = createApi({
             query: () => ({
                 url: `users`,
                 method: `GET`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                }
             }),
             providesTags : ['Employees'] 
 }),
@@ -16,6 +20,9 @@ export const employeeApi = createApi({
             query: (employee) => ({
                 url: 'users/register',
                 method: 'POST',
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
                 body: employee
             }),
             invalidatesTags: ['Employees'],
@@ -24,6 +31,9 @@ export const employeeApi = createApi({
             query: (ID) => ({
                 url: `users/delete/${ID}`,
                 method: `DELETE`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                }
             }),
             invalidatesTags: ['Employees'],
         }),
@@ -31,7 +41,10 @@ export const employeeApi = createApi({
             query: ( employee) => ({
                 url: `users/update/${employee.ID}`,
                 method: 'PUT',
-                body: employee
+                body: employee,
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
             }),
             invalidatesTags:['Employees']
         }),
@@ -40,6 +53,9 @@ export const employeeApi = createApi({
             query: (ID) => ({
                 url: `users/byID/${ID}`,
                 method: `GET`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                }
             }),
             providesTags : ['Employees'] 
         }),
@@ -47,6 +63,9 @@ export const employeeApi = createApi({
             query: (Email) => ({
                 url: `users/${Email}`,
                 method: `GET`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
             }),
             invalidatesTags: ['Employees']
         }),

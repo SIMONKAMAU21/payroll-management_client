@@ -110,7 +110,6 @@ const ScheduleManagement = () => {
                </tr>
             </thead>
             <tbody>
-               {isError && <p><ErrorToast /></p>}
                {schedulesData && schedulesData.map((shift, index) => (
                   <tr key={index}>
                      <td>{shift.StartTime? new Date(shift.StartTime).toLocaleDateString():'-'}</td>

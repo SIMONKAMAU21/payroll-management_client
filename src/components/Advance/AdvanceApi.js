@@ -1,6 +1,6 @@
 import {createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
-
+const token=localStorage.getItem("token")
 export const AdvanceApi =createApi({
     reducerPath:"AdvanceApi",
     baseQuery:fetchBaseQuery({baseUrl:`http://localhost:8000/api/`}),
@@ -9,7 +9,10 @@ export const AdvanceApi =createApi({
         getAllAdvances:builder.query({
             query:()=>({
                 url:`Advance`,
-                method:`GET`
+                method:`GET`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                }
             }),
             providesTags:['Advance']
         }),
@@ -17,7 +20,10 @@ export const AdvanceApi =createApi({
             query:(Advance)=>({
                 url:`Advance/register`,
                 method:`POST`,
-                body:Advance
+                body:Advance,
+                headers:{
+                    Authorization:`JWT ${token}`
+                }
 
             }),
             invalidatesTags:['Advance']
@@ -26,6 +32,9 @@ export const AdvanceApi =createApi({
             query:(ID)=>({
                 url:`Advance/delete/${ID}`,
                 method:`DELETE`,
+                headers:{
+                    Authorization:` JWT ${token}`
+                }
             }),
             invalidatesTags:['Advance']
         }),
@@ -33,6 +42,9 @@ export const AdvanceApi =createApi({
             query:(EmployeeID)=>({
                 url:`Advance/employee/${EmployeeID}`,
                 method:`GET`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                }
             }),
             providesTags:['Advance']
         })

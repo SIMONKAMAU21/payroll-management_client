@@ -37,7 +37,7 @@ const PayrollRecord = () => {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div className='error'> error...</div>;
   }
 
   if (!payroll || payroll.length === 0) {

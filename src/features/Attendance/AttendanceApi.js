@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const token=localStorage.getItem("token")
 export const attendanceApi = createApi({
     reducerPath: 'attendanceApi',
     baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:8000/api/` }),
@@ -9,6 +9,9 @@ export const attendanceApi = createApi({
             query: () => ({
                 url: `Attendance`,
                 method: `GET`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             providesTags:['Advance']
         }),
@@ -16,7 +19,10 @@ export const attendanceApi = createApi({
             query: (Attendance) => ({
                 url: `Attendance/record`,
                 method: `post`,
-                body: Attendance
+                body: Attendance,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             invalidatesTags: ['Attendance']
 
@@ -26,7 +32,10 @@ export const attendanceApi = createApi({
             query: (Attendance) => ({
                 url: `Attendance/update/${Attendance.AttendanceID}`,
                 method: `PUT`,
-                body: Attendance
+                body: Attendance,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             invalidatesTags: ['Attendance']
         }),
@@ -34,7 +43,10 @@ export const attendanceApi = createApi({
         getAttendanceById: builder.query({
             query: (Employee) => ({
                 url: `Attendance/${Employee.ID}`,
-                method: `GET`
+                method: `GET`,
+                headers:{
+                    Authorization:`JWY ${token}`
+                }
             }),
             providesTags: ['Attendance']
         }),

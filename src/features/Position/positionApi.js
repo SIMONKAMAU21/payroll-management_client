@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const token=localStorage.getItem("token")
 export const positionApi = createApi({
     reducerPath: 'positionApi',
     baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:8000/api/` }),
@@ -9,6 +9,9 @@ export const positionApi = createApi({
             query: () => ({
                     url: `Positions`,
                     method: `GET`,
+                    headers:{
+                        Authorization:` JWT ${token}`
+                    },
                     provideTags: ['Positions'],
                  }),
         }),
@@ -16,14 +19,20 @@ export const positionApi = createApi({
             query: (Positions) => ({
                 url: 'Positions/register',
                 method: 'POST',
-                body: Positions
+                body: Positions,
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
             }),
             invalidatesTags: ['Positions'],
         }),
         deletePositions: builder.mutation({
             query: (PositionID) => ({
                 url: `Positions/delete/${PositionID}`,
-                method: `DELETE`
+                method: `DELETE`,
+                headers:{
+                    Authorization:`JWT ${token}`
+                },
             }),
             invalidatesTags: ['Positions'],
         }),
@@ -31,7 +40,10 @@ export const positionApi = createApi({
             query: (Positions) => ({
                 url: `Positions/update/${ID}`,
                 method:'PUT',
-                body:Positions
+                body:Positions,
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
             }),
             invalidatesTags: ['Positions']
         }),
@@ -39,6 +51,9 @@ export const positionApi = createApi({
             query:(ID)=>({
                 url:`Positions/${ID}`,
                 method:'GET',
+                headers:{
+                    Authorization:` JWT ${token}`
+                },
                 providesTags:['Positions']
             }),
         }),

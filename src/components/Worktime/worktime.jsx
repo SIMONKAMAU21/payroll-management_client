@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAddAttendanceMutation, useUpdateAttendanceMutation } from '../../features/Attendance/AttendanceApi';
 import { SuccessToast, ErrorToast } from '../../components/toaster/Toaster';
 import '../Worktime/Worktime.scss';
-import UpdateEmployee from '../Editprofile/editProfile';
+import MessagesModal from '../modal/message/messageModal';
 
 const WorkTimer = () => {
   const [isWorking, setIsWorking] = useState(false);
@@ -13,15 +13,15 @@ const WorkTimer = () => {
   const [updateAttendance] = useUpdateAttendanceMutation();
   const [employeeData, setEmployeeData] = useState(null);
   const [lastStopTime, setLastStopTime] = useState(null);
-  const [showEditForm, setShowEditForm] = useState(false);
   const [disableStopButton, setDisableStopButton] = useState(false);
+  const [showMessagesModal, setShowMessagesModal] = useState(false);
 
-  const handleShow = () => {
-    setShowEditForm(true);
+  const handleOpenMessagesModal = () => {
+    setShowMessagesModal(true);
   };
 
-  const handleClose = () => {
-    setShowEditForm(false);
+  const handleCloseMessagesModal = () => {
+    setShowMessagesModal(false);
   };
 
 
@@ -146,10 +146,9 @@ const WorkTimer = () => {
           <div className="mtext">{motivation}</div>
         </div>
         <div className="btn">
-          <button onClick={handleShow}>Edit profile</button>
-        </div>
+        <button onClick={handleOpenMessagesModal}>Open Messages</button>
+      {showMessagesModal && <MessagesModal closeModal={handleCloseMessagesModal} />}        </div>
       </div>
-      {showEditForm && <UpdateEmployee closeEmployee={handleClose} />}
     </>
   );
 };

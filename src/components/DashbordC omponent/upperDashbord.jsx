@@ -4,12 +4,8 @@ import { useGetEmployeesQuery } from '../../features/Employeemanagement/employee
 import { SuccessToast } from '../toaster/Toaster';
 
 const UpperDashbord = () => {
-   const { data: employees, isLoading } = useGetEmployeesQuery();
-
-   // Filter employees with admin status
+   const { data: employees, isLoading ,isError} = useGetEmployeesQuery();
    const adminEmployees = employees ? employees.filter(employee => employee.Admin) : [];
-
-   // Calculate total number of admin employees
    const totalAdmins = adminEmployees.length;
    SuccessToast('Welcome back')
 
@@ -21,7 +17,9 @@ const UpperDashbord = () => {
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
-               <div className='number'><h3>{isLoading ? 'Loading...' : employees.length}</h3></div>
+               <div className='number'><h3>{isLoading ? 'Loading...' :employees && employees.length}</h3>
+               {isError?<div className='error'>error..</div>: "-"}
+               </div>
             </div>
          </div>
          <div className="div">

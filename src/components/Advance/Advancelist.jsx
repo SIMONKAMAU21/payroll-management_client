@@ -13,7 +13,7 @@ const AdvanceTable = () => {
     }
 
     if (isError) {
-        return <div>Error fetching data</div>;
+        return <div className='error'>Error fetching data</div>;
     }
     if(advances===null){
         return SuccessToast("deletion is aoutomated")

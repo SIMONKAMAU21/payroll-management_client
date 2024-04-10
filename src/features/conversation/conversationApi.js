@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+const token=localStorage.getItem("token")
 export const conversationApi=createApi({
 reducerPath:`conversationApi`,
 baseQuery:fetchBaseQuery({baseUrl:`http://localhost:8000/api/`}),
@@ -9,6 +9,10 @@ endpoints:(builder)=>({
       query:()=>({
          url:`conversations`,
          method:`GET`,
+         headers:{
+            Authorization:`JWT ${token}`
+        },
+
       }),
       providesTags:['conversation']
    })

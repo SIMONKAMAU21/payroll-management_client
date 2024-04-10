@@ -10,7 +10,7 @@ const DeductionTable = () => {
     }
 
     if (isError) {
-        return <div>Error fetching data</div>;
+        return <div className='error'>Error fetching data</div>;
     }
 
     return (

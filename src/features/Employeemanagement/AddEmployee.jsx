@@ -89,7 +89,6 @@ const AddEmployee = ({ closeEmployee }) => {
 
     return (
         <div>
-            {/* <button onClick={closeEmployee}> close</button> */}
             <div className="form-container">
                 <form className='eventWrap1' onSubmit={handleSubmit}>
                     <div className="btn">
@@ -120,8 +119,9 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Gender}
                             onChange={handleChange}
                         />
-                       <select    value={formData.PositionID}
-                        onChange={()=>setPosition(e.target.value)}>
+                       <select
+                        value={position}
+                        onChange={(e)=>setPosition(e.target.value)}>
                      <option value="">
                         Select Position
                      </option>

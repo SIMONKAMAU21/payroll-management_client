@@ -21,9 +21,7 @@ const EmployeeTable = () => {
       ErrorToast('Failed to remove employee');
     }
   };
-  const handleEditEmployee = (ID) => {
-    setSelectedEmployee(ID);
-  };
+
   const handleSeeMore = async (ID) => {
     setSelectedEmployee(ID);
     setShowDetailsModal(true); 
@@ -34,7 +32,7 @@ const EmployeeTable = () => {
   }
 
   if (isError) {
-    return <ErrorToast/>;
+    return <div className='error'>error...</div>;
   }
 
   return (

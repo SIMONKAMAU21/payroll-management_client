@@ -15,7 +15,7 @@ const AttendanceReportList = () => {
   }, [attendance]);
 
   if (isLoading) return <p>loading....</p>;
-  if (isError) return <ErrorToast message="Error fetching data" />;
+  if (isError) return  <div className='error'>Error fetching data....</div>;
 
   return (
     <div className='Attendance'>
