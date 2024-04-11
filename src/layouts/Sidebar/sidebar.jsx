@@ -30,54 +30,54 @@ const Sidebar = () => {
     {
       title: "Home",
       path: "/Dashboard",
-      icon: <FaHome  size='34px' color='#2f4f4f' />,
+      icon: <FaHome  size='34px'  />,
       id: 1,
     },
     {
       title: "Employee management",
       path: "/Employee management",
-      icon: <IoPerson size='34px' color='#2f4f4f' />,
+      icon: <IoPerson size='34px'  />,
       id: 2,
     },
     {
       title: "Attendance reports",
       path: "/Attendance reports",
-      icon: <TbReportSearch  color='#2f4f4f' size='34px' />,
+      icon: <TbReportSearch   size='34px' />,
       id: 3,
     },
     {
       title: "Overtime management",
       path: "/Overtime management",
-      icon: <FaClock size='34px' color='#2f4f4f' />,
+      icon: <FaClock size='34px'  />,
       id: 4,
     },
     {
       title: "Schedule management", // Corrected spelling
       path: "/Schedule management",
-      icon: <IoCalendarNumberOutline size='34px' color='#2f4f4f' />,
+      icon: <IoCalendarNumberOutline size='34px'  />,
       id: 5,
     },
     {
       title: "Position management",
       path: "/Position management",
-      icon: <RiGitRepositoryFill color='#2f4f4f' size='34px' />,
+      icon: <RiGitRepositoryFill  size='34px' />,
       id: 6,
     },
     {
       title: "Payroll management",
-      icon: <FaCcAmazonPay size='34px' color='#2f4f4f' />,
+      icon: <FaCcAmazonPay size='34px' />,
       path: "/Payroll management",
       id: 7,
     },
     {
       title: "Project overview",
-      icon: <FaCcAmazonPay size='34px' color='#2f4f4f' />,
+      icon: <FaCcAmazonPay size='34px'  />,
       path: "/overview",
       id: 8,
     },
     {
       title: "messages",
-      icon: <FaCcAmazonPay size='34px' color='#2f4f4f' />,
+      icon: <FaCcAmazonPay size='34px' />,
       path: "/messages",
       id: 9,
     },
@@ -93,8 +93,8 @@ const Sidebar = () => {
           >
             <div className="holder">
               <div className="value">
-                <div>{item.title}</div>
-                <div>{item.icon}</div>
+                <div className='tittle'>{item.title}</div>
+                <div className='icon'>{item.icon}</div>
               </div>
             </div>
           </NavLink>

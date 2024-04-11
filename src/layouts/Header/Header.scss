@@ -29,9 +29,10 @@
       margin-right: 20px;
       width: 50%;
 
-      input[type="text"] {
+      input[type="search"] {
         padding: 5px 10px;
         border-radius: 5px;
+        outline: none;
         border: 1px solid #ccc;
         background-color: #fff;
         width: 100%;
@@ -41,6 +42,11 @@
 
     .images {
       margin-right: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      border: 3px solid rgb(11, 248, 31);
+   
 
       img {
         width: 60px;

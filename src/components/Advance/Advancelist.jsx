@@ -2,7 +2,7 @@
 import React from 'react';
 import { useGetAllAdvancesQuery } from './AdvanceApi';
 import '../Advance/Advancelist.scss'
-import { LoadingToast,SuccessToast,ErrorToast } from '../toaster/Toaster';
+import { LoadingToast, SuccessToast, ErrorToast } from '../toaster/Toaster';
 
 
 const AdvanceTable = () => {
@@ -15,9 +15,9 @@ const AdvanceTable = () => {
     if (isError) {
         return <div className='error'>Error fetching data</div>;
     }
-    if(advances===null){
+    if (advances === null) {
         return SuccessToast("deletion is aoutomated")
-     }
+    }
     return (
         <div className="advance-table-container">
             <h2>Advance Table</h2>
@@ -33,7 +33,7 @@ const AdvanceTable = () => {
                 <tbody>
                     {advances && advances.map((advance, index) => (
                         <tr key={index}>
-                            <td>{advance.Date? new Date (advance.Date).toLocaleDateString():"-"} </td>
+                            <td>{advance.Date ? new Date(advance.Date).toLocaleDateString() : "-"} </td>
                             <td>{advance.Amount}</td>
                             <td>{advance.Firstname} {advance.Lastname} </td>
                             <td>{advance.EmployeeID}</td>

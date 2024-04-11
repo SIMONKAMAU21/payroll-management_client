@@ -80,8 +80,8 @@ const PositionManagement = () => {
                     <td>ksh {position.Basic_Salary}</td>
                     <td>{position.PositionID}{position.ID}</td>
                     <td>
-                      <button onClick={() => handleRemovePosition(position.PositionID)}>Remove</button>
-                      <button onClick={() => handleSeeMore(position.PositionID)}>see More</button>
+                      <button onClick={() => handleRemovePosition(position.PositionID)} className='remove'>Remove</button>
+                      <button onClick={() => handleSeeMore(position.PositionID)} className='more'>see More</button>
                     </td>
                   </tr>
                 </tbody>

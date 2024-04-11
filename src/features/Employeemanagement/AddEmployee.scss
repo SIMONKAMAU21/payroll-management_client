@@ -26,11 +26,10 @@
     }
   }
   .eventWrap1 {
-    margin: auto;
     background-color: #ffffff;
     top: 50%;
-    height: 97vh;
     width: 30%;
+    height: 80%;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -61,7 +60,8 @@
 
     height: 55px;
   }
-  input {
+ 
+  input  {
     border-radius: 5px;
     font-size: 20px;
     width: 80%;

@@ -36,9 +36,6 @@ const Header = () => {
     setShowSuccessToast(true);
   };
 
-  const handleToastClose = () => {
-    setShowSuccessToast(false);
-  };
 
   return (
     <div className='container'>
@@ -50,7 +47,7 @@ const Header = () => {
       </div>
       <div className="profile">
         <div className="search">
-          <input type="text" placeholder='search...' />
+          <input type="search" placeholder='search...' />
         </div>
         <div className="images" onClick={handleProfileClick}>
           {employeeData && <img src={employeeData.PhotoURL} alt="Profile" />}

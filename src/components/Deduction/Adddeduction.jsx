@@ -42,7 +42,7 @@ const AddAdvance = () => {
 
     return (
         <>
-   <button className="open-modal-btn" onClick={() => setIsModalOpen(true)}>Open Modal</button>
+   <button className="btn1" onClick={() => setIsModalOpen(true)}>open form</button>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>        <div>
             <div className="form-container1">
                 <form className='eventWrap' onSubmit={handleSubmit}>

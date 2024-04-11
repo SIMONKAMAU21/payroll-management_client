@@ -148,7 +148,6 @@ const AddEmployee = ({ closeEmployee }) => {
                         />
                         <input
                             type="file"
-                            placeholder="Photo URL"
                             name="PhotoURL"
                             onChange={(e) => {
                                 const file = e.target.files[0]; // Get the selected file

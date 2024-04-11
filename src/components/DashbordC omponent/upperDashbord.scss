@@ -8,6 +8,12 @@
    gap: 10px;
    justify-content: space-around;
    background-color: #dddddd;
+   h4{
+      color: white;
+      font-size: 18px;
+      justify-content: center;
+      display: flex;
+   }
    @keyframes myAnimation {
       from{
          top: -10px;
@@ -28,12 +34,12 @@
       flex-direction: column;
       border-radius: 10px;
       position: relative;
-      background-color: #1e75e6;
+      background-color: #a3293d;
       box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
       width: 350px;
       height: 180px;
       .head{
-         border-bottom: 1px solid #0400ff;
+         border-bottom: 1px solid #ffffff;
          padding: 10px;
          
       }
@@ -43,7 +49,7 @@
          align-items: baseline;
 
          .text{
-            background-color:rgba(255,153,0,1);
+            background-color:rgb(37, 169, 181);
             align-items: center;
             padding: 10px 15px;
             min-width: 40%;
@@ -52,7 +58,7 @@
             padding: 10px 15px;
             min-width: 40%;
             font-size: 19px;
-            background-color:rgba(255,153,0,1);
+            background-color:rgb(37, 169, 181);
             align-items: center;
             text-align: center;
          }

@@ -11,7 +11,7 @@ const OvertimeManagement = () => {
   const [showAdvanceForm, setShowAdvanceForm] = useState(false); 
 
   const handleToggleDeductionForm = () => {
-    setShowDeductionForm(!showDeductionForm);
+    setShowDeductionForm(true);
     setShowAdvanceForm(false); 
   };
 
@@ -26,7 +26,7 @@ const OvertimeManagement = () => {
     <div className="overtime-management-container">
 <div className="deduction">
 <div className="heading1">
-        <button onClick={handleToggleDeductionForm}>Add Deduction</button>
+        <button onClick={handleToggleDeductionForm}>click to add deduction</button>
       </div>
       {showDeductionForm && <AddDeduction />}
       <DeductionTable/>
@@ -34,7 +34,7 @@ const OvertimeManagement = () => {
 
     <div className="advance">
 <div className="heading1">
-<button onClick={handleToggleAdvanceForm}>Add Advance</button>
+<button onClick={handleToggleAdvanceForm}>click to add Advance</button>
 </div>
       {showAdvanceForm && <AddAdvanceRecord />}
       <AdvanceTable/>

@@ -13,18 +13,16 @@ const UpperDashbord = () => {
       <div className="top-holder">
          <div className="div">
             <div className="head">
-               <h3>Number of employees</h3>
+               <h4>Number of employees</h4>
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
-               <div className='number'><h3>{isLoading ? 'Loading...' :employees && employees.length}</h3>
-               {isError?<div className='error'>error..</div>: "-"}
-               </div>
+               <div className='number'><h3>{isLoading ? 'Loading...' : employees.length}</h3></div>
             </div>
          </div>
          <div className="div">
             <div className="head"> 
-               <h3>Number of Admins</h3>
+               <h4>Number of Admins</h4>
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
@@ -33,7 +31,7 @@ const UpperDashbord = () => {
          </div>
          <div className="div">
             <div className="head"> 
-               <h2>Total salary</h2>
+               <h4>Total salary</h4>
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
