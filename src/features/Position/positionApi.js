@@ -3,7 +3,7 @@ const token=localStorage.getItem("token")
 export const positionApi = createApi({
     reducerPath: 'positionApi',
     baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:8000/api/` }),
-    tagTypes: ['Positions'],
+    tagTypes: ["Position"],
     endpoints: (builder) => ({
         getPositions: builder.query({
             query: () => ({
@@ -12,8 +12,8 @@ export const positionApi = createApi({
                     headers:{
                         Authorization:` JWT ${token}`
                     },
-                    provideTags: ['Positions'],
-                 }),
+                }),
+                provideTags: ["Position"],
         }),
         addPositions: builder.mutation({
             query: (Positions) => ({
@@ -24,7 +24,7 @@ export const positionApi = createApi({
                     Authorization:` JWT ${token}`
                 },
             }),
-            invalidatesTags: ['Positions'],
+            invalidatesTags: ["Position"],
         }),
         deletePositions: builder.mutation({
             query: (PositionID) => ({
@@ -34,7 +34,7 @@ export const positionApi = createApi({
                     Authorization:`JWT ${token}`
                 },
             }),
-            invalidatesTags: ['Positions'],
+            invalidatesTags: ["Position"],
         }),
         updatePositions: builder.mutation({
             query: (Positions) => ({
@@ -45,7 +45,7 @@ export const positionApi = createApi({
                     Authorization:` JWT ${token}`
                 },
             }),
-            invalidatesTags: ['Positions']
+            invalidatesTags: ['Position']
         }),
         getPositionsById:builder.query({
             query:(ID)=>({
@@ -54,8 +54,8 @@ export const positionApi = createApi({
                 headers:{
                     Authorization:` JWT ${token}`
                 },
-                providesTags:['Positions']
             }),
+            providesTags:["Position"]
         }),
     }),
 });
