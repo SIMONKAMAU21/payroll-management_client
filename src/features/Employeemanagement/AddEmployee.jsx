@@ -6,8 +6,7 @@ import { SuccessToast, ErrorToast, LoadingToast } from '../../components/toaster
 import Spinner from '../../components/spinner/spinner';
 
 const AddEmployee = ({ closeEmployee }) => {
-    const {data:positions ,isError}=useGetPositionsQuery();
-    const [position,setPosition]=useState('')
+    const { data: positions, isError } = useGetPositionsQuery();
     const [formData, setFormData] = useState({
         Firstname: '',
         Lastname: '',
@@ -16,76 +15,75 @@ const AddEmployee = ({ closeEmployee }) => {
         BirthDate: '',
         PhotoURL: '',
         ContactInfo: '',
-        file: {},
-        Admin: '',
         Email: '',
         Password: '',
-        schedule: '',
         Gender: ''
     });
     const [file, setFile] = useState(null)
+    const [isLoading, setIsLoading] = useState(false);
 
-    const [addEmployee, { isLoading, error }] = useAddEmployeeMutation();
+    const [addEmployee] = useAddEmployeeMutation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const data = new FormData();
-        const file_data = file;
-        data.append('file', file_data);
-        data.append('upload_preset', 'wdfjbcug');
-        data.append('cloud_name', 'diyuy63ue');
-
-
-
-        const cloudinaryRes = await fetch("https://api.cloudinary.com/v1_1/diyuy63ue/image/upload", {
-            method: 'POST',
-            body: data
-        });
-
-        const responseJson = await cloudinaryRes.json();
-        if (cloudinaryRes.ok) {
-            const { secure_url } = responseJson
-            formData.PhotoURL = secure_url
-        }
-        else {
-            console.error("Cloudinary upload failed:", responseJson);
-        }
+        setIsLoading(true);
 
         try {
+            const data = new FormData();
+            data.append('file', file);
+            data.append('upload_preset', 'wdfjbcug');
+            data.append('cloud_name', 'diyuy63ue');
+
+            const cloudinaryRes = await fetch("https://api.cloudinary.com/v1_1/diyuy63ue/image/upload", {
+                method: 'POST',
+                body: data
+            });
+
+            const responseJson = await cloudinaryRes.json();
+            if (cloudinaryRes.ok) {
+                const { secure_url } = responseJson;
+                formData.PhotoURL = secure_url;
+            } else {
+                console.error("Cloudinary upload failed:", responseJson);
+                throw new Error("Cloudinary upload failed");
+            }
+
             const response = await addEmployee(formData).unwrap();
             SuccessToast(response.message);
             closeEmployee();
-            setFormData({
-                Firstname: '',
-                Lastname: '',
-                PositionID: '',
-                Address: '',
-                BirthDate: '',
-                PhotoURL: '',
-                file: null,
-                ContactInfo: '',
-                Admin: '',
-                Email: '',
-                Password: '',
-                schedule: '',
-                Gender: '' 
-            });
+            resetForm();
         } catch (err) {
-            ErrorToast("could not add employee");
-            LoadingToast(false)
-        }
-    };
-    const handleChange = (e) => {
-        if (e.target.type === 'file') {
-            const file = e.target.files[0]; 
-            setFormData({ ...formData, [e.target.name]: file }); 
-        } else {
-            const { name, value } = e.target;
-            setFormData({ ...formData, [name]: value }); 
+            ErrorToast("Could not add employee");
+        } finally {
+            setIsLoading(false);
         }
     };
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setFile(file);
+    };
+
+    const resetForm = () => {
+        setFormData({
+            Firstname: '',
+            Lastname: '',
+            PositionID: '',
+            Address: '',
+            BirthDate: '',
+            PhotoURL: '',
+            ContactInfo: '',
+            Email: '',
+            Password: '',
+            Gender: ''
+        });
+        setFile(null);
+    };
 
     return (
         <div>
@@ -94,11 +92,9 @@ const AddEmployee = ({ closeEmployee }) => {
                     <div className="btn">
                     </div>
                     <div className="textarea">
-                        
-                        <div className="animation">
-                        <Spinner/>
-                        </div>  
-                         <input
+                        { <Spinner />}
+
+                        <input
                             type="text"
                             placeholder="First Name"
                             name="Firstname"
@@ -112,26 +108,26 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Lastname}
                             onChange={handleChange}
                         />
-                             <input
+                        <input
                             type="text"
                             placeholder="Gender"
                             name="Gender"
                             value={formData.Gender}
                             onChange={handleChange}
                         />
-                       <select
-                        value={position}
-                        onChange={(e)=>setPosition(e.target.value)}>
-                     <option value="">
-                        Select Position
-                     </option>
-                     {positions && positions.map(position=>(
-                        <option key={position.PositionID} value={position.PositionID}>
-                            {position.PositionID} {position.Position}
-
-                        </option>
-                     ))}
-                       </select>
+                        <select
+                            value={formData.PositionID}
+                            onChange={handleChange}
+                            name="PositionID"
+                        >
+                            <option value="">Select Position</option>
+                            {positions &&
+                                positions.map((position) => (
+                                    <option key={position.PositionID} value={position.PositionID}>
+                                        {position.Position}
+                                    </option>
+                                ))}
+                        </select>
                         <input
                             type="text"
                             placeholder="Address"
@@ -149,13 +145,8 @@ const AddEmployee = ({ closeEmployee }) => {
                         <input
                             type="file"
                             name="PhotoURL"
-                            onChange={(e) => {
-                                const file = e.target.files[0]; // Get the selected file
-                                setFile(file)
-                                // handleChange(file); // Pass the file to handleChange function
-                            }}
+                            onChange={handleFileChange}
                         />
-
                         <input
                             type="text"
                             placeholder="Contact Info"
@@ -163,7 +154,6 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.ContactInfo}
                             onChange={handleChange}
                         />
-                       
                         <input
                             type="email"
                             placeholder="Email"
@@ -178,11 +168,12 @@ const AddEmployee = ({ closeEmployee }) => {
                             value={formData.Password}
                             onChange={handleChange}
                         />
-                       
+
                         <div className="footer">
                             <div className="btn">
-                                <button type="submit" disabled={isLoading}>Add Employee</button>
-                          
+                                <button type="submit" disabled={isLoading}>
+                                    Add Employee
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -8,14 +8,10 @@ import Attendance from '../../components/AttendanceDetails/Attendance';
 import Messages from '../../features/messages/messages';
 
 function EmployeeBord() {
-
   const loggedInUser = localStorage.getItem('userDetails');
   const formattedLoggedInUser = JSON.parse(loggedInUser);
   const EmployeeID = formattedLoggedInUser.EmployeeID
   const { data: totalPayroll, error: payrollError, isLoading: payrollLoading } = useGetPayrollByIdQuery(formattedLoggedInUser);
-
-  console.log('totalPayroll', totalPayroll)
-
   return (
     <div className="maincontent">
       <div className="header">

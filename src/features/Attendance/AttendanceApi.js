@@ -41,11 +41,11 @@ export const attendanceApi = createApi({
         }),
 
         getAttendanceById: builder.query({
-            query: (Employee) => ({
-                url: `Attendance/${Employee.ID}`,
+            query: (employeeId) => ({
+                url: `Attendance/${employeeId}`,
                 method: `GET`,
                 headers:{
-                    Authorization:`JWY ${token}`
+                    Authorization:`JWT ${token}`
                 }
             }),
             providesTags: ['Attendance']

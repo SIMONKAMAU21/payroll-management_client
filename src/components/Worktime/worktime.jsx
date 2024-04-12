@@ -120,7 +120,7 @@ const WorkTimer = () => {
   return (
     <>
       <div className='worktimer-container'>
-        <h2 className='worktimer-heading'>Work Timer</h2>
+        <h3 className='worktimer-heading'>your details</h3>
         <div className='worktimer-details'>
           <p><span>Total time worked:</span> {calculateTotalTime()}</p>
           {employeeData && (

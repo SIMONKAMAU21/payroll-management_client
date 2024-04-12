@@ -1,55 +1,41 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useGetAttendanceByIdQuery } from '../../features/Attendance/AttendanceApi';
-import { ErrorToast, LoadingToast } from '../toaster/Toaster';
 
 const Attendance = () => {
-    const loggedInUser = localStorage.getItem('userDetails');
-    const formattedLoggedInUser = JSON.parse(loggedInUser);
-    const EmployeeID = formattedLoggedInUser.ID;
-    const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceByIdQuery(formattedLoggedInUser);
-
+    const loggedInUser = JSON.parse(localStorage.getItem('userDetails'));
+    const EmployeeID = loggedInUser.ID;
+    const { data: attendanceData, error: attendanceError, isLoading: attendanceLoading } = useGetAttendanceByIdQuery(EmployeeID);
+  
     return (
-        <>
-            <div className="stats">
-                <table>
-                    <thead>
+        <div className="stats">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Total Hours Worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {attendanceData && attendanceData.attendanceRecords.length > 0 ? (
+                        attendanceData.attendanceRecords.map(record => (
+                            <tr key={record.ID}>
+                                <td>{new Date(record.Date).toDateString()}</td>
+                                <td>{record.TimeIn ? new Date(record.TimeIn).toLocaleTimeString() : '-'}</td>
+                                <td>{record.TimeOut ? new Date(record.TimeOut).toLocaleTimeString() : '-'}</td>
+                                <td>{record.TimeOut ? calculateHoursWorked(record.TimeIn, record.TimeOut) : '-'}</td>
+                            </tr>
+                        ))
+                    ) : (
                         <tr>
-                            <th>Date</th>
-                            <th>Time In</th>
-                            <th>Time Out</th>
-                            <th>Total Hours Worked</th>
+                            <td colSpan="4">{attendanceError ? "No attendance records found" : "START working in the next 24hrs"}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {attendanceLoading ? (
-                            <tr>
-                                <td >
-                                   LOADING....
-                                </td>
-                            </tr>
-                        ) : attendanceError ? (
-                            <tr>
-                                <td colSpan="4">START working in the next 24hrs</td>
-                            </tr>
-                        ) : attendanceData && attendanceData.attendanceRecords.length > 0 ? (
-                            attendanceData.attendanceRecords.map(record => (
-                                <tr key={record.ID}>
-                                    <td>{new Date(record.Date).toDateString()}</td>
-                                    <td>{record.TimeIn ? new Date(record.TimeIn).toLocaleTimeString(0.
-                                        ) : '-'}</td>
-                                    <td>{record.TimeOut ? new Date(record.TimeOut).toLocaleTimeString() : '-'}</td>
-                                    <td>{record.TimeOut ? calculateHoursWorked(record.TimeIn, record.TimeOut) : '-'}</td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="4">No attendance records found</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-            </div>
-        </>
+                    )}
+                </tbody>
+            </table>
+        </div>
     );
 };
 

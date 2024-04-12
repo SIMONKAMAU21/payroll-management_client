@@ -3,6 +3,7 @@ import './Payroll.scss';
 import { useGetPayrollQuery, useAddPayrollMutation } from './PayrollApi';
 import { ErrorToast, LoadingToast, SuccessToast } from '../../components/toaster/Toaster';
 import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
+import Spinner from '../../components/spinner/spinner';
 
 const PayrollManagement = () => {
   const [employeeID, setEmployeeID] = useState('');
@@ -13,7 +14,8 @@ const PayrollManagement = () => {
 
 
   const handleGeneratePayroll = async () => {
-   LoadingToast( )
+   LoadingToast(true )
+
 
     try {
       const response = await addPayrollMutation({ EmployeeID: employeeID }).unwrap();
