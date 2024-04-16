@@ -5,7 +5,6 @@ import WorkTimer from '../../components/Worktime/worktime';
 import Clock from '../../components/clock/clock';
 import PayrollRecord from '../../components/Payroll/payroll';
 import Attendance from '../../components/AttendanceDetails/Attendance';
-import Messages from '../../features/messages/messages';
 
 function EmployeeBord() {
   const loggedInUser = localStorage.getItem('userDetails');

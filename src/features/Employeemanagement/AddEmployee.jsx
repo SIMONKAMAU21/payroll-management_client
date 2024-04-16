@@ -26,7 +26,7 @@ const AddEmployee = ({ closeEmployee }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        LoadingToast(true)
 
         try {
             const data = new FormData();
@@ -55,7 +55,7 @@ const AddEmployee = ({ closeEmployee }) => {
         } catch (err) {
             ErrorToast("Could not add employee");
         } finally {
-            setIsLoading(false);
+            LoadingToast(false)
         }
     };
 

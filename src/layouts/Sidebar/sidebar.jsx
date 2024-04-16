@@ -75,12 +75,7 @@ const Sidebar = () => {
       path: "/overview",
       id: 8,
     },
-    {
-      title: "messages",
-      icon: <FaCcAmazonPay size='34px' />,
-      path: "/messages",
-      id: 9,
-    },
+
   ];
 
   return (

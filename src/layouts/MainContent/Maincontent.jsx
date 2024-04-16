@@ -12,7 +12,6 @@ import AttendanceReportList from '../../features/Attendance/Attendance'
 import { Navigate } from 'react-router-dom'
 import PayrollManagement from '../../features/Payroll/Payroll'
 import Overview from '../../pages/projectOverview/text'
-import Messages from '../../features/messages/messages'
 
 
 const Maincontent = () => {
@@ -32,7 +31,6 @@ const Maincontent = () => {
 <Route path ='/Payroll management' element={<PayrollManagement/>}/>
 <Route path='/profile management' element ={<ProfileManagement/>}/>
 <Route path='/overview' element ={<Overview/>}/>
-<Route path='/messages' element={<Messages />}/>
 </Routes>
 
   

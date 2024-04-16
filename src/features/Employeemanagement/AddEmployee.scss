@@ -49,19 +49,7 @@
   gap: 10px;
   width: 100%;
   align-items: center;
-  select {
-    border-radius: 5px;
-    font-size: 20px;
-    width: 80%;
-    outline: none;
-    padding: 10px;
-    border: 2px solid;
-    background-color: transparent;
-
-    height: 55px;
-  }
- 
-  input  {
+  input ,select {
     border-radius: 5px;
     font-size: 20px;
     width: 80%;

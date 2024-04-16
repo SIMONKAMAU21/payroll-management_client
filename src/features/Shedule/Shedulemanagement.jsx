@@ -4,7 +4,7 @@ import { useGetSchedulesQuery, useUpdateSchedulesMutation, useDeleteSchedulesMut
 import { ErrorToast, SuccessToast, LoadingToast } from '../../components/toaster/Toaster';
 import { useGetEmployeesQuery } from '../Employeemanagement/employeeApi';
 import Modal from '../../components/modal/modal'
-import {StyleSheet,Text,View, PDFDownloadLink} from '@react-pdf/renderer'
+import { StyleSheet, Text, View, PDFDownloadLink } from '@react-pdf/renderer'
 
 const ScheduleManagement = () => {
    const { data: schedulesData, isLoading, isError } = useGetSchedulesQuery();
@@ -13,15 +13,15 @@ const ScheduleManagement = () => {
    const [updateSchedule] = useUpdateSchedulesMutation();
    const [deleteSchedule] = useDeleteSchedulesMutation();
    const [addSchedule] = useAddSchedulesMutation();
-   const{data:employees}=useGetEmployeesQuery();
+   const { data: employees } = useGetEmployeesQuery();
    const [showAddForm, setShowAddForm] = useState(false);
-   const [modalOpen, setModalOpen]= useState(false)
+   const [modalOpen, setModalOpen] = useState(false)
    const editShift = (index) => {
       setEditedIndex(index);
       setEditedShift(shifts[index]);
       toggleModal();
    };
- 
+
    const updateShift = async (index) => {
       try {
          await updateSchedule({ ID: shifts[index].ID, ...editedShift });
@@ -53,7 +53,7 @@ const ScheduleManagement = () => {
 
       try {
          const formData = new FormData(event.target);
-         
+
          const newShift = {
             StartTime: formData.get('startTime'),
             EndTime: formData.get('endTime'),
@@ -77,22 +77,22 @@ const ScheduleManagement = () => {
          <button onClick={toggleModal}>Add Schedule</button>
          <Modal isOpen={modalOpen} >
             <form onSubmit={handleAddShift} className='schedule_form'>
-                  <div>  <input type="date" name="startTime" placeholder="Start Time" /></div>
-                  <div><input type="date" name="endTime" placeholder="End Time" /></div>
-                  <div><input type="text" name="Days" autoComplete='on' placeholder="Days" /></div>
-                  <div> <input type="text" name="employee" placeholder="Employee" /></div>
-                  <div>
-                     <select >
-                        <option>select employee</option>
-                        {employees && employees.map(employee=>(
-                                 <option key={employee.ID} >
-                                 {employee.Firstname} {employee.Lastname}
-                              </option>
+               <div>  <input type="date" name="startTime" placeholder="Start Time" /></div>
+               <div><input type="date" name="endTime" placeholder="End Time" /></div>
+               <div><input type="text" name="Days" autoComplete='on' placeholder="Days" /></div>
+               <div> <input type="text" name="employee" placeholder="Employee" /></div>
+               <div>
+                  <select >
+                     <option>select employee</option>
+                     {employees && employees.map(employee => (
+                        <option key={employee.ID} >
+                           {employee.Firstname} {employee.Lastname}
+                        </option>
 
-                        ))}
-                  
-                     </select>
-                  </div>
+                     ))}
+
+                  </select>
+               </div>
                <div className='btne'>
                   <button type="submit">Add</button>
 
@@ -112,12 +112,12 @@ const ScheduleManagement = () => {
             <tbody>
                {schedulesData && schedulesData.map((shift, index) => (
                   <tr key={index}>
-                     <td>{shift.StartTime? new Date(shift.StartTime).toLocaleDateString():'-'}</td>
-                     <td>{shift.EndTime? new Date (shift.EndTime).toLocaleDateString(): '-'}</td>
+                     <td>{shift.StartTime ? new Date(shift.StartTime).toLocaleDateString() : '-'}</td>
+                     <td>{shift.EndTime ? new Date(shift.EndTime).toLocaleDateString() : '-'}</td>
                      <td>{shift.Firstname} {shift.Lastname}</td>
                      <td>{shift.EmployeeID}{shift.ID}</td>
                      <td className='btn'>
-                        { (
+                        {(
                            <>
                               <button onClick={() => editShift(index)}>Edit</button>
                               <button onClick={() => deleteShift(shift.ID)}>Delete</button>

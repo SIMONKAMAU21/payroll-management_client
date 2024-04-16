@@ -13,8 +13,17 @@ const AttendanceReportList = () => {
     }
   }, [attendance]);
 
-  if (isLoading) return <LoadingToast message="Fetching attendance reports..." />;
-  if (isError) return  <ErrorToast message="Error fetching attendance reports" />;
+  if (isLoading) return LoadingToast(true) ;
+  if (isError) return ErrorToast();
+  if (attendance.length === 0) {
+
+    ErrorToast("list is creared after 12hours");
+    LoadingToast(false)
+  } else{
+    LoadingToast(false)
+  }
+  
+    
 
   return (
     <div className='Attendance'>

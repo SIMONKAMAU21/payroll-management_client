@@ -17,7 +17,10 @@ const UpperDashbord = () => {
             </div>
             <div className="total">
                <div className='text'><h3>Total</h3></div>
-               <div className='number'><h3>{isLoading ? 'Loading...' : employees.length}</h3></div>
+               <div className='number'><h3>
+                  {isLoading ? 'Loading...' :employees && employees.length} 
+                  
+                  </h3></div>
             </div>
          </div>
          <div className="div">

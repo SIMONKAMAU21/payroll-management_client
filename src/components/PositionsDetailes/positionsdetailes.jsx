@@ -1,10 +1,11 @@
 import React from 'react';
 import '../PositionsDetailes/positionsdetailes.scss'; // Import CSS file for modal styling
 import { useGetPositionsByIdQuery } from '../../features/Position/positionApi';
+import { SuccessToast } from '../toaster/Toaster';
 
 const Positionsdetailes = ({ positionId, onClose }) => {
   const { data: positionDetails, isLoading, isError } = useGetPositionsByIdQuery(positionId);
-  console.log('first', positionDetails)
+ 
   return (
     <div className="modal-overlay1" onClick={onClose}>
       <div className="modal-content1" onClick={(e) => e.stopPropagation()}>
